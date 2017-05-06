@@ -1,11 +1,11 @@
 {
-  "name": "martial",
+  "name": "fourmi",
   "author": "Antoine Lafouasse",
   "private": true,
-  "version": "1.8.1",
+  "version": "2.0.0.alpha.0",
   "description": "A database interface visualising work imitations.",
-  "repository": "https://github.com/LrsNate/Martial",
-  "license": "MIT",
+  "repository": "https://github.com/LrsNate/Fourmi",
+  "license": "GPLv3",
   "dependencies": {
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",

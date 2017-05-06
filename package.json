@@ -38,7 +38,7 @@
     "dist": "build"
   },
   "build": {
-    "appId": "fr.nate.martial",
+    "appId": "fr.nate.fourmi",
     "mac": {
       "category": "public.app-category.education"
     },
