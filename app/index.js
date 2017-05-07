@@ -8,14 +8,13 @@ const autoUpdater = electron.autoUpdater;
 const appVersion = app.getVersion();
 
 if (process.env.NODE_ENV !== 'development') {
-  const updateFeed = 'https://martial-releases.herokuapp.com/update';
+  const updateFeed = 'https://fourmi-releases.herokuapp.com/update';
   autoUpdater.setFeedURL(`${updateFeed}?version=${appVersion}&platform=darwin`);
 
   setInterval(() => autoUpdater.checkForUpdates(), 1800000);
   autoUpdater.checkForUpdates();
 
-  autoUpdater.on('error', () => {
-  });
+  autoUpdater.on('error', () => {});
 
   autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
     electron.dialog.showMessageBox({
