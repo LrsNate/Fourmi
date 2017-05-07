@@ -1,9 +1,48 @@
-md-input-container
-    label Auteur
-    input(ng-model='$ctrl.work.author')
-md-input-container
-    label Titre
-    input(ng-model='$ctrl.work.title')
-md-input-container
-    label Référence
-    input(ng-model='$ctrl.work.reference')
+div(layout)
+  md-card(flex='60')
+    md-card-content
+      div(layout)
+        md-input-container(flex='25')
+          label Auteur
+          input(ng-model='$ctrl.work.author')
+        md-input-container(flex='25')
+          label Référence
+          input(ng-model='$ctrl.work.reference')
+        md-input-container(flex='50')
+          label Titre
+          input(ng-model='$ctrl.work.title')
+
+      div(layout)
+        md-input-container(flex)
+          label Date
+          input(ng-model='$ctrl.work.date')
+        md-input-container(flex)
+          label Destinataire
+          input(ng-model='$ctrl.work.addressee')
+
+        md-input-container(flex)
+          label Strophe
+          input(ng-model='$ctrl.work.stanza')
+        md-input-container(flex)
+          label Mètre
+          input(ng-model='$ctrl.work.meter')
+
+  md-card(flex='40')
+    md-card-content(layout)
+      md-input-container(flex)
+        label Notes
+        textarea(ng-model='$ctrl.work.notes', rows='4')
+
+
+div(layout)
+  md-card(flex)
+    md-card-content(layout)
+      md-input-container(flex)
+        label Texte latin
+        textarea(ng-model='$ctrl.work.latinText', rows='6')
+
+  md-card(flex)
+    md-card-content(layout)
+      md-input-container(flex)
+        label Texte français
+        textarea(ng-model='$ctrl.work.frenchText', rows='6')
