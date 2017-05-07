@@ -27,22 +27,11 @@ module.exports = {
         exclude: /node_modules/,
         use: 'babel-loader',
       },
-      {
-        test: /\.html$/,
-        use: 'raw-loader',
-      },
-      {
-        test: /\.css$/,
-        use: extractCss.extract('css-loader'),
-      },
-      {
-        test: /\.scss$/,
-        use: extractCss.extract(['css-loader', 'sass-loader']),
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-        use: 'file-loader',
-      },
+      { test: /\.html$/, use: 'raw-loader' },
+      { test: /\.pug$/, use: ['raw-loader', 'pug-html-loader'] },
+      { test: /\.css$/, use: extractCss.extract('css-loader') },
+      { test: /\.scss$/, use: extractCss.extract(['css-loader', 'sass-loader']) },
+      { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, use: 'file-loader' },
     ],
   },
   plugins: [

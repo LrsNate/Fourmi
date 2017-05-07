@@ -1,6 +1,8 @@
 import angular from 'angular';
-import 'angular-route';
 import 'angular-animate';
+import 'angular-aria';
+import 'angular-material';
+import 'angular-route';
 import 'angular-sanitize';
 
 import './app.scss';
@@ -23,6 +25,7 @@ config.$inject = ['$locationProvider', '$routeProvider'];
 export default angular.module('myApp', [
   'ngRoute',
   'ngAnimate',
+  'ngMaterial',
   'ngSanitize',
   NavigationBar.name,
   Version.name,

@@ -3,9 +3,9 @@ import 'angular-ui-bootstrap';
 import SearchBox from '../search-box';
 import WorksDao from '../../services/works-dao';
 import WorkSearch from '../work-search';
-import ListInputComponent from './list-input.component';
+import ListInputComponent from './list-input/list-input.component';
 import WorkEditorComponent from './work-editor.component';
-import WorkSelectorComponent from './work-selector.component';
+import WorkSelectorComponent from './work-selector/work-selector.component';
 
 export default angular.module('myApp.workEditor', [
   SearchBox.name,
