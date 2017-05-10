@@ -1,4 +1,4 @@
-import template from './add.template.html';
+import template from './add.template.pug';
 
 export default {
   selector: 'add',

@@ -24,18 +24,18 @@ export default {
       return ['$uibModal', 'worksDao'];
     }
 
-    changeOrigin() {
-      const modalInstance = this.$uibModal.open({
-        animation: true,
-        component: WorkSelectorComponent.selector,
-        windowClass: 'work-selector-modal',
-      });
+    // changeOrigin() {
+    //   const modalInstance = this.$uibModal.open({
+    //     animation: true,
+    //     component: WorkSelectorComponent.selector,
+    //     windowClass: 'work-selector-modal',
+    //   });
 
-      modalInstance.result.then((workId) => {
-        this.work.originId = workId;
-        this.resolveOriginReference();
-      });
-    }
+    //   modalInstance.result.then((workId) => {
+    //     this.work.originId = workId;
+    //     this.resolveOriginReference();
+    //   });
+    // }
 
     removeOrigin() {
       this.work.originId = null;

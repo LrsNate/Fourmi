@@ -1,6 +1,6 @@
 import ConfirmDeleteWorkComponent from '../../components/confirm-delete-work/confirm-delete-work.component';
 
-import template from './edit.template.html';
+import template from './edit.template.pug';
 
 export default {
   selector: 'edit',
