@@ -27,6 +27,22 @@ div(layout)
           label Mètre
           input(ng-model='$ctrl.work.meter')
 
+      div(layout)
+        md-chips(
+          flex
+          ng-model='$ctrl.work.vices'
+          placeholder='Ajouter un vice'
+          secondary-placeholder='+ Vice'
+        )
+
+      div(layout)
+        md-chips(
+          flex
+          ng-model='$ctrl.work.tags'
+          placeholder='Ajouter un tag'
+          secondary-placeholder='+ Tag'
+        )
+
   md-card(flex='40')
     md-card-content(layout)
       md-input-container(flex)
