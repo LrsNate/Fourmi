@@ -15,13 +15,24 @@ import Edit from './routes/edit';
 import Search from './routes/search';
 import Settings from './routes/settings';
 
-function config($locationProvider, $routeProvider) {
+function router($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
   $routeProvider.otherwise({ redirectTo: '/boot' });
 }
-config.$inject = ['$locationProvider', '$routeProvider'];
+router.$inject = ['$locationProvider', '$routeProvider'];
 
-// Declare app level module which depends on views, and components
+function mdTheme($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('teal')
+    .accentPalette('amber');
+
+  $mdThemingProvider.theme('secondary')
+    .primaryPalette('amber')
+    .accentPalette('teal');
+}
+
+mdTheme.$inject = ['$mdThemingProvider'];
+
 export default angular.module('myApp', [
   'ngRoute',
   'ngAnimate',
@@ -36,4 +47,5 @@ export default angular.module('myApp', [
   Search.name,
   Settings.name,
 ])
-  .config(config);
+  .config(router)
+  .config(mdTheme);
