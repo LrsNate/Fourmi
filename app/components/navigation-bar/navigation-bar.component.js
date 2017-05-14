@@ -5,6 +5,7 @@ export default {
   controller: class {
 
     constructor($scope, $location) {
+      this.$location = $location;
       this.pageTitles = {
         add: 'Ajouter une nouvelle oeuvre',
         changelog: 'Changelog',
@@ -23,10 +24,12 @@ export default {
       return ['$scope', '$location'];
     }
 
-    isOtherRoute() {
-      return this.route !== 'search' &&
-        this.route !== 'changelog' &&
-        this.route !== 'add';
+    isSecondaryRoute() {
+      return this.route !== 'search';
+    }
+
+    goBack() {
+      this.$location.path('/search');
     }
   },
 };
