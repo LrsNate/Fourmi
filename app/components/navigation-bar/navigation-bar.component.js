@@ -28,8 +28,8 @@ export default {
       return this.route !== 'search';
     }
 
-    goBack() {
-      this.$location.path('/search');
+    goTo(path) {
+      this.$location.path(path);
     }
   },
 };
