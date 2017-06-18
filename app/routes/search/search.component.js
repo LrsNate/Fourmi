@@ -1,4 +1,4 @@
-import template from './search.template.html';
+import template from './search.template.pug';
 
 export default {
   selector: 'search',

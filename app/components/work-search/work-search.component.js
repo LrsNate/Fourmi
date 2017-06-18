@@ -1,14 +1,12 @@
 import _ from 'lodash';
 
-import template from './work-search.template.html';
+import template from './work-search.template.pug';
 import './work-search.style.scss';
 
 export default {
   selector: 'workSearch',
   template,
   bindings: {
-    action: '@',
-    onAction: '&',
     onSelect: '&',
   },
   controller: class {

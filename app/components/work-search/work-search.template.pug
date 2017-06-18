@@ -1,0 +1,19 @@
+md-content
+  md-list.md-dense(flex)
+    md-list-item.md-2-line(ng-repeat='work in $ctrl.displayedWorks track by work._id', ng-click='null')
+      div.md-list-item-text(layout='column')
+        h4 {{ ::work.author }} ({{ ::work.reference }}) - {{ ::work.title }}
+        p {{ work.latinText || work.frenchText | incipit: 40 }}
+      md-menu(width='4')
+        md-button.md-icon-button(ng-mouseenter='$mdMenu.open()')
+          span.material-icons more_vert
+        md-menu-content(ng-mouseleave='$mdMenu.close()')
+          md-menu-item
+            md-button(ng-click="$ctrl.goTo('/settings')")
+              md-icon(md-menu-align-target).material-icons share
+              span Imitations
+          md-menu-item
+            md-button(ng-click="$ctrl.goTo('/changelog')")
+              md-icon(md-menu-align-target).material-icons mode_edit
+              span Éditer
+
