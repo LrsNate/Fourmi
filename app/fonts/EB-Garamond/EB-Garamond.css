@@ -1,8 +1,0 @@
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: normal;
-  font-weight: 400;
-  src: url(./EB-Garamond.eot);
-  src: local('EB Garamond'), local('EBGaramond'), url(./EB-Garamond.svg#EBGaramond) format('svg'), url(./EB-Garamond.eot?#iefix) format('embedded-opentype'), url(./EB-Garamond.woff2) format('woff2'), url(./EB-Garamond.woff) format('woff'), url(./EB-Garamond.ttf) format('truetype');
-}
-
