@@ -7,7 +7,7 @@ const extractCss = new ExtractTextPlugin('app.css');
 
 module.exports = {
   entry: {
-    app: './app/app.js',
+    app: './app/app.jsx',
   },
   output: {
     path: `${__dirname}/dist/generated-src`,
@@ -23,7 +23,7 @@ module.exports = {
         use: 'eslint-loader',
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: 'babel-loader',
       },

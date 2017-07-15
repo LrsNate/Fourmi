@@ -6,5 +6,8 @@
   ],
   "rules": {
     "no-underscore-dangle": "off"
+  },
+  "globals": {
+    "document": true
   }
 }

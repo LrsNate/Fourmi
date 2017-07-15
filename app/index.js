@@ -1,4 +1,10 @@
 const electron = require('electron'); // eslint-disable-line
+const {
+  default: installExtension,
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+} = require('electron-devtools-installer'); // eslint-disable-line
+
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
@@ -25,7 +31,6 @@ if (process.env.NODE_ENV !== 'development') {
   });
 }
 
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -39,6 +44,13 @@ function createWindow() {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
+  installExtension(REACT_DEVELOPER_TOOLS)
+    .then(name => console.log(`Added Extension:  ${name}`))
+    .catch(err => console.log('An error occurred: ', err));
+
+  installExtension(REDUX_DEVTOOLS)
+    .then(name => console.log(`Added Extension:  ${name}`))
+    .catch(err => console.log('An error occurred: ', err));
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
