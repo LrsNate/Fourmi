@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import template from './text-display.template.html';
+import template from './text-display.template.pug';
 import './text-display.style.scss';
 
 export default {
@@ -55,6 +55,7 @@ export default {
     }
 
     setVersion(targetVersion) {
+      console.log(targetVersion);
       this.activeVersion = targetVersion;
       if (targetVersion.id === 'reference-latin') {
         this.text = this.referenceWork.latinText;

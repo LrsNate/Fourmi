@@ -20,7 +20,6 @@ export default {
       worksDao.getWorks().then((works) => {
         this.fullWorks = works;
         this.works = works;
-        this.displayedWorks = works.slice(0, 30);
         this.statusMessage = 'Aucune épigramme n\'a pu être trouvée avec ces critères';
 
         _.each(works, (work) => {
@@ -54,17 +53,7 @@ export default {
       this.searchHelper.applyFilters(this.filters, this.phraseFilter, this.fullWorks)
         .then((works) => {
           this.works = works;
-          this.displayedWorks = works.slice(0, 30);
         });
-    }
-
-    onInfiniteScroll() {
-      if (!this.displayedWorks) return;
-      const start = this.displayedWorks.length - 1;
-      const lastIndex = Math.min(start + 10, this.works.length - 1);
-      for (let i = start + 1; i <= lastIndex; i += 1) {
-        this.displayedWorks.push(this.works[i]);
-      }
     }
   },
 };

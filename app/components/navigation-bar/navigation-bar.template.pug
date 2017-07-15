@@ -1,10 +1,10 @@
 md-toolbar
   div.md-toolbar-tools
-    md-button.md-icon-button(ng-click="$ctrl.goTo('/search')")
+    md-button.md-icon-button(ng-click="$ctrl.goTo('/search')", aria-label='home')
       span.material-icons(ng-bind="$ctrl.isSecondaryRoute() ? 'chevron_left' : 'home'")
     h2(flex ng-bind='$ctrl.pageTitles[$ctrl.route]')
     md-menu(width='4')
-      md-button.md-icon-button(ng-mouseenter='$mdMenu.open()')
+      md-button.md-icon-button(ng-click='$mdMenu.open()')
         span.material-icons more_vert
       md-menu-content(ng-mouseleave='$mdMenu.close()')
         md-menu-item

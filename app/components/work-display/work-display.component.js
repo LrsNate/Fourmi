@@ -1,4 +1,4 @@
-import template from './work-display.template.html';
+import template from './work-display.template.pug';
 import './work-display.style.scss';
 
 export default {
@@ -23,7 +23,7 @@ export default {
     }
 
     init() {
-      if (this.work.originId) {
+      if (this.work && this.work.originId) {
         this.worksDao.getWork(this.work.originId).then((doc) => {
           this.referenceWork = doc;
         });
