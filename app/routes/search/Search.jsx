@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { initializeWorksAction } from '../../actions/initializeWorks';
+import WorkSearch from '../../components/work-search/WorkSearch';
 
 function mapStateToProps(state) {
   return {
@@ -21,6 +22,7 @@ class Search extends Component {
   static get propTypes() {
     return {
       initializeWorks: PropTypes.func.isRequired,
+      works: PropTypes.array.isRequired,
     };
   }
   componentWillMount() {
@@ -28,8 +30,9 @@ class Search extends Component {
   }
 
   render() {
+    const { works } = this.props;
     return (
-      <p>Foo!</p>
+      <WorkSearch works={works} />
     );
   }
 }
