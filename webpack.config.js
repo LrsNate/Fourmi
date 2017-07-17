@@ -1,9 +1,6 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const extractCss = new ExtractTextPlugin('app.css');
 
 module.exports = {
   entry: {
@@ -30,10 +27,13 @@ module.exports = {
       { test: /\.html$/, use: 'raw-loader' },
       {
         test: /\.css$/,
-        use: extractCss.extract('css-loader'),
+        use: [
+          'style-loader',
+          'css-loader?modules',
+        ],
         include: /flexboxgrid/,
       },
-      { test: /\.scss$/, use: extractCss.extract(['css-loader', 'sass-loader']) },
+      { test: /\.scss/, use: ['style-loader', 'css-loader?modules', 'sass-loader'] },
       { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, use: 'file-loader' },
     ],
   },
@@ -41,7 +41,6 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   plugins: [
-    extractCss,
     new HtmlWebpackPlugin({
       template: './app/index.html',
     }),
@@ -52,6 +51,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist/generated-src'], { verbose: true }),
   ],
   target: 'electron-renderer',
+  devtool: 'source-map',
   node: {
     electron: 'empty',
     fs: 'empty',
