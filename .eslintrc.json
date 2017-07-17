@@ -9,5 +9,8 @@
   },
   "globals": {
     "document": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
   }
 }

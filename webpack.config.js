@@ -28,11 +28,17 @@ module.exports = {
         use: 'babel-loader',
       },
       { test: /\.html$/, use: 'raw-loader' },
-      { test: /\.pug$/, use: ['raw-loader', 'pug-html-loader'] },
-      { test: /\.css$/, use: extractCss.extract('css-loader') },
+      {
+        test: /\.css$/,
+        use: extractCss.extract('css-loader'),
+        include: /flexboxgrid/,
+      },
       { test: /\.scss$/, use: extractCss.extract(['css-loader', 'sass-loader']) },
       { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, use: 'file-loader' },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     extractCss,
