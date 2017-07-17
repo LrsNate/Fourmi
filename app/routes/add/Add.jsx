@@ -2,7 +2,7 @@ import React from 'react';
 
 import WorkEditor from '../../components/work-editor/WorkEditor';
 
-const Add = () => {
+const Add = () => { // eslint-disable-line
   return (
     <WorkEditor />
   );

@@ -2,14 +2,19 @@
   "extends": "airbnb",
   "plugins": [
     "import",
-    "angular"
+    "jest"
   ],
   "rules": {
+    "class-methods-use-this": "off",
     "no-underscore-dangle": "off",
-    "class-methods-use-this": "off"
+    "react/prefer-stateless-function": "off"
   },
   "globals": {
-    "document": true
+    "document": true,
+    "window": true
+  },
+  "env": {
+    "jest/globals": true
   },
   "parserOptions": {
     "ecmaVersion": 2017

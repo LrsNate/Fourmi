@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Col, Grid, Row } from 'react-flexbox-grid';
 
 import AttributesEditor from './attributes-editor/AttributesEditor';
-import NotesEditor from './notes-editor/NotesEditor';
+import TextEditor from './text-editor/TextEditor';
 import styles from './WorkEditor.scss';
 
 class WorkEditor extends Component {
@@ -18,11 +18,11 @@ class WorkEditor extends Component {
           <Col sm={7}>
             <AttributesEditor />
           </Col>
-          <Col sm={5}><NotesEditor /></Col>
+          <Col sm={5}><TextEditor /></Col>
         </Row>
         <Row className={styles.row}>
-          <Col sm={6}><NotesEditor /></Col>
-          <Col sm={6}><NotesEditor /></Col>
+          <Col sm={6}><TextEditor /></Col>
+          <Col sm={6}><TextEditor /></Col>
         </Row>
       </Grid>
     );
