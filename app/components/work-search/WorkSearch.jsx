@@ -1,5 +1,12 @@
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
 import { List, ListItem } from 'material-ui/List';
+import MenuItem from 'material-ui/MenuItem';
+import { grey400 } from 'material-ui/styles/colors';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import React, { Component, PropTypes } from 'react';
+
+const MAX_LINE_SIZE = 40;
 
 class WorkSearch extends Component {
   static get propTypes() {
@@ -9,19 +16,58 @@ class WorkSearch extends Component {
     };
   }
 
+  handleTouchTap(work) {
+    const { onSelect } = this.props;
+    return () => onSelect(work);
+  }
+
+  handleEdit(work) {
+    return () => console.log(work);
+  }
+
+  renderPrimaryText(work) {
+    const reference = work.reference ? `${work.author} - ${work.reference}` : work.author;
+
+    return work.title ? `${reference} : ${work.title}` : reference;
+  }
+
+  renderSecondaryText(work) {
+    const text = work.latinText || work.frenchText;
+    const firstLine = text.split('\n')[0];
+
+    return firstLine.length > MAX_LINE_SIZE ? `${firstLine}...` : firstLine;
+  }
+
+  renderIconMenu(work) {
+    const iconButtonElement = (
+      <IconButton touch tooltip="Options" tooltipPosition="bottom-left">
+        <MoreVertIcon color={grey400} />
+      </IconButton>
+    );
+
+    return (
+      <IconMenu iconButtonElement={iconButtonElement}>
+        <MenuItem onClick={this.handleEdit(work)}>Éditer</MenuItem>
+        <MenuItem>Imitations</MenuItem>
+      </IconMenu>
+    );
+  }
+
   render() {
-    const { works, onSelect } = this.props;
-    const authors = works.map(work => (
+    const { works } = this.props;
+    const listElements = works.map(work => (
       <ListItem
-        primaryText={work.author}
-        secondaryText={work.reference}
-        onTouchTap={onSelect}
+        key={work._id}
+        primaryText={this.renderPrimaryText(work)}
+        secondaryText={this.renderSecondaryText(work)}
+        rightIconButton={this.renderIconMenu(work)}
+        onTouchTap={this.handleTouchTap(work)}
       />
-  ));
+    ));
 
     return (
       <List>
-        {authors}
+        {listElements}
       </List>
     );
   }

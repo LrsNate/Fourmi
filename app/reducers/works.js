@@ -1,11 +1,6 @@
-import _ from 'lodash';
-
 import { INITIALIZE_WORKS } from '../actions/initializeWorks';
 
 function initializeWorks(state, action) {
-  if (!_.isEmpty(state)) {
-    return state;
-  }
   return action.works;
 }
 

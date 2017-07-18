@@ -29,10 +29,14 @@ class Search extends Component {
     this.props.initializeWorks();
   }
 
+  handleSelect(work) {
+    console.log(work);
+  }
+
   render() {
     const { works } = this.props;
     return (
-      <WorkSearch works={works} />
+      <WorkSearch works={works} onSelect={this.handleSelect} />
     );
   }
 }

@@ -1,6 +1,6 @@
 import works from './works';
 
-describe('the works reducer', () => {
+describe('The works reducer', () => {
   it('initializes works', () => {
     const action = {
       type: 'INITIALIZE_WORKS',
@@ -8,5 +8,11 @@ describe('the works reducer', () => {
     };
 
     expect(works([], action)).toEqual([1, 2, 3]);
+  });
+
+  it('ignores unknown actions', () => {
+    const action = { type: 'FOO' };
+
+    expect(works([], action)).toEqual([]);
   });
 });
