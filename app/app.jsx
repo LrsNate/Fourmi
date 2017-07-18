@@ -3,7 +3,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createLogger } from 'redux-logger';
 
 import reducer from './reducers';
 // import Add from './routes/add/Add';
@@ -14,10 +16,11 @@ import './app.scss';
 
 injectTapEventPlugin();
 
+const logger = createLogger();
 
 const store = createStore(
   reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  composeWithDevTools(applyMiddleware(logger)),
 );
 
 render(

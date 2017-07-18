@@ -20,10 +20,8 @@
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6",
     "remarkable": "^1.7.1",
     "showdown": "^1.5.0"
-  },
-  "devDependencies": {
-    "eslint-loader": "^1.9.0"
   }
 }
