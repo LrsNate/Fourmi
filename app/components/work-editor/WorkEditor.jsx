@@ -29,6 +29,4 @@ class WorkEditor extends Component {
   }
 }
 
-WorkEditor.displayName = 'WorkEditor';
-
 export default WorkEditor;

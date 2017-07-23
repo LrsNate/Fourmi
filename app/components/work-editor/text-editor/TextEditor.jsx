@@ -1,6 +1,7 @@
 import { Card, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 import styles from './TextEditor.scss';
 

@@ -1,14 +1,17 @@
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import React from 'react';
-import { Provider } from 'react-redux';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { Route, Switch } from 'react-router';
+import { BrowserRouter as Router } from 'react-router-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 
+import NavigationBar from './components/navigation-bar/NavigationBar';
 import reducer from './reducers';
-// import Add from './routes/add/Add';
+import Add from './routes/add/Add';
 import Search from './routes/search/Search';
 
 import './reset.scss';
@@ -23,10 +26,22 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(logger)),
 );
 
+const App = () => (
+  <div>
+    <NavigationBar />
+    <Switch>
+      <Route path="/add" component={Add} />
+      <Route component={Search} />
+    </Switch>
+  </div>
+);
+
 render(
   <MuiThemeProvider>
     <Provider store={store}>
-      <Search />
+      <Router>
+        <App />
+      </Router>
     </Provider>
   </MuiThemeProvider>,
   document.getElementById('root'),

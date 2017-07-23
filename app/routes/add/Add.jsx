@@ -4,10 +4,10 @@ import WorkEditor from '../../components/work-editor/WorkEditor';
 
 const Add = () => { // eslint-disable-line
   return (
-    <WorkEditor />
+    <div>
+      <WorkEditor />
+    </div>
   );
 };
-
-Add.displayName = 'Add';
 
 export default Add;
