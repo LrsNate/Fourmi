@@ -2,6 +2,7 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import WorkEditor from '../../components/work-editor/WorkEditor';
 
@@ -27,4 +28,4 @@ class Edit extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Edit);
+export default withRouter(connect(mapStateToProps)(Edit));

@@ -20,6 +20,7 @@ class NavigationBar extends Component {
       <Switch>
         {routes.map(({ title, path, icon }) => (
           <Route
+            key={path}
             path={path}
             render={() => (
               <AppBar
