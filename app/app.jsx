@@ -12,6 +12,7 @@ import { createLogger } from 'redux-logger';
 import NavigationBar from './components/navigation-bar/NavigationBar';
 import reducer from './reducers';
 import Add from './routes/add/Add';
+import Edit from './routes/edit/Edit';
 import Search from './routes/search/Search';
 
 import './reset.scss';
@@ -31,6 +32,7 @@ const App = () => (
     <NavigationBar />
     <Switch>
       <Route path="/add" component={Add} />
+      <Route path="/edit" component={Edit} />
       <Route component={Search} />
     </Switch>
   </div>

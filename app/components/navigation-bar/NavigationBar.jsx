@@ -1,12 +1,24 @@
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, withRouter } from 'react-router';
 
 class NavigationBar extends Component {
+  static get propTypes() {
+    return {
+      history: PropTypes.object.isRequired,
+    };
+  }
+
+  constructor(props) {
+    super(props);
+    this.handleLeftIconClick = this.handleLeftIconClick.bind(this);
+  }
+
   handleLeftIconClick() {
-    console.log('Go back!');
+    this.props.history.push('/');
   }
 
   render() {
@@ -35,4 +47,4 @@ class NavigationBar extends Component {
   }
 }
 
-export default NavigationBar;
+export default withRouter(NavigationBar);
