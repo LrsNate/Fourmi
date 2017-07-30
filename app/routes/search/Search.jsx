@@ -8,7 +8,7 @@ import WorkSearch from '../../components/work-search/WorkSearch';
 
 function mapStateToProps(state) {
   return {
-    works: state.works,
+    works: state.works.slice(0, 20),
   };
 }
 

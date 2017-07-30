@@ -8,6 +8,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import NavigationBar from './components/navigation-bar/NavigationBar';
 import reducer from './reducers';
@@ -24,7 +25,7 @@ const logger = createLogger();
 
 const store = createStore(
   reducer,
-  composeWithDevTools(applyMiddleware(logger)),
+  composeWithDevTools(applyMiddleware(thunk, logger)),
 );
 
 const App = () => (
