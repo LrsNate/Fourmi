@@ -13,7 +13,7 @@ class WorkSearch extends Component {
   static get propTypes() {
     return {
       onSelect: PropTypes.func.isRequired,
-      works: PropTypes.array.isRequired,
+      works: PropTypes.array.isRequired
     };
   }
 
@@ -27,7 +27,9 @@ class WorkSearch extends Component {
   }
 
   renderPrimaryText(work) {
-    const reference = work.reference ? `${work.author} - ${work.reference}` : work.author;
+    const reference = work.reference
+      ? `${work.author} - ${work.reference}`
+      : work.author;
 
     return work.title ? `${reference} : ${work.title}` : reference;
   }
@@ -56,7 +58,7 @@ class WorkSearch extends Component {
 
   render() {
     const { works } = this.props;
-    const listElements = works.map(work => (
+    const listElements = works.map(work =>
       <ListItem
         key={work._id}
         primaryText={this.renderPrimaryText(work)}
@@ -64,7 +66,7 @@ class WorkSearch extends Component {
         rightIconButton={this.renderIconMenu(work)}
         onTouchTap={this.handleTouchTap(work)}
       />
-    ));
+    );
 
     return (
       <List>

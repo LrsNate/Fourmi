@@ -11,17 +11,12 @@ class TextEditor extends Component {
       label: PropTypes.string.isRequired,
       onChange: PropTypes.func.isRequired,
       rows: PropTypes.number.isRequired,
-      value: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired
     };
   }
 
   render() {
-    const {
-      label,
-      onChange,
-      rows,
-      value,
-    } = this.props;
+    const { label, onChange, rows, value } = this.props;
 
     return (
       <Card className={styles.card}>

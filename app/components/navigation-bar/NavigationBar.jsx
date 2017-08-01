@@ -8,7 +8,7 @@ import { Route, Switch, withRouter } from 'react-router';
 class NavigationBar extends Component {
   static get propTypes() {
     return {
-      history: PropTypes.object.isRequired,
+      history: PropTypes.object.isRequired
     };
   }
 
@@ -24,24 +24,31 @@ class NavigationBar extends Component {
   render() {
     const routes = [
       { title: 'Rechercher une oeuvre', path: '/', icon: <NavigationClose /> },
-      { title: 'Enregistrer une nouvelle oeuvre', path: '/add', icon: <NavigationClose /> },
-      { title: 'Éditer une oeuvre', path: '/edit', icon: <NavigationClose /> },
+      {
+        title: 'Enregistrer une nouvelle oeuvre',
+        path: '/add',
+        icon: <NavigationClose />
+      },
+      { title: 'Éditer une oeuvre', path: '/edit', icon: <NavigationClose /> }
     ];
 
     return (
       <Switch>
-        {routes.map(({ title, path, icon }) => (
+        {routes.map(({ title, path, icon }) =>
           <Route
             key={path}
             path={path}
-            render={() => (
+            render={() =>
               <AppBar
                 title={title}
-                iconElementLeft={<IconButton onClick={this.handleLeftIconClick}>{icon}</IconButton>}
-              />
-            )}
+                iconElementLeft={
+                  <IconButton onClick={this.handleLeftIconClick}>
+                    {icon}
+                  </IconButton>
+                }
+              />}
           />
-        ))}
+        )}
       </Switch>
     );
   }

@@ -8,7 +8,7 @@ import WorkSearch from '../../components/work-search/WorkSearch';
 
 function mapStateToProps(state) {
   return {
-    works: state.works.slice(0, 20),
+    works: state.works.slice(0, 20)
   };
 }
 
@@ -16,7 +16,7 @@ function mapDispatchToProps(dispatch) {
   return {
     initializeWorks() {
       dispatch(initializeWorksAction());
-    },
+    }
   };
 }
 
@@ -25,7 +25,7 @@ class Search extends Component {
     return {
       history: PropTypes.object.isRequired,
       initializeWorks: PropTypes.func.isRequired,
-      works: PropTypes.array.isRequired,
+      works: PropTypes.array.isRequired
     };
   }
 
@@ -39,14 +39,12 @@ class Search extends Component {
   }
 
   handleSelect(work) {
-    this.props.history.push(`/add/${work._id}`);
+    this.props.history.push(`/edit/${work._id}`);
   }
 
   render() {
     const { works } = this.props;
-    return (
-      <WorkSearch works={works} onSelect={this.handleSelect} />
-    );
+    return <WorkSearch works={works} onSelect={this.handleSelect} />;
   }
 }
 

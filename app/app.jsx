@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -25,19 +25,18 @@ const logger = createLogger();
 
 const store = createStore(
   reducer,
-  composeWithDevTools(applyMiddleware(thunk, logger)),
+  composeWithDevTools(applyMiddleware(thunk, logger))
 );
 
-const App = () => (
+const App = () =>
   <div>
     <NavigationBar />
     <Switch>
       <Route path="/add" component={Add} />
-      <Route path="/edit" component={Edit} />
+      <Route path="/edit/:id" component={Edit} />
       <Route component={Search} />
     </Switch>
-  </div>
-);
+  </div>;
 
 render(
   <MuiThemeProvider>
@@ -47,5 +46,5 @@ render(
       </Router>
     </Provider>
   </MuiThemeProvider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );

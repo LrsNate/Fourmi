@@ -1,11 +1,9 @@
 {
-  "extends": "airbnb",
-  "plugins": [
-    "import",
-    "jest"
-  ],
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["import", "jest", "prettier"],
   "rules": {
     "class-methods-use-this": "off",
+    "no-console": "off",
     "no-underscore-dangle": "off",
     "react/prefer-stateless-function": "off"
   },
