@@ -1,5 +1,6 @@
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
+import Home from 'material-ui/svg-icons/action/home';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
@@ -23,13 +24,17 @@ class NavigationBar extends Component {
 
   render() {
     const routes = [
-      { title: 'Rechercher une oeuvre', path: '/', icon: <NavigationClose /> },
       {
         title: 'Enregistrer une nouvelle oeuvre',
         path: '/add',
         icon: <NavigationClose />
       },
-      { title: 'Éditer une oeuvre', path: '/edit', icon: <NavigationClose /> }
+      {
+        title: 'Éditer une oeuvre',
+        path: '/edit/:id',
+        icon: <NavigationClose />
+      },
+      { title: 'Rechercher une oeuvre', path: '/', icon: <Home /> }
     ];
 
     return (

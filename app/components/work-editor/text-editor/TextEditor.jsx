@@ -10,9 +10,13 @@ class TextEditor extends Component {
     return {
       label: PropTypes.string.isRequired,
       onChange: PropTypes.func.isRequired,
-      rows: PropTypes.number.isRequired,
-      value: PropTypes.string.isRequired
+      rows: PropTypes.number,
+      value: PropTypes.string
     };
+  }
+
+  static get defaultProps() {
+    return { rows: 1, value: '' };
   }
 
   render() {

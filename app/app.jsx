@@ -10,6 +10,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
+import { initializeWorksAction } from './actions/initializeWorks';
 import NavigationBar from './components/navigation-bar/NavigationBar';
 import reducer from './reducers';
 import Add from './routes/add/Add';
@@ -28,15 +29,24 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk, logger))
 );
 
-const App = () =>
-  <div>
-    <NavigationBar />
-    <Switch>
-      <Route path="/add" component={Add} />
-      <Route path="/edit/:id" component={Edit} />
-      <Route component={Search} />
-    </Switch>
-  </div>;
+class App extends React.Component {
+  componentWillMount() {
+    store.dispatch(initializeWorksAction());
+  }
+
+  render() {
+    return (
+      <div>
+        <NavigationBar />
+        <Switch>
+          <Route path="/add" component={Add} />
+          <Route path="/edit/:id" component={Edit} />
+          <Route component={Search} />
+        </Switch>
+      </div>
+    );
+  }
+}
 
 render(
   <MuiThemeProvider>

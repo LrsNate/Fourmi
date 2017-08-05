@@ -10,7 +10,6 @@ export function initializeWorksAction() {
 
   return dispatch =>
     db.find({}, (err, docs) => {
-      console.log('dispatching');
       dispatch({
         type: INITIALIZE_WORKS,
         works: docs

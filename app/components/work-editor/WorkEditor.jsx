@@ -33,7 +33,7 @@ class WorkEditor extends Component {
       <Grid className={styles.grid} fluid>
         <Row className={styles.row}>
           <Col sm={7}>
-            <AttributesEditor />
+            <AttributesEditor work={this.state} onChange={this.handleChange} />
           </Col>
           <Col sm={5}>
             <TextEditor
