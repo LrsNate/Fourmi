@@ -1,6 +1,6 @@
 import React from 'react';
 
-import WorkEditor from '../../components/work-editor/WorkEditor';
+import WorkEditor from '../../components/WorkEditor';
 
 const Add = () =>
   <div>

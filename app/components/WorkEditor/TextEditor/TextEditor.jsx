@@ -1,23 +1,22 @@
 import { Card, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
-import PropTypes from 'prop-types';
+import { func, number, string } from 'prop-types';
 import React, { Component } from 'react';
 
 import styles from './TextEditor.scss';
 
 class TextEditor extends Component {
-  static get propTypes() {
-    return {
-      label: PropTypes.string.isRequired,
-      onChange: PropTypes.func.isRequired,
-      rows: PropTypes.number,
-      value: PropTypes.string
-    };
-  }
+  static propTypes = {
+    label: string.isRequired,
+    onChange: func.isRequired,
+    rows: number,
+    value: string
+  };
 
-  static get defaultProps() {
-    return { rows: 1, value: '' };
-  }
+  static defaultProps = {
+    rows: 1,
+    value: ''
+  };
 
   render() {
     const { label, onChange, rows, value } = this.props;

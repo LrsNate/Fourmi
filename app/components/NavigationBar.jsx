@@ -2,16 +2,14 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import Home from 'material-ui/svg-icons/action/home';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router';
+import { history } from 'react-router-prop-types';
 
 class NavigationBar extends Component {
-  static get propTypes() {
-    return {
-      history: PropTypes.object.isRequired
-    };
-  }
+  static propTypes = {
+    history: history.isRequired
+  };
 
   constructor(props) {
     super(props);

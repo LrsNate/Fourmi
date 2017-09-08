@@ -10,12 +10,10 @@ import React, { Component } from 'react';
 const MAX_LINE_SIZE = 40;
 
 class WorkSearch extends Component {
-  static get propTypes() {
-    return {
-      onSelect: PropTypes.func.isRequired,
-      works: PropTypes.array.isRequired
-    };
-  }
+  static propTypes = {
+    onSelect: PropTypes.func.isRequired,
+    works: PropTypes.array.isRequired
+  };
 
   handleTouchTap(work) {
     const { onSelect } = this.props;

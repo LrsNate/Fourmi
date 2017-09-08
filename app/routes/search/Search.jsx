@@ -1,9 +1,11 @@
-import PropTypes from 'prop-types';
+import { arrayOf } from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { history } from 'react-router-prop-types';
 
-import WorkSearch from '../../components/work-search/WorkSearch';
+import { workType } from '../../types';
+import WorkSearch from '../../components/WorkSearch';
 
 function mapStateToProps(state) {
   return {
@@ -12,12 +14,10 @@ function mapStateToProps(state) {
 }
 
 class Search extends Component {
-  static get propTypes() {
-    return {
-      history: PropTypes.object.isRequired,
-      works: PropTypes.array.isRequired
-    };
-  }
+  static propTypes = {
+    history: history.isRequired,
+    works: arrayOf(workType).isRequired
+  };
 
   constructor(props) {
     super(props);

@@ -11,7 +11,7 @@ import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import { initializeWorksAction } from './actions/initializeWorks';
-import NavigationBar from './components/navigation-bar/NavigationBar';
+import NavigationBar from './components/NavigationBar';
 import reducer from './reducers';
 import Add from './routes/add/Add';
 import Edit from './routes/edit/Edit';
