@@ -1,14 +1,13 @@
 import TextField from 'material-ui/TextField';
-import { string } from 'prop-types';
 import React, { Component } from 'react';
 import { FormField } from 'react-form';
 
-class TextInput extends Component {
-  static propTypes = {
-    field: string.isRequired,
-    label: string.isRequired
-  };
+type Props = {
+  field: string,
+  label: string
+};
 
+class TextInput extends Component<Props> {
   render() {
     const { field, label } = this.props;
 
