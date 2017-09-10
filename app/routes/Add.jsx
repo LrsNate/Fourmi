@@ -1,6 +1,7 @@
+/* @flow */
 import React from 'react';
 
-import WorkEditor from '../../components/WorkEditor';
+import WorkEditor from '../components/WorkEditor';
 
 const Add = () =>
   <div>

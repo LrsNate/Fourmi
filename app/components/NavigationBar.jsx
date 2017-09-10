@@ -1,20 +1,23 @@
+/* @flow */
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import Home from 'material-ui/svg-icons/action/home';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router';
-import { history } from 'react-router-prop-types';
+import type { RouterHistory } from 'react-router';
 
-class NavigationBar extends Component {
-  static propTypes = {
-    history: history.isRequired
-  };
+type Props = {
+  history: RouterHistory
+};
 
+class NavigationBar extends Component<Props> {
   constructor(props) {
     super(props);
     this.handleLeftIconClick = this.handleLeftIconClick.bind(this);
   }
+
+  handleLeftIconClick: () => void;
 
   handleLeftIconClick() {
     this.props.history.push('/');

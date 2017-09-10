@@ -1,23 +1,26 @@
+/* @flow */
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import type { Match } from 'react-router';
 
-import WorkEditor from '../../components/WorkEditor';
-import { workType } from '../../types';
+import WorkEditor from '../components/WorkEditor';
+import type { Work } from '../types';
 
-function mapStateToProps(state, ownProps) {
+type Props = {
+  work: Work,
+  match: Match
+};
+
+function mapStateToProps(state, ownProps: Props) {
   const id = ownProps.match.params.id;
   return {
     work: _.find(state.works, { _id: id })
   };
 }
 
-class Edit extends Component {
-  static propTypes = {
-    work: workType.isRequired
-  };
-
+class Edit extends Component<Props> {
   renderSaveButtons() {}
 
   render() {

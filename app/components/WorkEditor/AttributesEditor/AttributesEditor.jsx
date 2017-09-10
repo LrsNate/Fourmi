@@ -1,20 +1,14 @@
+/* @flow */
 import { Card, CardText } from 'material-ui/Card';
 import ChipInput from 'material-ui-chip-input';
-import { func } from 'prop-types';
 import React, { Component } from 'react';
 import { Col, Grid, Row } from 'react-flexbox-grid';
 
 import TextInput from '../../form/TextInput';
-import { workType } from '../../../types';
 
 import styles from './AttributesEditor.scss';
 
-class AttributesEditor extends Component {
-  static propTypes = {
-    onChange: func.isRequired,
-    work: workType.isRequired
-  };
-
+class AttributesEditor extends Component<{}> {
   renderContent() {
     return (
       <Grid className={styles.grid} fluid>

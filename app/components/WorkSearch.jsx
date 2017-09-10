@@ -1,30 +1,32 @@
+/* @flow */
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import { List, ListItem } from 'material-ui/List';
 import MenuItem from 'material-ui/MenuItem';
 import { grey400 } from 'material-ui/styles/colors';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+
+import type { Work } from '../types';
+
+type Props = {
+  onSelect: Work => void,
+  works: Work[]
+};
 
 const MAX_LINE_SIZE = 40;
 
-class WorkSearch extends Component {
-  static propTypes = {
-    onSelect: PropTypes.func.isRequired,
-    works: PropTypes.array.isRequired
-  };
-
-  handleTouchTap(work) {
+class WorkSearch extends Component<Props> {
+  handleTouchTap(work: Work) {
     const { onSelect } = this.props;
     return () => onSelect(work);
   }
 
-  handleEdit(work) {
+  handleEdit(work: Work) {
     return () => console.log(work);
   }
 
-  renderPrimaryText(work) {
+  renderPrimaryText(work: Work) {
     const reference = work.reference
       ? `${work.author} - ${work.reference}`
       : work.author;
@@ -32,14 +34,14 @@ class WorkSearch extends Component {
     return work.title ? `${reference} : ${work.title}` : reference;
   }
 
-  renderSecondaryText(work) {
+  renderSecondaryText(work: Work) {
     const text = work.latinText || work.frenchText;
     const firstLine = text.split('\n')[0];
 
     return firstLine.length > MAX_LINE_SIZE ? `${firstLine}...` : firstLine;
   }
 
-  renderIconMenu(work) {
+  renderIconMenu(work: Work) {
     const iconButtonElement = (
       <IconButton touch tooltip="Options" tooltipPosition="bottom-left">
         <MoreVertIcon color={grey400} />

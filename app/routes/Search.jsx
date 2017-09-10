@@ -1,11 +1,17 @@
-import { arrayOf } from 'prop-types';
+/* @flow */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { history } from 'react-router-prop-types';
+import type { RouterHistory } from 'react-router';
 
-import { workType } from '../../types';
-import WorkSearch from '../../components/WorkSearch';
+import type { Work } from '../types';
+import WorkSearch from '../components/WorkSearch';
+
+type Props = {
+  works: Work[],
+  history: RouterHistory
+};
 
 function mapStateToProps(state) {
   return {
@@ -13,18 +19,15 @@ function mapStateToProps(state) {
   };
 }
 
-class Search extends Component {
-  static propTypes = {
-    history: history.isRequired,
-    works: arrayOf(workType).isRequired
-  };
-
-  constructor(props) {
+class Search extends Component<Props> {
+  constructor(props: Props) {
     super(props);
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  handleSelect(work) {
+  handleSelect: Work => void;
+
+  handleSelect(work: Work) {
     this.props.history.push(`/edit/${work._id}`);
   }
 

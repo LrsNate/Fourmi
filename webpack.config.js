@@ -1,14 +1,15 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './app/app.jsx',
+    app: './app/app.jsx'
   },
   output: {
     path: `${__dirname}/dist/generated-src`,
-    filename: '[name].js',
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -17,38 +18,42 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'eslint-loader',
+        use: 'eslint-loader'
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader', 'eslint-loader']
       },
       { test: /\.html$/, use: 'raw-loader' },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader?modules',
-        ],
-        include: /flexboxgrid/,
+        use: ['style-loader', 'css-loader?modules'],
+        include: /flexboxgrid/
       },
-      { test: /\.scss/, use: ['style-loader', 'css-loader?modules', 'sass-loader'] },
-      { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, use: 'file-loader' },
-    ],
+      {
+        test: /\.scss/,
+        use: ['style-loader', 'css-loader?modules', 'sass-loader']
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+        use: 'file-loader'
+      }
+    ]
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './app/index.html',
+      template: './app/index.html'
     }),
     new CopyWebpackPlugin([
       { from: './app/index.js' },
-      { from: './app/package.json' },
+      { from: './app/package.json' }
     ]),
     new CleanWebpackPlugin(['dist/generated-src'], { verbose: true }),
+    new FlowBabelWebpackPlugin()
   ],
   target: 'electron-renderer',
   devtool: 'source-map',
@@ -56,6 +61,6 @@ module.exports = {
     electron: 'empty',
     fs: 'empty',
     http: 'empty',
-    path: 'empty',
-  },
+    path: 'empty'
+  }
 };

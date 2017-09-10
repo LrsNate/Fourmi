@@ -1,3 +1,4 @@
+/* @flow */
 import TextField from 'material-ui/TextField';
 import React, { Component } from 'react';
 import { FormField } from 'react-form';
@@ -17,7 +18,7 @@ class TextInput extends Component<Props> {
           <TextField
             floatingLabelText={label}
             value={getValue()}
-            onChange={e => setValue(e)}
+            onChange={(e: string) => setValue(e)}
             onBlur={setTouched}
             fullWidth
           />}

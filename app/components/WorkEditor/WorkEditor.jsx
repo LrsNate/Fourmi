@@ -1,26 +1,27 @@
+/* @flow */
 import React, { Component } from 'react';
 import { Col, Grid, Row } from 'react-flexbox-grid';
 import { Form } from 'react-form';
 
-import { workType } from '../../types';
+import type { Work } from '../../types';
 import AttributesEditor from './AttributesEditor';
 import TextEditor from './TextEditor';
 import styles from './WorkEditor.scss';
 
-class WorkEditor extends Component {
-  static propTypes = {
-    work: workType.isRequired
-  };
+type Props = {
+  work: Work
+};
 
-  constructor(props) {
+class WorkEditor extends Component<Props, Work> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       ...props.work
     };
   }
 
-  handleChange(fieldName) {
-    return event => {
+  handleChange(fieldName: string) {
+    return (event: SyntheticInputEvent<>) => {
       this.setState({
         [fieldName]: event.target.value
       });
@@ -34,10 +35,7 @@ class WorkEditor extends Component {
         <Grid className={styles.grid} fluid>
           <Row className={styles.row}>
             <Col sm={7}>
-              <AttributesEditor
-                work={this.state}
-                onChange={this.handleChange}
-              />
+              <AttributesEditor />
             </Col>
             <Col sm={5}>
               <TextEditor

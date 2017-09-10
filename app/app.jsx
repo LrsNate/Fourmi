@@ -1,3 +1,4 @@
+/* @flow */
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import React from 'react';
 import { render } from 'react-dom';
@@ -13,9 +14,9 @@ import thunk from 'redux-thunk';
 import { initializeWorksAction } from './actions/initializeWorks';
 import NavigationBar from './components/NavigationBar';
 import reducer from './reducers';
-import Add from './routes/add/Add';
-import Edit from './routes/edit/Edit';
-import Search from './routes/search/Search';
+import Add from './routes/Add';
+import Edit from './routes/Edit';
+import Search from './routes/Search';
 
 import './reset.scss';
 import './app.scss';
@@ -29,7 +30,7 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk, logger))
 );
 
-class App extends React.Component {
+class App extends React.Component<{}> {
   componentWillMount() {
     store.dispatch(initializeWorksAction());
   }
