@@ -1,4 +1,3 @@
-/* @flow */
 import React, { Component } from 'react';
 
 import type { Work } from '../types';

@@ -1,4 +1,3 @@
-/* @flow */
 import Grid from 'material-ui/Grid';
 import React, { Component } from 'react';
 

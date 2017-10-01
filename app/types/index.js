@@ -1,4 +1,3 @@
-/* @flow */
 
 export type Work = {
   _id: string,

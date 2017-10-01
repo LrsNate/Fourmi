@@ -1,4 +1,3 @@
-/* @flow */
 import React from 'react';
 
 import WorkEditor from '../components/WorkEditor';

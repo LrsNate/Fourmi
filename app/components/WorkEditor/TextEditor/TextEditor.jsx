@@ -1,4 +1,3 @@
-/* @flow */
 import TextField from 'material-ui/TextField';
 import React, { Component } from 'react';
 
@@ -16,17 +15,10 @@ class TextEditor extends Component<Props> {
   };
 
   render() {
-    const { label, onChange, rows, value } = this.props;
+    const { label, onChange, value } = this.props;
 
     return (
-      <TextField
-        floatingLabelText={label}
-        rows={rows}
-        value={value}
-        onChange={onChange}
-        multiLine
-        fullWidth
-      />
+      <TextField label={label} value={value} onChange={onChange} fullWidth />
     );
   }
 }
