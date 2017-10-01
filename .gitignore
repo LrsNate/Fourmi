@@ -7,4 +7,4 @@ tmp
 .idea
 .vscode
 dist/
-app/bundle.js
+npm-debug.log

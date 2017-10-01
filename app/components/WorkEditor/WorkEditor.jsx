@@ -1,12 +1,10 @@
-/* @flow */
+import Grid from 'material-ui/Grid';
 import React, { Component } from 'react';
-import { Col, Grid, Row } from 'react-flexbox-grid';
 import { Form } from 'react-form';
 
 import type { Work } from '../../types';
 import AttributesEditor from './AttributesEditor';
 import TextEditor from './TextEditor';
-import styles from './WorkEditor.scss';
 
 type Props = {
   work: Work
@@ -21,7 +19,7 @@ class WorkEditor extends Component<Props, Work> {
   }
 
   handleChange(fieldName: string) {
-    return (event: SyntheticInputEvent<>) => {
+    return event => {
       this.setState({
         [fieldName]: event.target.value
       });
@@ -32,35 +30,31 @@ class WorkEditor extends Component<Props, Work> {
     const { notes, latinText, frenchText } = this.state;
     return (
       <Form loadState={() => ({ values: this.state })}>
-        <Grid className={styles.grid} fluid>
-          <Row className={styles.row}>
-            <Col sm={7}>
-              <AttributesEditor />
-            </Col>
-            <Col sm={5}>
-              <TextEditor
-                value={notes}
-                onChange={this.handleChange('notes')}
-                label="Notes"
-              />
-            </Col>
-          </Row>
-          <Row className={styles.row}>
-            <Col sm={6}>
-              <TextEditor
-                value={latinText}
-                onChange={this.handleChange('latinText')}
-                label="Latin"
-              />
-            </Col>
-            <Col sm={6}>
-              <TextEditor
-                value={frenchText}
-                onChange={this.handleChange('frenchText')}
-                label="Français"
-              />
-            </Col>
-          </Row>
+        <Grid container fluid>
+          <Grid item sm={7}>
+            <AttributesEditor />
+          </Grid>
+          <Grid item sm={5}>
+            <TextEditor
+              value={notes}
+              onChange={this.handleChange('notes')}
+              label="Notes"
+            />
+          </Grid>
+          <Grid item sm={6}>
+            <TextEditor
+              value={latinText}
+              onChange={this.handleChange('latinText')}
+              label="Latin"
+            />
+          </Grid>
+          <Grid item sm={6}>
+            <TextEditor
+              value={frenchText}
+              onChange={this.handleChange('frenchText')}
+              label="Français"
+            />
+          </Grid>
         </Grid>
       </Form>
     );

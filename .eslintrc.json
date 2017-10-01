@@ -1,6 +1,6 @@
 {
-  "extends": ["airbnb", "prettier", "plugin:flowtype/recommended"],
-  "plugins": ["import", "jest", "prettier", "flowtype"],
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["import", "jest", "prettier"],
   "rules": {
     "class-methods-use-this": "off",
     "no-console": "off",

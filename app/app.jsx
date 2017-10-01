@@ -5,23 +5,22 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import { HashRouter as Router } from 'react-router-dom';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
+
+import 'typeface-roboto/index.css';
 
 import { initializeWorksAction } from './actions/initializeWorks';
 import NavigationBar from './components/NavigationBar';
 import reducer from './reducers';
 import Add from './routes/Add';
 import Edit from './routes/Edit';
-import Search from './routes/Search';
+// import Search from './routes/Search';
 
 import './reset.scss';
 import './app.scss';
-
-injectTapEventPlugin();
 
 const logger = createLogger();
 
@@ -42,7 +41,7 @@ class App extends React.Component<{}> {
         <Switch>
           <Route path="/add" component={Add} />
           <Route path="/edit/:id" component={Edit} />
-          <Route component={Search} />
+          <Route component={Add} />
         </Switch>
       </div>
     );

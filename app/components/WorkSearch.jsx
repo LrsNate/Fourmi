@@ -1,10 +1,4 @@
 /* @flow */
-import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import { List, ListItem } from 'material-ui/List';
-import MenuItem from 'material-ui/MenuItem';
-import { grey400 } from 'material-ui/styles/colors';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import React, { Component } from 'react';
 
 import type { Work } from '../types';
@@ -41,38 +35,8 @@ class WorkSearch extends Component<Props> {
     return firstLine.length > MAX_LINE_SIZE ? `${firstLine}...` : firstLine;
   }
 
-  renderIconMenu(work: Work) {
-    const iconButtonElement = (
-      <IconButton touch tooltip="Options" tooltipPosition="bottom-left">
-        <MoreVertIcon color={grey400} />
-      </IconButton>
-    );
-
-    return (
-      <IconMenu iconButtonElement={iconButtonElement}>
-        <MenuItem onClick={this.handleEdit(work)}>Éditer</MenuItem>
-        <MenuItem>Imitations</MenuItem>
-      </IconMenu>
-    );
-  }
-
   render() {
-    const { works } = this.props;
-    const listElements = works.map(work =>
-      <ListItem
-        key={work._id}
-        primaryText={this.renderPrimaryText(work)}
-        secondaryText={this.renderSecondaryText(work)}
-        rightIconButton={this.renderIconMenu(work)}
-        onTouchTap={this.handleTouchTap(work)}
-      />
-    );
-
-    return (
-      <List>
-        {listElements}
-      </List>
-    );
+    return <p>Foo!</p>;
   }
 }
 

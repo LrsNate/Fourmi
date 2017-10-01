@@ -1,11 +1,10 @@
 /* @flow */
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import type { RouterHistory } from 'react-router';
 
-import type { Work } from '../types';
+import type { Work, State } from '../types';
 import WorkSearch from '../components/WorkSearch';
 
 type Props = {
@@ -13,7 +12,7 @@ type Props = {
   history: RouterHistory
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state: State) {
   return {
     works: state.works.slice(0, 20)
   };

@@ -1,5 +1,4 @@
 [ignore]
-.*/app/node_modules/react-event-listener/.*
 
 [include]
 

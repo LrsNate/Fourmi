@@ -1,6 +1,5 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -28,8 +27,7 @@ module.exports = {
       { test: /\.html$/, use: 'raw-loader' },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader?modules'],
-        include: /flexboxgrid/
+        use: ['style-loader', 'css-loader?modules']
       },
       {
         test: /\.scss/,
@@ -37,7 +35,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-        use: 'file-loader'
+        use: 'url-loader'
       }
     ]
   },
@@ -52,8 +50,7 @@ module.exports = {
       { from: './app/index.js' },
       { from: './app/package.json' }
     ]),
-    new CleanWebpackPlugin(['dist/generated-src'], { verbose: true }),
-    new FlowBabelWebpackPlugin()
+    new CleanWebpackPlugin(['dist/generated-src'], { verbose: true })
   ],
   target: 'electron-renderer',
   devtool: 'source-map',

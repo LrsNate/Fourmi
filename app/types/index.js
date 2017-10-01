@@ -14,3 +14,7 @@ export type Work = {
   latinText: string,
   frenchText: string
 };
+
+export type State = {
+  works: Work[]
+};
