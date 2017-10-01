@@ -3,12 +3,10 @@ import React, { Component } from 'react';
 
 import TextInput from '../../form/TextInput';
 
-import styles from './AttributesEditor.scss';
-
-class AttributesEditor extends Component<{}> {
+class AttributesEditor extends Component {
   renderContent() {
     return (
-      <Grid container className={styles.grid} fluid>
+      <Grid container>
         <Grid item sm={3}>
           <TextInput label="Auteur" field="author" />
         </Grid>

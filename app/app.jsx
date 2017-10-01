@@ -1,4 +1,5 @@
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { orange, grey, red, teal } from 'material-ui/colors';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -19,7 +20,6 @@ import Edit from './routes/Edit';
 // import Search from './routes/Search';
 
 import './reset.scss';
-import './app.scss';
 
 const logger = createLogger();
 
@@ -28,9 +28,18 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk, logger))
 );
 
+const theme = createMuiTheme({
+  palette: {
+    primary: teal,
+    secondary: orange,
+    error: red
+  }
+});
+
 class App extends React.Component<{}> {
   componentWillMount() {
     store.dispatch(initializeWorksAction());
+    document.body.style.backgroundColor = grey[200];
   }
 
   render() {
@@ -48,7 +57,7 @@ class App extends React.Component<{}> {
 }
 
 render(
-  <MuiThemeProvider>
+  <MuiThemeProvider theme={theme}>
     <Provider store={store}>
       <Router>
         <App />

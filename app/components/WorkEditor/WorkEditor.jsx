@@ -1,4 +1,5 @@
 import Grid from 'material-ui/Grid';
+import Paper from 'material-ui/Paper';
 import React, { Component } from 'react';
 import { Form } from 'react-form';
 
@@ -30,30 +31,41 @@ class WorkEditor extends Component<Props, Work> {
     const { notes, latinText, frenchText } = this.state;
     return (
       <Form loadState={() => ({ values: this.state })}>
-        <Grid container fluid>
+        <Grid container>
           <Grid item sm={7}>
-            <AttributesEditor />
+            <Paper>
+              <AttributesEditor />
+            </Paper>
           </Grid>
           <Grid item sm={5}>
-            <TextEditor
-              value={notes}
-              onChange={this.handleChange('notes')}
-              label="Notes"
-            />
+            <Paper>Vices/Tags</Paper>
           </Grid>
           <Grid item sm={6}>
-            <TextEditor
-              value={latinText}
-              onChange={this.handleChange('latinText')}
-              label="Latin"
-            />
+            <Paper>
+              <TextEditor
+                value={latinText}
+                onChange={this.handleChange('latinText')}
+                label="Latin"
+              />
+            </Paper>
           </Grid>
           <Grid item sm={6}>
-            <TextEditor
-              value={frenchText}
-              onChange={this.handleChange('frenchText')}
-              label="Français"
-            />
+            <Paper>
+              <TextEditor
+                value={frenchText}
+                onChange={this.handleChange('frenchText')}
+                label="Français"
+              />
+            </Paper>
+          </Grid>
+          <Grid item sm={12}>
+            <Paper>
+              <TextEditor
+                value={notes}
+                onChange={this.handleChange('notes')}
+                label="Notes"
+              />
+            </Paper>
           </Grid>
         </Grid>
       </Form>
