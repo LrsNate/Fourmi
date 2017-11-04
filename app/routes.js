@@ -1,8 +1,8 @@
-import React from 'react';
-import { Switch, Route } from 'react-router';
+import React from "react";
+import { Switch, Route } from "react-router";
 
-import LoginPage from './containers/LoginPage';
-import LoggedInPage from './containers/LoggedInPage';
+import LoginPage from "./containers/LoginPage";
+import LoggedInPage from "./containers/LoggedInPage";
 
 export default (
   <Switch>

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class Login extends Component {
   static propTypes = {
@@ -13,13 +13,18 @@ export default class Login extends Component {
       username: this._inputRef.value,
       loggedIn: true
     });
-  }
+  };
 
   render() {
     return (
       <div>
         <h2>Login</h2>
-        <input ref={(ref) => { this._inputRef = ref; }} type="text" />
+        <input
+          ref={ref => {
+            this._inputRef = ref;
+          }}
+          type="text"
+        />
         <button onClick={this.handleLogin}>Log In</button>
       </div>
     );
