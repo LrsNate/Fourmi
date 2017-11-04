@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../app/actions/user.js"],"names":["login"],"mappings":";;;;;;AAAA;;kBAEe;AACbA,SAAO,gCAAa,YAAb;AADM,C","file":"user.js","sourcesContent":["import { createAction } from 'redux-actions';\n\nexport default {\n  login: createAction('USER_LOGIN')\n};\n"]}
