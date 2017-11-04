@@ -1,6 +1,15 @@
 {
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["import", "jest", "prettier"],
+  "extends": [
+    "airbnb",
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "import",
+    "jest",
+    "prettier"
+  ],
   "rules": {
     "class-methods-use-this": "off",
     "no-console": "off",
