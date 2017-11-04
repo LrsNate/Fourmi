@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class LoggedIn extends Component {
+class LoggedIn extends Component {
   render() {
     return (
       <div>
@@ -9,3 +10,10 @@ export default class LoggedIn extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  console.log(state);
+  return state;
+};
+
+export default connect(mapStateToProps)(LoggedIn);

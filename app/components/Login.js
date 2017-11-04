@@ -1,7 +1,11 @@
-import React, { Component } from "react";
 import PropTypes from "prop-types";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { push } from "react-router-redux";
 
-export default class Login extends Component {
+import { loginAction } from "../actions/user";
+
+class Login extends Component {
   static propTypes = {
     onLogin: PropTypes.func.isRequired
   };
@@ -9,10 +13,7 @@ export default class Login extends Component {
   _inputRef: null;
 
   handleLogin = () => {
-    this.props.onLogin({
-      username: this._inputRef.value,
-      loggedIn: true
-    });
+    this.props.onLogin(this._inputRef.value);
   };
 
   render() {
@@ -30,3 +31,18 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return state;
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogin(username) {
+      dispatch(loginAction(username));
+      dispatch(push("/loggedin"));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

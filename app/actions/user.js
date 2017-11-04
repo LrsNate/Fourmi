@@ -1,5 +1,6 @@
-import { createAction } from "redux-actions";
+export const loginType = "LOGIN";
 
-export default {
-  login: createAction("USER_LOGIN")
-};
+export const loginAction = username => ({
+  type: loginType,
+  username
+});
