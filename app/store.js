@@ -1,20 +1,21 @@
-import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import {
   routerMiddleware,
   routerReducer as routing,
   push
 } from "react-router-redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import persistState from "redux-localstorage";
 import thunk from "redux-thunk";
 
+import { loginAction } from "./actions/user";
 import user from "./reducers/user";
-import userActions from "./actions/user";
 
 export default function configureStore(initialState, routerHistory) {
   const router = routerMiddleware(routerHistory);
 
   const actionCreators = {
-    ...userActions,
+    loginAction,
     push
   };
 
@@ -25,13 +26,7 @@ export default function configureStore(initialState, routerHistory) {
 
   const middlewares = [thunk, router];
 
-  const composeEnhancers = (() => {
-    const compose_ = window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-    if (process.env.NODE_ENV === "development" && compose_) {
-      return compose_({ actionCreators });
-    }
-    return compose;
-  })();
+  const composeEnhancers = composeWithDevTools({ actionCreators });
 
   const enhancer = composeEnhancers(
     applyMiddleware(...middlewares),
