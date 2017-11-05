@@ -12,6 +12,7 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "history": "^4.7.2",
+    "mkdirp": "^0.5.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -38,6 +39,8 @@
     "electron-builder": "^19.45.0",
     "electron-devtools-installer": "^2.2.1",
     "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.3",
+    "enzyme-to-json": "^3.2.1",
     "eslint": "^4.10.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.7.0",
@@ -46,15 +49,26 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
-    "jest": "^21.2.1",
+    "jest": "^21.3.0-beta.6",
     "npm-run-all": "^4.1.1",
     "prettier": "^1.7.4",
+    "react-test-renderer": "^16.0.0",
     "rimraf": "^2.6.2"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "app/**/*.js"
+    ]
   },
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "develop": "npm run private:compile -- --source-maps true && run-p -r private:watch private:serve",
-    "test": "electron-mocha --renderer -R spec --compilers js:babel-core/register test/**/*.spec.js",
+    "test": "jest",
+    "test:coverage": "jest --collectCoverage",
     "reformat": "run-s reformat:src reformat:test reformat:scripts",
     "reformat:src": "prettier --write app/*.js app/**/*.js",
     "reformat:test": "prettier --write test/*.js test/**/*.js",

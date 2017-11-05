@@ -7,19 +7,22 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
-import { loginAction } from "./actions/user";
-import user from "./reducers/user";
+import { loadEpigramsAction } from "./actions/epigrams";
+
+import database from "./reducers/database";
+import epigrams from "./reducers/epigrams";
 
 export default function configureStore(initialState, routerHistory) {
   const router = routerMiddleware(routerHistory);
 
   const actionCreators = {
-    loginAction,
+    loadEpigramsAction,
     push
   };
 
   const reducers = {
-    user,
+    database,
+    epigrams,
     routing
   };
 

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The boot component matches the snapshot 1`] = `
+<ul>
+  <li>
+    Le dossier de données n'a pas pu être trouvé ; création du dossier "/home/foo/stuff"...
+  </li>
+  <li>
+    Le dossier de données existe à : "/home/foo/stuff".
+  </li>
+  <li>
+    Le dossier de données est prêt.
+  </li>
+  <li>
+    La base de données n'a pas pu être trouvée. Téléchargement en cours...
+  </li>
+  <li>
+    La base de données a été trouvée.
+  </li>
+  <li>
+    La base de données est prête. Redirection en cours...
+  </li>
+</ul>
+`;
