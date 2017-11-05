@@ -1,3 +1,5 @@
 language: node_js
+script:
+  - npm run test:coverage:publish
 node_js:
   - "6"

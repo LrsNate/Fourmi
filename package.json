@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.26.0",
+    "coveralls": "^3.0.0",
     "history": "^4.7.2",
     "mkdirp": "^0.5.1",
     "prop-types": "^15.6.0",
@@ -69,6 +70,7 @@
     "develop": "npm run private:compile -- --source-maps true && run-p -r private:watch private:serve",
     "test": "jest",
     "test:coverage": "jest --collectCoverage",
+    "test:coverage:publish": "run-s test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "reformat": "run-s reformat:src reformat:test reformat:scripts",
     "reformat:src": "prettier --write app/*.js app/**/*.js",
     "reformat:test": "prettier --write test/*.js test/**/*.js",
