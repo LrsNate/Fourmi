@@ -1,9 +1,9 @@
-import { app } from "electron"; // eslint-disable-line import/no-extraneous-dependencies
 import * as fs from "fs";
 import * as https from "https";
 import * as mkdirp from "mkdirp";
+import * as os from "os";
 
-export const getDataFolderPath = () => `${app.getPath("home")}/Fourmi`;
+export const getDataFolderPath = () => `${os.homedir()}/Documents/Fourmi`;
 
 export const checkIfFolderExists = folderPath => {
   return new Promise(resolve => {
@@ -21,20 +21,16 @@ export const checkIfFolderExists = folderPath => {
   });
 };
 
-export const createFolder = (status, dataFolderPath) => {
+export const createFolder = dataFolderPath => {
   return new Promise(resolve => {
-    mkdirp(dataFolderPath, () => resolve());
+    mkdirp.mkdirp(dataFolderPath, () => resolve());
   });
 };
 
 export const checkIfFileExists = filePath => {
   return new Promise(resolve => {
-    fs.stat(filePath, (err, stats) => {
-      if (!err && stats.isDirectory()) {
-        resolve(true);
-      } else {
-        resolve(false);
-      }
+    fs.stat(filePath, err => {
+      resolve(!err);
     });
   });
 };

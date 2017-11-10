@@ -8,11 +8,11 @@ import {
 } from "../../app/components/Boot";
 
 jest.mock("../../app/actions/database", () => ({
-  ensureDatabaseFolderExistsAction: jest.fn(
-    () => new Promise(resolve => resolve("ensureDatabaseFolderExists"))
+  ensureDatabaseFolderExistsAction: jest.fn(() =>
+    Promise.resolve("ensureDatabaseFolderExists")
   ),
-  ensureDatabaseExistsAction: jest.fn(
-    () => new Promise(resolve => resolve("ensureDatabaseExists"))
+  ensureDatabaseExistsAction: jest.fn(() =>
+    Promise.resolve("ensureDatabaseExists")
   )
 }));
 

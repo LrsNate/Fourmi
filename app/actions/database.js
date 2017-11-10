@@ -34,7 +34,8 @@ export const ensureDatabaseExistsAction = () => dispatch => {
     .then(fileFound =>
       dispatch({ type: fileFound ? databaseFoundType : databaseNotFoundType })
     )
-    .then(({ type: status }) => downloadDatabase(status, databasePath));
+    .then(({ type: status }) => downloadDatabase(status, databasePath))
+    .then(() => dispatch({ type: databaseReadyType }));
 };
 
 const downloadDatabase = (status, databasePath) => {
