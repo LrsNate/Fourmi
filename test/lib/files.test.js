@@ -1,78 +1,74 @@
-beforeEach(() => {
-  jest.resetModules();
-});
+import {
+  checkIfFileExists,
+  checkIfFolderExists,
+  createFolder,
+  downloadFile,
+  getDataFolderPath
+} from "../../app/lib/files";
+
+jest.mock("fs");
+jest.mock("https");
+jest.mock("mkdirp");
+jest.mock("os");
 
 describe("The getDataFolderPath function", () => {
   it("returns /Documents/Fourmi under the home directory", () => {
-    jest.doMock("os", () => ({
-      homedir: () => "/home/test"
-    }));
-    const { getDataFolderPath } = require("../../app/lib/files");
-
-    const path = getDataFolderPath();
-
-    expect(path).toBe("/home/test/Documents/Fourmi");
+    expect(getDataFolderPath()).toBe("/home/test/Documents/Fourmi");
   });
 });
 
 describe("The checkIfFolderExists function", () => {
   it("returns true if the folder exists", () => {
-    jest.doMock("fs", () => ({
-      stat(path, cb) {
-        expect(path).toBe("somePath");
-        cb(false, { isDirectory: () => true });
-      }
-    }));
-    const { checkIfFolderExists } = require("../../app/lib/files");
-
-    checkIfFolderExists("somePath").then(result => {
+    return checkIfFolderExists("isDirectory").then(result => {
       expect(result).toBeTruthy();
     });
   });
 
   it("returns false if the folder does not exist", () => {
-    jest.doMock("fs", () => ({
-      stat(path, cb) {
-        expect(path).toBe("somePath");
-        cb(true, {});
-      }
-    }));
-    const { checkIfFolderExists } = require("../../app/lib/files");
-
-    checkIfFolderExists("somePath").then(result => {
-      expect(result).toBeFalsy();
-    });
-  });
-
-  it("returns false if the folder does not exist", () => {
-    jest.doMock("fs", () => ({
-      stat(path, cb) {
-        expect(path).toBe("somePath");
-        cb(true, {});
-      }
-    }));
-    const { checkIfFolderExists } = require("../../app/lib/files");
-
-    checkIfFolderExists("somePath").then(result => {
+    return checkIfFolderExists("doesNotExist").then(result => {
       expect(result).toBeFalsy();
     });
   });
 
   it("removes any file that exists at the same path", () => {
-    jest.doMock("fs", () => ({
-      stat(path, cb) {
-        expect(path).toBe("somePath");
-        cb(false, { isDirectory: () => false });
-      },
-      unlink(path, cb) {
-        expect(path).toBe("somePath");
-        cb();
-      }
-    }));
-    const { checkIfFolderExists } = require("../../app/lib/files");
-
-    checkIfFolderExists("somePath").then(result => {
+    return checkIfFolderExists("isFile").then(result => {
       expect(result).toBeFalsy();
+    });
+  });
+});
+
+describe("The createFolder function", () => {
+  it("creates a folder and resolves the promise", () => {
+    return createFolder("doesNotExist").then(result => {
+      expect(result).toBe("doesNotExist");
+    });
+  });
+});
+
+describe("The checkIfFileExists function", () => {
+  it("returns true if the folder exists", () => {
+    return checkIfFileExists("isFile").then(result => {
+      expect(result).toBeTruthy();
+    });
+  });
+
+  it("returns false if the folder does not exist", () => {
+    return checkIfFileExists("doesNotExist").then(result => {
+      expect(result).toBeFalsy();
+    });
+  });
+});
+
+describe("The downloadFile function", () => {
+  it("downloads a file", () => {
+    return downloadFile("downloadUrl", "downloadPath").then(path => {
+      expect(path).toBe("downloadPath");
+    });
+  });
+
+  it("deletes the file and rejects the promise on failure", () => {
+    return downloadFile("errorUrl", "downloadPath").catch(path => {
+      expect(path).toBe("downloadPath");
     });
   });
 });

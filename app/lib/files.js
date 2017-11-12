@@ -1,7 +1,7 @@
-import * as fs from "fs";
-import * as https from "https";
-import * as mkdirp from "mkdirp";
-import * as os from "os";
+import fs from "fs";
+import https from "https";
+import mkdirp from "mkdirp";
+import os from "os";
 
 export const getDataFolderPath = () => `${os.homedir()}/Documents/Fourmi`;
 
@@ -23,7 +23,7 @@ export const checkIfFolderExists = folderPath => {
 
 export const createFolder = dataFolderPath => {
   return new Promise(resolve => {
-    mkdirp.mkdirp(dataFolderPath, () => resolve());
+    mkdirp.mkdirp(dataFolderPath, path => resolve(path));
   });
 };
 
@@ -45,11 +45,13 @@ export const downloadFile = (fileUrl, destinationPath) => {
 
         response.on("end", () => {
           fileHandle.end();
-          resolve();
+          resolve(destinationPath);
         });
       })
       .on("error", () => {
-        fs.unlink(destinationPath, reject);
+        fs.unlink(destinationPath, () => {
+          reject(destinationPath);
+        });
       });
   });
 };
