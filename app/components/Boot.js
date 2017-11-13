@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router";
+import { push } from "react-router-redux";
 
 import {
   ensureDatabaseExistsAction,
@@ -13,7 +15,7 @@ import {
   databaseFoundType,
   databaseNotFoundType,
   databaseReadyType
-} from "../actions/types/database";
+} from "../constants/actions/database";
 import { getDataFolderPath } from "../lib/files";
 
 const messageTemplates = {
@@ -29,17 +31,21 @@ const messageTemplates = {
 };
 
 export class Boot extends Component {
-  static propTypes = {
-    initializeDatabase: PropTypes.func.isRequired,
-    messages: PropTypes.arrayOf(PropTypes.string).isRequired
-  };
-
   componentWillMount() {
     this.props.initializeDatabase();
   }
 
+  componentWillUpdate(nextProps) {
+    const { messages, redirectToSearchPage } = nextProps;
+
+    if (messages.includes(databaseReadyType)) {
+      redirectToSearchPage();
+    }
+  }
+
   render() {
     const { messages } = this.props;
+
     return (
       <ul>
         {messages.map(message => (
@@ -49,6 +55,11 @@ export class Boot extends Component {
     );
   }
 }
+
+Boot.propTypes = {
+  initializeDatabase: PropTypes.func.isRequired,
+  messages: PropTypes.arrayOf(PropTypes.string).isRequired
+};
 
 export const mapStateToProps = state => {
   const { statusHistory } = state.database;
@@ -61,6 +72,9 @@ export const mapDispatchToProps = dispatch => ({
     return dispatch(ensureDatabaseFolderExistsAction()).then(() =>
       dispatch(ensureDatabaseExistsAction())
     );
+  },
+  redirectToSearchPage() {
+    return dispatch(push("/search"));
   }
 });
 

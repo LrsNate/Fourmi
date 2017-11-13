@@ -17,8 +17,5 @@ exports[`The boot component matches the snapshot 1`] = `
   <li>
     La base de données a été trouvée.
   </li>
-  <li>
-    La base de données est prête. Redirection en cours...
-  </li>
 </ul>
 `;

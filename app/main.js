@@ -1,17 +1,16 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import path from "path";
 import url from "url";
-import { app, crashReporter, BrowserWindow, Menu } from "electron"; // eslint-disable-line import/no-extraneous-dependencies
+import { app, crashReporter, BrowserWindow, Menu } from "electron";
 
-// noinspection ES6ModulesDependencies
 const isDevelopment = process.env.NODE_ENV === "development";
 
 let mainWindow = null;
 let forceQuit = false;
 
 const installExtensions = async () => {
-  const installer = require("electron-devtools-installer"); // eslint-disable-line import/no-extraneous-dependencies
+  const installer = require("electron-devtools-installer");
   const extensions = ["REACT_DEVELOPER_TOOLS", "REDUX_DEVTOOLS"];
-  // noinspection Annotator
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
   for (const name of extensions) {
     try {

@@ -1,11 +1,15 @@
-import { loadEpigramsType } from "../actions/types/epigrams";
+import { loadEpigramsType } from "../constants/actions/epigrams";
+import {
+  epigramsLoadedStatus,
+  epigramsLoadingStatus
+} from "../constants/reducers/epigrams";
 
-export const initialState = { status: "LOADING", epigrams: [] };
+export const initialState = { status: epigramsLoadingStatus, epigrams: [] };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case loadEpigramsType:
-      return { status: "LOADED", epigrams: action.epigrams };
+      return { status: epigramsLoadedStatus, epigrams: action.epigrams };
     default:
       return state;
   }

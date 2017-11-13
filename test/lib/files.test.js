@@ -3,7 +3,8 @@ import {
   checkIfFolderExists,
   createFolder,
   downloadFile,
-  getDataFolderPath
+  getDataFolderPath,
+  getFilePath
 } from "../../app/lib/files";
 
 jest.mock("fs");
@@ -14,6 +15,12 @@ jest.mock("os");
 describe("The getDataFolderPath function", () => {
   it("returns /Documents/Fourmi under the home directory", () => {
     expect(getDataFolderPath()).toBe("/home/test/Documents/Fourmi");
+  });
+});
+
+describe("The getFilePath function", () => {
+  it("returns a file path under the data folder", () => {
+    expect(getFilePath("foo.txt")).toBe("/home/test/Documents/Fourmi/foo.txt");
   });
 });
 

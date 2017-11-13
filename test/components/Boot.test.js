@@ -7,6 +7,13 @@ import {
   mapStateToProps
 } from "../../app/components/Boot";
 
+jest.mock("react-router-redux", () => ({
+  push(path) {
+    expect(path).toBe("/search");
+    return Promise.resolve("redirectToSearchPage");
+  }
+}));
+
 jest.mock("../../app/actions/database", () => ({
   ensureDatabaseFolderExistsAction: jest.fn(() =>
     Promise.resolve("ensureDatabaseFolderExists")
@@ -26,8 +33,7 @@ describe("The boot component", () => {
     "DATABASE_FOLDER_FOUND",
     "DATABASE_FOLDER_READY",
     "DATABASE_NOT_FOUND",
-    "DATABASE_FOUND",
-    "DATABASE_READY"
+    "DATABASE_FOUND"
   ];
 
   it("matches the snapshot", () => {
@@ -42,10 +48,30 @@ describe("The boot component", () => {
     const initializeDatabase = jest.fn();
 
     shallow(
-      <Boot messages={messages} initializeDatabase={initializeDatabase} />
+      <Boot
+        messages={[...messages, "DATABASE_READY"]}
+        initializeDatabase={initializeDatabase}
+      />
     );
 
     expect(initializeDatabase).toHaveBeenCalled();
+  });
+
+  it("redirects to the search page when the database is ready", () => {
+    const redirectToSearchPage = jest.fn();
+
+    const wrapper = shallow(
+      <Boot
+        messages={messages}
+        initializeDatabase={jest.fn()}
+        redirectToSearchPage={redirectToSearchPage}
+      />
+    );
+    wrapper.setProps({ messages: [...messages] });
+    expect(redirectToSearchPage).toHaveBeenCalledTimes(0);
+    wrapper.setProps({ messages: [...messages, "DATABASE_READY"] });
+
+    expect(redirectToSearchPage).toHaveBeenCalled();
   });
 });
 
@@ -68,6 +94,17 @@ describe("The mapDispatchToProps function", () => {
       .then(dispatched => {
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatched).toBe("ensureDatabaseExists");
+      });
+  });
+
+  it("dispatches the redirect to the search page", () => {
+    const dispatch = jest.fn(i => i);
+
+    mapDispatchToProps(dispatch)
+      .redirectToSearchPage()
+      .then(dispatched => {
+        expect(dispatch).toHaveBeenCalled();
+        expect(dispatched).toBe("redirectToSearchPage");
       });
   });
 });

@@ -5,7 +5,7 @@ import {
   databaseFoundType,
   databaseNotFoundType,
   databaseReadyType
-} from "./types/database";
+} from "../constants/actions/database";
 import {
   checkIfFileExists,
   checkIfFolderExists,

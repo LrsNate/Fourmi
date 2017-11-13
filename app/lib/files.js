@@ -5,6 +5,8 @@ import os from "os";
 
 export const getDataFolderPath = () => `${os.homedir()}/Documents/Fourmi`;
 
+export const getFilePath = (filename) => `${getDataFolderPath()}/${filename}`;
+
 export const checkIfFolderExists = folderPath => {
   return new Promise(resolve => {
     fs.stat(folderPath, (err, stats) => {
