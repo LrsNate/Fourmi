@@ -10,10 +10,12 @@ export const loadEpigramsAction = () => dispatch => {
     autoload: true
   });
 
-  db.find({}, (err, docs) => {
+  return new Promise(resolve => {
+    db.find({}, (err, docs) => resolve(docs));
+  }).then(docs =>
     dispatch({
       type: loadEpigramsType,
       epigrams: docs
-    });
-  });
+    })
+  );
 };
