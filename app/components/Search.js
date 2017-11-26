@@ -12,8 +12,13 @@ class Search extends Component {
   }
 
   render() {
-    const { status } = this.props;
-    return <p>{status}</p>;
+    const { status, epigrams } = this.props;
+    return (
+      <div>
+        <p>{status}</p>
+        <ul>{epigrams.map(e => <li key={e._id}>{e.title}</li>)}</ul>
+      </div>
+    );
   }
 }
 
@@ -22,7 +27,7 @@ const mapStateToProps = state => {
 
   return {
     status,
-    epigrams
+    epigrams: epigrams.slice(0, 20)
   };
 };
 

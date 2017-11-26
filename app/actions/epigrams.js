@@ -1,9 +1,11 @@
 import DataStore from "nedb";
 
-import { loadEpigramsType } from "../constants/actions/epigrams";
+import {
+  loadEpigramsType,
+  saveEpigramType
+} from "../constants/actions/epigrams";
 import { getFilePath } from "../lib/files";
 
-// eslint-disable-next-line import/prefer-default-export
 export const loadEpigramsAction = () => dispatch => {
   const db = new DataStore({
     filename: getFilePath("epigrams.db"),
@@ -18,4 +20,8 @@ export const loadEpigramsAction = () => dispatch => {
       epigrams: docs
     })
   );
+};
+
+export const saveEpigramAction = epigram => dispatch => {
+  return dispatch({ type: saveEpigramType, epigram });
 };

@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export const loadEpigramsType = "LOAD_EPIGRAMS";
+export const saveEpigramType = "SAVE_EPIGRAM";
