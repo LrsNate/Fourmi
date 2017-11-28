@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Switch } from "react-router";
 
-import Boot from "./components/Boot";
-import Search from "./components/Search";
-import Edit from "./components/Edit";
+import Boot from "./Boot";
+import Search from "./Search";
+import Edit from "./Edit";
 
 export default (
   <Switch>

@@ -14,7 +14,7 @@ import {
   databaseFoundType,
   databaseNotFoundType,
   databaseReadyType
-} from "../constants/actions/database";
+} from "../constants/actions";
 import { getDataFolderPath } from "../lib/files";
 
 const messageTemplates = {
@@ -29,9 +29,33 @@ const messageTemplates = {
   [databaseReadyType]: "La base de données est prête. Redirection en cours..."
 };
 
+export const mapStateToProps = state => {
+  const { statusHistory } = state.database;
+
+  return { messages: statusHistory };
+};
+
+export const mapDispatchToProps = dispatch => ({
+  initializeDatabase() {
+    return dispatch(ensureDatabaseFolderExistsAction()).then(() =>
+      dispatch(ensureDatabaseExistsAction())
+    );
+  },
+  redirectToSearchPage() {
+    return dispatch(push("/search"));
+  }
+});
+
 export class Boot extends Component {
+  // noinspection JSUnusedGlobalSymbols
+  static propTypes = {
+    initializeDatabase: PropTypes.func.isRequired,
+    messages: PropTypes.arrayOf(PropTypes.string).isRequired
+  };
+
   componentWillMount() {
-    this.props.initializeDatabase();
+    const { initializeDatabase } = this.props;
+    initializeDatabase();
   }
 
   componentWillUpdate(nextProps) {
@@ -54,27 +78,5 @@ export class Boot extends Component {
     );
   }
 }
-
-Boot.propTypes = {
-  initializeDatabase: PropTypes.func.isRequired,
-  messages: PropTypes.arrayOf(PropTypes.string).isRequired
-};
-
-export const mapStateToProps = state => {
-  const { statusHistory } = state.database;
-
-  return { messages: statusHistory };
-};
-
-export const mapDispatchToProps = dispatch => ({
-  initializeDatabase() {
-    return dispatch(ensureDatabaseFolderExistsAction()).then(() =>
-      dispatch(ensureDatabaseExistsAction())
-    );
-  },
-  redirectToSearchPage() {
-    return dispatch(push("/search"));
-  }
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Boot);

@@ -5,7 +5,7 @@ import {
   databaseFoundType,
   databaseNotFoundType,
   databaseReadyType
-} from "../constants/actions/database";
+} from "../constants/actions";
 
 export const initialState = {
   statusHistory: []

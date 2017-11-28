@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export default PropTypes.shape({
+export const epigram = PropTypes.shape({
   _id: PropTypes.string,
   author: PropTypes.string,
   reference: PropTypes.string,

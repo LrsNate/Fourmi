@@ -1,8 +1,8 @@
-import { loadEpigramsType } from "../constants/actions/epigrams";
+import { loadEpigramsType } from "../constants/actions";
 import {
   epigramsLoadedStatus,
   epigramsLoadingStatus
-} from "../constants/reducers/epigrams";
+} from "../constants/reducers";
 
 export const initialState = { status: epigramsLoadingStatus, epigrams: [] };
 

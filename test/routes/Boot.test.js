@@ -5,7 +5,7 @@ import {
   Boot,
   mapDispatchToProps,
   mapStateToProps
-} from "../../app/components/Boot";
+} from "../../app/routes/Boot";
 
 jest.mock("react-router-redux", () => ({
   push(path) {

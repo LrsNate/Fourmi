@@ -3,7 +3,7 @@ import DataStore from "nedb";
 import {
   loadEpigramsType,
   saveEpigramType
-} from "../constants/actions/epigrams";
+} from "../constants/actions";
 import { getFilePath } from "../lib/files";
 
 export const loadEpigramsAction = () => dispatch => {
