@@ -1,16 +1,19 @@
 import DataStore from "nedb";
 
-import {
-  loadEpigramsType,
-  saveEpigramType
-} from "../constants/actions";
+import { loadEpigramsType, saveEpigramType } from "../constants/actions";
 import { getFilePath } from "../lib/files";
 
-export const loadEpigramsAction = () => dispatch => {
-  const db = new DataStore({
+let db;
+
+const initializeDatabase = () => {
+  db = new DataStore({
     filename: getFilePath("epigrams.db"),
     autoload: true
   });
+};
+
+export const loadEpigramsAction = () => dispatch => {
+  initializeDatabase();
 
   return new Promise(resolve => {
     db.find({}, (err, docs) => resolve(docs));
@@ -23,5 +26,7 @@ export const loadEpigramsAction = () => dispatch => {
 };
 
 export const saveEpigramAction = epigram => dispatch => {
-  return dispatch({ type: saveEpigramType, epigram });
+  return new Promise(resolve => {
+    db.insert(epigram, (err, newDoc) => resolve(newDoc));
+  }).then(epigram => dispatch({ type: saveEpigramType, epigram }));
 };

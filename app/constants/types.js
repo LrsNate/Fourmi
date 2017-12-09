@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export const epigram = PropTypes.shape({
+const epigram = PropTypes.shape({
   _id: PropTypes.string,
   author: PropTypes.string,
   reference: PropTypes.string,
@@ -12,3 +12,5 @@ export const epigram = PropTypes.shape({
   latinText: PropTypes.string,
   frenchText: PropTypes.string
 });
+
+export default { epigram };

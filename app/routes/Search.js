@@ -5,7 +5,7 @@ import { push } from "react-router-redux";
 
 import { loadEpigramsAction } from "../actions/epigrams";
 import { epigramsLoadingStatus } from "../constants/reducers";
-import { epigram } from "../constants/types";
+import FourmiPropTypes from "../constants/types";
 import { editRoute } from "../constants/routes";
 
 const mapStateToProps = state => {
@@ -56,7 +56,7 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  epigrams: PropTypes.arrayOf(epigram).isRequired,
+  epigrams: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired,
   goToEditPage: PropTypes.func.isRequired,
   loadEpigrams: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired

@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { push } from "react-router-redux";
 
 import { saveEpigramAction } from "../actions/epigrams";
-import { epigram } from "../constants/types";
+import FourmiPropTypes from "../constants/types";
+import EpigramEditor from "../components/EpigramEditor";
 
 const mapStateToProps = (state, ownProps) => {
   const { id } = ownProps.match.params;
@@ -24,6 +25,7 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
+
 class Edit extends Component {
   handleSubmit = () => {
     const { epigram, saveEpigram, redirectToSearch } = this.props;
@@ -35,17 +37,15 @@ class Edit extends Component {
     const { epigram } = this.props;
     return (
       <div>
-        <p>Title: {epigram.title}</p>
-
-        <button type="button" onClick={this.handleSubmit}>
-          Go back
-        </button>
+        <EpigramEditor epigram={epigram} onSave={this.handleSubmit} />
       </div>
     );
   }
 }
+
 Edit.propTypes = {
-  epigram: epigram.isRequired,
+  // eslint-disable-next-line react/no-typos
+  epigram: FourmiPropTypes.epigram.isRequired,
   redirectToSearch: PropTypes.func.isRequired,
   saveEpigram: PropTypes.func.isRequired
 };
