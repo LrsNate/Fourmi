@@ -5,7 +5,7 @@ import { push } from "react-router-redux";
 
 import { saveEpigramAction } from "../actions/epigrams";
 import FourmiPropTypes from "../constants/types";
-import EpigramEditor from "../components/EpigramEditor";
+import EpigramEditor from "../components/epigramEditor/EpigramEditor";
 
 const mapStateToProps = (state, ownProps) => {
   const { id } = ownProps.match.params;
