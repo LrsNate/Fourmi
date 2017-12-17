@@ -6,4 +6,5 @@ script:
   - npm run test:coverage
   - codecov
 node_js:
-  - "6"
+  - "8"
+  - "9"
