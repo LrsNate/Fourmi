@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 
   return {
     status,
-    epigrams: epigrams.slice(0, 20)
+    epigrams: Object.values(epigrams).slice(0, 20)
   };
 };
 
@@ -43,7 +43,7 @@ class Search extends Component {
         <ul>
           {epigrams.map(e => (
             <li key={e._id}>
-              {e.title}
+              {e.author} {e.reference} {e.title}
               <button type="button" onClick={() => goToEditPage(e._id)}>
                 Edit
               </button>

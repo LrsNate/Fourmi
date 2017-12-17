@@ -10,9 +10,8 @@ import EpigramEditor from "../components/epigramEditor/EpigramEditor";
 const mapStateToProps = (state, ownProps) => {
   const { id } = ownProps.match.params;
   const { epigrams: { epigrams } } = state;
-  const epigram = epigrams.find(epigram => epigram._id === id);
 
-  return { epigram: epigram };
+  return { epigram: epigrams[id] };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -27,8 +26,9 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Edit extends Component {
-  handleSubmit = () => {
-    const { epigram, saveEpigram, redirectToSearch } = this.props;
+  handleSubmit = epigram => {
+    console.log(epigram);
+    const { saveEpigram, redirectToSearch } = this.props;
     saveEpigram(epigram);
     redirectToSearch();
   };

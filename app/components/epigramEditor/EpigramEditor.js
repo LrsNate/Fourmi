@@ -24,13 +24,12 @@ const EpigramEditor = ({ epigram, onSave }) => {
    * 4. Notes
    */
   return (
-    <Form initialValues={epigram} onSubmit={onSave}>
-      {({ handleSubmit, values }) => (
+    <Form initialValues={epigram} onSubmit={values => onSave(values)}>
+      {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <AttributesEditor />
-          <button type="button" onClick={() => onSave(values)}>
-            Go back
-          </button>
+          <TextInput name="notes" />
+          <input type="submit" value="Enregistrer" />
         </form>
       )}
     </Form>

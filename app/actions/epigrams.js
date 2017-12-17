@@ -27,6 +27,16 @@ export const loadEpigramsAction = () => dispatch => {
 
 export const saveEpigramAction = epigram => dispatch => {
   return new Promise(resolve => {
-    db.insert(epigram, (err, newDoc) => resolve(newDoc));
+    db.update(
+      { _id: epigram._id },
+      epigram,
+      { upsert: true },
+      (err, numAffected) => {
+        if (err || numAffected === 0) {
+          throw `Something went wrong in saveEpigram: ${err}`;
+        }
+        resolve(epigram);
+      }
+    );
   }).then(epigram => dispatch({ type: saveEpigramType, epigram }));
 };
