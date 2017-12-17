@@ -12,7 +12,7 @@ describe("The loadEpigrams action", () => {
 
     return loadEpigramsAction()(dispatch).then(({ type, epigrams }) => {
       expect(type).toBe("LOAD_EPIGRAMS");
-      expect(epigrams).toEqual(["a", "b", "c"]);
+      expect(epigrams).toEqual([{ _id: "a" }, { _id: "b" }, { _id: "c" }]);
     });
   });
 });
