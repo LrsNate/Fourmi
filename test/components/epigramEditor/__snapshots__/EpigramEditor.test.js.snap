@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The EpigramEditor component on an initial load matches the snapshot 1`] = `
+<form>
+  <div>
+    <input
+      name="title"
+      value=""
+    />
+    <input
+      name="author"
+      value=""
+    />
+    <input
+      name="reference"
+      value=""
+    />
+  </div>
+  <input
+    name="notes"
+    value=""
+  />
+  <input
+    type="submit"
+    value="Enregistrer"
+  />
+</form>
+`;

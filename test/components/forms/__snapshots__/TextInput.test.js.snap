@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The TextInput component On an initial load matches the snapshot 1`] = `
+<form>
+  <input
+    name="someName"
+    value=""
+  />
+</form>
+`;

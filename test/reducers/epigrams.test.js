@@ -25,6 +25,22 @@ describe("The epigrams reducer", () => {
     });
   });
 
+  it("saves an epigram", () => {
+    const action = {
+      type: "SAVE_EPIGRAM",
+      epigram: { _id: "a" }
+    };
+
+    const state = epigramsReducer(initialState, action);
+
+    expect(state).toEqual({
+      status: "LOADING",
+      epigrams: {
+        a: { _id: "a" }
+      }
+    });
+  });
+
   it("initializes to the initial state", () => {
     const action = { type: "@@INIT" };
 
