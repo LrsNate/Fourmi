@@ -1,3 +1,4 @@
+import { AppBar, Toolbar, Typography, withStyles } from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -26,6 +27,12 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const styles = () => ({
+  epigramEditor: {
+    marginTop: 84
+  }
+});
+
 class Edit extends Component {
   handleSubmit = epigram => {
     console.log(epigram);
@@ -35,20 +42,34 @@ class Edit extends Component {
   };
 
   render() {
-    const { epigram } = this.props;
+    const { classes, epigram } = this.props;
     return (
       <div>
-        <EpigramEditor epigram={epigram} onSave={this.handleSubmit} />
+        <AppBar>
+          <Toolbar>
+            <Typography type="title" color="inherit">
+              Title
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <EpigramEditor
+          className={classes.epigramEditor}
+          epigram={epigram}
+          onSave={this.handleSubmit}
+        />
       </div>
     );
   }
 }
 
 Edit.propTypes = {
+  classes: PropTypes.object.isRequired,
   // eslint-disable-next-line react/no-typos
   epigram: FourmiPropTypes.epigram.isRequired,
   redirectToSearch: PropTypes.func.isRequired,
   saveEpigram: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Edit);
+export default withStyles(styles)(
+  connect(mapStateToProps, mapDispatchToProps)(Edit)
+);

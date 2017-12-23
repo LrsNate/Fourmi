@@ -1,1 +1,5 @@
 @import '~typeface-roboto';
+
+body {
+  background-color: #FAFAFA;
+}

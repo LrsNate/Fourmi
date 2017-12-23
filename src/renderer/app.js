@@ -1,8 +1,10 @@
+import { createMemoryHistory } from "history";
+import { createMuiTheme, MuiThemeProvider } from "material-ui";
+import { amber, teal } from "material-ui/colors";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "react-router-redux";
-import { createMemoryHistory } from "history";
 
 import routes from "./routes";
 import configureStore from "./store";
@@ -21,9 +23,19 @@ const routerHistory = createMemoryHistory();
 const store = configureStore(initialState, routerHistory);
 syncHistoryWithStore(store, routerHistory);
 
-ReactDOM.render(
+const theme = createMuiTheme({
+  palette: {
+    primary: teal,
+    secondary: amber
+  }
+});
+
+const App = () => (
   <Provider store={store}>
-    <ConnectedRouter history={routerHistory}>{routes}</ConnectedRouter>
-  </Provider>,
-  document.getElementById("app")
+    <MuiThemeProvider theme={theme}>
+      <ConnectedRouter history={routerHistory}>{routes}</ConnectedRouter>
+    </MuiThemeProvider>
+  </Provider>
 );
+
+ReactDOM.render(<App />, document.getElementById("app"));
