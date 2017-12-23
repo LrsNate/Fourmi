@@ -2,7 +2,7 @@
   "name": "fourmi",
   "version": "2.0.0-alpha.2",
   "description": "fourmi",
-  "main": "init.js",
+  "main": "src/main/index.js",
   "author": {
     "name": "Antoine Lafouasse",
     "email": "antoine.lafouasse@icloud.com"
@@ -39,10 +39,10 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.1.18",
-    "browser-sync": "^2.21.0",
     "electron": "^1.7.10",
     "electron-builder": "^19.49.2",
     "electron-devtools-installer": "^2.2.3",
+    "electron-webpack": "^1.11.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.0",
@@ -58,7 +58,8 @@
     "npm-run-all": "^4.1.2",
     "prettier": "^1.9.2",
     "react-test-renderer": "^16.2.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "webpack": "^3.10.0"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js",
@@ -66,36 +67,22 @@
       "enzyme-to-json/serializer"
     ],
     "collectCoverageFrom": [
-      "app/**/*.js",
-      "!app/app.js",
-      "!app/main.js",
-      "!app/store.js",
-      "!app/routes.js"
+      "src/renderer/**/*.js",
+      "!src/renderer/app.js",
+      "!src/renderer/store.js",
+      "!src/renderer/routes.js"
     ]
   },
   "scripts": {
-    "postinstall": "electron-builder install-app-deps",
-    "develop": "npm run private:compile -- --source-maps true && run-p -r private:watch private:serve",
+    "dev": "electron-webpack dev",
+    "compile": "electron-webpack",
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
     "test": "jest",
     "test:coverage": "jest --collectCoverage",
-    "test:coverage:publish": "run-s test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "test:watch": "jest --watch",
     "reformat": "run-s reformat:src reformat:test reformat:scripts",
     "reformat:src": "prettier --write app/*.js app/**/*.js",
     "reformat:test": "prettier --write test/*.js test/**/*.js",
-    "reformat:scripts": "prettier --write scripts/*.js scripts/**/*.js",
-    "lint": "eslint scripts app test",
-    "pack": "run-s private:clean private:compile private:build:all",
-    "pack:mac": "run-s private:clean private:compile private:build:mac",
-    "pack:win": "run-s private:clean private:compile private:build:win",
-    "pack:linux": "run-s private:clean private:compile private:build:linux",
-    "private:build:all": "electron-builder -mwl",
-    "private:build:mac": "electron-builder --mac",
-    "private:build:win": "electron-builder --win",
-    "private:build:linux": "electron-builder --linux",
-    "private:watch": "npm run private:compile -- --source-maps true --watch --skip-initial-build",
-    "private:serve": "babel-node scripts/serve.js",
-    "private:compile": "babel app/ --copy-files --out-dir build",
-    "private:clean": "rimraf build"
+    "lint": "eslint scripts app test"
   }
 }

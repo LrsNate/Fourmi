@@ -1,4 +1,6 @@
-import databaseReducer, { initialState } from "../../app/reducers/database";
+import databaseReducer, {
+  initialState
+} from "../../src/renderer/reducers/database";
 
 describe("The initial state", () => {
   it("has an empty status history", () => {

@@ -5,7 +5,7 @@ import {
   Boot,
   mapDispatchToProps,
   mapStateToProps
-} from "../../app/routes/Boot";
+} from "../../src/renderer/routes/Boot";
 
 jest.mock("react-router-redux", () => ({
   push(path) {
@@ -14,7 +14,7 @@ jest.mock("react-router-redux", () => ({
   }
 }));
 
-jest.mock("../../app/actions/database", () => ({
+jest.mock("../../src/renderer/actions/database", () => ({
   ensureDatabaseFolderExistsAction: jest.fn(() =>
     Promise.resolve("ensureDatabaseFolderExists")
   ),
@@ -23,7 +23,7 @@ jest.mock("../../app/actions/database", () => ({
   )
 }));
 
-jest.mock("../../app/lib/files", () => ({
+jest.mock("../../src/renderer/lib/files", () => ({
   getDataFolderPath: jest.fn(() => "/home/foo/stuff")
 }));
 

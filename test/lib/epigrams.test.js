@@ -2,7 +2,7 @@ import {
   getSortKey,
   resolveOrigin,
   sortEpigrams
-} from "../../app/lib/epigrams";
+} from "../../src/renderer/lib/epigrams";
 
 describe("The sortEpigrams function", () => {
   it("sorts epigrams", () => {

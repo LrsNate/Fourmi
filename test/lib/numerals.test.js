@@ -1,4 +1,4 @@
-import { ofRoman } from "../../app/lib/numerals";
+import { ofRoman } from "../../src/renderer/lib/numerals";
 
 describe("The ofRoman function", () => {
   it("translates the empty string to 0", () => {

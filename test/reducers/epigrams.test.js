@@ -1,4 +1,4 @@
-import epigramsReducer, { initialState } from "../../app/reducers/epigrams";
+import epigramsReducer, { initialState } from "../../src/renderer/reducers/epigrams";
 
 describe("The initial state", () => {
   it("has a loading status and an empty epigrams store", () => {

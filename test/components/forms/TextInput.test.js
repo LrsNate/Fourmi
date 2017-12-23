@@ -2,7 +2,7 @@ import { render } from "enzyme";
 import React from "react";
 import { Form } from "react-final-form";
 
-import TextInput from "../../../app/components/forms/TextInput";
+import TextInput from "../../../src/renderer/components/forms/TextInput";
 
 describe("The TextInput component", () => {
   describe("On an initial load", () => {

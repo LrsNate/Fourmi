@@ -5,7 +5,7 @@ import {
   downloadFile,
   getDataFolderPath,
   getFilePath
-} from "../../app/lib/files";
+} from "../../src/renderer/lib/files";
 
 jest.mock("fs");
 jest.mock("https");

@@ -4,7 +4,7 @@ describe("The ensureDatabaseFolderExists action", () => {
   });
 
   it("dispatches messages when the folder does not exist", () => {
-    jest.doMock("../../app/lib/files", () => ({
+    jest.doMock("../../src/renderer/lib/files", () => ({
       getDataFolderPath: () => "/foo/bar",
       checkIfFolderExists: () => Promise.resolve(false),
       createFolder: () => Promise.resolve(null)
@@ -13,7 +13,7 @@ describe("The ensureDatabaseFolderExists action", () => {
 
     const {
       ensureDatabaseFolderExistsAction
-    } = require("../../app/actions/database");
+    } = require("../../src/renderer/actions/database");
 
     ensureDatabaseFolderExistsAction()(dispatch).then(() => {
       expect(dispatch).toHaveBeenCalledWith({
@@ -24,7 +24,7 @@ describe("The ensureDatabaseFolderExists action", () => {
   });
 
   it("dispatches messages when the folder exists", () => {
-    jest.doMock("../../app/lib/files", () => ({
+    jest.doMock("../../src/renderer/lib/files", () => ({
       getDataFolderPath: () => "/foo/bar",
       checkIfFolderExists: () => Promise.resolve(true),
       createFolder: () => Promise.resolve(null)
@@ -33,7 +33,7 @@ describe("The ensureDatabaseFolderExists action", () => {
 
     const {
       ensureDatabaseFolderExistsAction
-    } = require("../../app/actions/database");
+    } = require("../../src/renderer/actions/database");
 
     ensureDatabaseFolderExistsAction()(dispatch).then(() => {
       expect(dispatch).toHaveBeenCalledWith({ type: "DATABASE_FOLDER_FOUND" });
@@ -48,7 +48,7 @@ describe("The ensureDatabaseExists action", () => {
   });
 
   it("dispatches messages when the folder does not exist", () => {
-    jest.doMock("../../app/lib/files", () => ({
+    jest.doMock("../../src/renderer/lib/files", () => ({
       getDataFolderPath: () => "/foo/bar",
       checkIfFileExists: () => Promise.resolve(false),
       downloadFile: () => Promise.resolve(null)
@@ -57,7 +57,7 @@ describe("The ensureDatabaseExists action", () => {
 
     const {
       ensureDatabaseExistsAction
-    } = require("../../app/actions/database");
+    } = require("../../src/renderer/actions/database");
 
     ensureDatabaseExistsAction()(dispatch).then(() => {
       expect(dispatch).toHaveBeenCalledWith({
@@ -68,7 +68,7 @@ describe("The ensureDatabaseExists action", () => {
   });
 
   it("dispatches messages when the folder exists", () => {
-    jest.doMock("../../app/lib/files", () => ({
+    jest.doMock("../../src/renderer/lib/files", () => ({
       getDataFolderPath: () => "/foo/bar",
       checkIfFileExists: () => Promise.resolve(true),
       downloadFile: () => Promise.resolve(null)
@@ -77,7 +77,7 @@ describe("The ensureDatabaseExists action", () => {
 
     const {
       ensureDatabaseExistsAction
-    } = require("../../app/actions/database");
+    } = require("../../src/renderer/actions/database");
 
     ensureDatabaseExistsAction()(dispatch).then(() => {
       expect(dispatch).toHaveBeenCalledWith({ type: "DATABASE_FOUND" });
