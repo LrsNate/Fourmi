@@ -1,3 +1,4 @@
+import { Button } from "material-ui";
 import PropTypes from "prop-types";
 import React from "react";
 import { Form } from "react-final-form";
@@ -8,9 +9,9 @@ import TextInput from "../forms/TextInput";
 const AttributesEditor = () => {
   return (
     <div>
-      <TextInput name="title" />
-      <TextInput name="author" />
-      <TextInput name="reference" />
+      <TextInput label="Titre" name="title" />
+      <TextInput label="Auteur" name="author" />
+      <TextInput label="Référence" name="reference" />
     </div>
   );
 };
@@ -28,8 +29,10 @@ const EpigramEditor = ({ epigram, onSave }) => {
       {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <AttributesEditor />
-          <TextInput name="notes" />
-          <input type="submit" value="Enregistrer" />
+          <TextInput label="Notes" name="notes" />
+          <Button type="submit" raised color="primary">
+            Enregistrer
+          </Button>
         </form>
       )}
     </Form>

@@ -3,26 +3,101 @@
 exports[`The EpigramEditor component on an initial load matches the snapshot 1`] = `
 <form>
   <div>
-    <input
-      name="title"
-      value=""
-    />
-    <input
-      name="author"
-      value=""
-    />
-    <input
-      name="reference"
-      value=""
-    />
+    <div
+      class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+    >
+      <label
+        class="MuiFormLabel-root-11 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9"
+        data-shrink="false"
+      >
+        Titre
+      </label>
+      <div
+        class="MuiInput-root-15 MuiInput-formControl-16 MuiInput-inkbar-17 MuiInput-underline-21"
+      >
+        <input
+          class="MuiInput-input-24 MuiInput-inputSingleline-27"
+          name="title"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+    >
+      <label
+        class="MuiFormLabel-root-11 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9"
+        data-shrink="false"
+      >
+        Auteur
+      </label>
+      <div
+        class="MuiInput-root-15 MuiInput-formControl-16 MuiInput-inkbar-17 MuiInput-underline-21"
+      >
+        <input
+          class="MuiInput-input-24 MuiInput-inputSingleline-27"
+          name="author"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+    >
+      <label
+        class="MuiFormLabel-root-11 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9"
+        data-shrink="false"
+      >
+        Référence
+      </label>
+      <div
+        class="MuiInput-root-15 MuiInput-formControl-16 MuiInput-inkbar-17 MuiInput-underline-21"
+      >
+        <input
+          class="MuiInput-input-24 MuiInput-inputSingleline-27"
+          name="reference"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
   </div>
-  <input
-    name="notes"
-    value=""
-  />
-  <input
+  <div
+    class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+  >
+    <label
+      class="MuiFormLabel-root-11 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9"
+      data-shrink="false"
+    >
+      Notes
+    </label>
+    <div
+      class="MuiInput-root-15 MuiInput-formControl-16 MuiInput-inkbar-17 MuiInput-underline-21"
+    >
+      <input
+        class="MuiInput-input-24 MuiInput-inputSingleline-27"
+        name="notes"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <button
+    class="MuiButtonBase-root-45 MuiButton-root-30 MuiButton-raised-37 MuiButton-raisedPrimary-39"
+    role="button"
+    tabindex="0"
     type="submit"
-    value="Enregistrer"
-  />
+  >
+    <span
+      class="MuiButton-label-32"
+    >
+      Enregistrer
+    </span>
+    <span
+      class="MuiTouchRipple-root-47"
+    />
+  </button>
 </form>
 `;

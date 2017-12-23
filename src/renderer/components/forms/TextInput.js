@@ -1,12 +1,20 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Field } from "react-final-form";
+import { TextField } from "material-ui";
 
-const TextInput = ({ name }) => {
-  return <Field name={name}>{({ input }) => <input {...input} />}</Field>;
+const TextInput = ({ name, label }) => {
+  return (
+    <Field name={name}>
+      {({ input }) => (
+        <TextField {...input} label={label} fullWidth margin="normal" />
+      )}
+    </Field>
+  );
 };
 
 TextInput.propTypes = {
+  label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 };
 

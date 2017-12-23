@@ -2,9 +2,25 @@
 
 exports[`The TextInput component On an initial load matches the snapshot 1`] = `
 <form>
-  <input
-    name="someName"
-    value=""
-  />
+  <div
+    class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+  >
+    <label
+      class="MuiFormLabel-root-11 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9"
+      data-shrink="false"
+    >
+      Some label
+    </label>
+    <div
+      class="MuiInput-root-15 MuiInput-formControl-16 MuiInput-inkbar-17 MuiInput-underline-21"
+    >
+      <input
+        class="MuiInput-input-24 MuiInput-inputSingleline-27"
+        name="someName"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
 </form>
 `;

@@ -11,7 +11,7 @@ describe("The TextInput component", () => {
         <Form onSubmit={() => {}}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <TextInput name="someName" />
+              <TextInput label="Some label" name="someName" />
             </form>
           )}
         </Form>
