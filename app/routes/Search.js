@@ -5,15 +5,16 @@ import { push } from "react-router-redux";
 
 import { loadEpigramsAction } from "../actions/epigrams";
 import { epigramsLoadingStatus } from "../constants/reducers";
-import FourmiPropTypes from "../constants/types";
 import { editRoute } from "../constants/routes";
+import FourmiPropTypes from "../constants/types";
+import { sortEpigrams } from "../lib/epigrams";
 
 const mapStateToProps = state => {
   const { epigrams: { status, epigrams } } = state;
 
   return {
     status,
-    epigrams: Object.values(epigrams).slice(0, 20)
+    epigrams: sortEpigrams(Object.values(epigrams)).slice(0, 20)
   };
 };
 

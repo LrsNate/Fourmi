@@ -16,6 +16,7 @@ import {
   databaseReadyType
 } from "../constants/actions";
 import { getDataFolderPath } from "../lib/files";
+import { searchRoute } from "../constants/routes";
 
 const messageTemplates = {
   [databaseFolderFoundType]: `Le dossier de données existe à : "${getDataFolderPath()}".`,
@@ -42,7 +43,7 @@ export const mapDispatchToProps = dispatch => ({
     );
   },
   redirectToSearchPage() {
-    return dispatch(push("/search"));
+    return dispatch(push(searchRoute()));
   }
 });
 

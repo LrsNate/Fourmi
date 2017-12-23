@@ -6,6 +6,7 @@ import { push } from "react-router-redux";
 import { saveEpigramAction } from "../actions/epigrams";
 import FourmiPropTypes from "../constants/types";
 import EpigramEditor from "../components/epigramEditor/EpigramEditor";
+import { searchRoute } from "../constants/routes";
 
 const mapStateToProps = (state, ownProps) => {
   const { id } = ownProps.match.params;
@@ -17,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     redirectToSearch() {
-      return dispatch(push("/search"));
+      return dispatch(push(searchRoute()));
     },
     saveEpigram(epigram) {
       return dispatch(saveEpigramAction(epigram));
