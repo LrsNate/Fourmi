@@ -7,7 +7,13 @@ const TextInput = ({ name, ...props }) => {
   return (
     <Field name={name}>
       {({ input }) => (
-        <TextField {...input} {...props} color="accent" margin="normal" />
+        <TextField
+          {...input}
+          {...props}
+          color="accent"
+          fullWidth
+          margin="normal"
+        />
       )}
     </Field>
   );

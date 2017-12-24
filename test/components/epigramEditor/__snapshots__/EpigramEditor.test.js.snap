@@ -9,32 +9,40 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
       <div
         class="MuiCardContent-root-28"
       >
-        <h1
-          class="MuiTypography-root-29 MuiTypography-headline-34"
-        >
-          Propriétés
-        </h1>
         <div
-          class="MuiGrid-typeContainer-53 MuiGrid-spacing-xs-16-74"
+          class="MuiCardContent-root-28 MuiCardHeader-root-29"
         >
           <div
-            class="MuiGrid-typeItem-54 MuiGrid-grid-sm-3-93"
+            class="MuiCardHeader-content-32"
+          >
+            <span
+              class="MuiTypography-root-35 MuiTypography-headline-40 MuiCardHeader-title-33"
+            >
+              Propriétés
+            </span>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-typeContainer-59 MuiGrid-spacing-xs-16-80"
+        >
+          <div
+            class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
           >
             <div
-              class="MuiFormControl-root-142 MuiFormControl-marginNormal-143 MuiFormControl-fullWidth-145"
+              class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
               color="accent"
             >
               <label
-                class="MuiFormLabel-root-152 MuiInputLabel-root-146 MuiInputLabel-formControl-147 MuiInputLabel-animated-150"
+                class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
                 data-shrink="false"
               >
                 Auteur
               </label>
               <div
-                class="MuiInput-root-156 MuiInput-formControl-157 MuiInput-inkbar-158 MuiInput-underline-162"
+                class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
               >
                 <input
-                  class="MuiInput-input-165 MuiInput-inputSingleline-168"
+                  class="MuiInput-input-171 MuiInput-inputSingleline-174"
                   name="author"
                   type="text"
                   value=""
@@ -43,23 +51,23 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
             </div>
           </div>
           <div
-            class="MuiGrid-typeItem-54 MuiGrid-grid-sm-3-93"
+            class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
           >
             <div
-              class="MuiFormControl-root-142 MuiFormControl-marginNormal-143 MuiFormControl-fullWidth-145"
+              class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
               color="accent"
             >
               <label
-                class="MuiFormLabel-root-152 MuiInputLabel-root-146 MuiInputLabel-formControl-147 MuiInputLabel-animated-150"
+                class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
                 data-shrink="false"
               >
                 Référence
               </label>
               <div
-                class="MuiInput-root-156 MuiInput-formControl-157 MuiInput-inkbar-158 MuiInput-underline-162"
+                class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
               >
                 <input
-                  class="MuiInput-input-165 MuiInput-inputSingleline-168"
+                  class="MuiInput-input-171 MuiInput-inputSingleline-174"
                   name="reference"
                   type="text"
                   value=""
@@ -68,24 +76,124 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
             </div>
           </div>
           <div
-            class="MuiGrid-typeItem-54 MuiGrid-grid-sm-6-96"
+            class="MuiGrid-typeItem-60 MuiGrid-grid-sm-6-102"
           >
             <div
-              class="MuiFormControl-root-142 MuiFormControl-marginNormal-143 MuiFormControl-fullWidth-145"
+              class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
               color="accent"
             >
               <label
-                class="MuiFormLabel-root-152 MuiInputLabel-root-146 MuiInputLabel-formControl-147 MuiInputLabel-animated-150"
+                class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
                 data-shrink="false"
               >
                 Titre
               </label>
               <div
-                class="MuiInput-root-156 MuiInput-formControl-157 MuiInput-inkbar-158 MuiInput-underline-162"
+                class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
               >
                 <input
-                  class="MuiInput-input-165 MuiInput-inputSingleline-168"
+                  class="MuiInput-input-171 MuiInput-inputSingleline-174"
                   name="title"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
+          >
+            <div
+              class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+              color="accent"
+            >
+              <label
+                class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+                data-shrink="false"
+              >
+                Mètre
+              </label>
+              <div
+                class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              >
+                <input
+                  class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                  name="meter"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
+          >
+            <div
+              class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+              color="accent"
+            >
+              <label
+                class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+                data-shrink="false"
+              >
+                Strophe
+              </label>
+              <div
+                class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              >
+                <input
+                  class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                  name="stanza"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
+          >
+            <div
+              class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+              color="accent"
+            >
+              <label
+                class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+                data-shrink="false"
+              >
+                Destinataire
+              </label>
+              <div
+                class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              >
+                <input
+                  class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                  name="addressee"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
+          >
+            <div
+              class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+              color="accent"
+            >
+              <label
+                class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+                data-shrink="false"
+              >
+                Date
+              </label>
+              <div
+                class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              >
+                <input
+                  class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                  name="date"
                   type="text"
                   value=""
                 />
@@ -96,20 +204,20 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
       </div>
     </div>
     <div
-      class="MuiFormControl-root-142 MuiFormControl-marginNormal-143"
+      class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
       color="accent"
     >
       <label
-        class="MuiFormLabel-root-152 MuiInputLabel-root-146 MuiInputLabel-formControl-147 MuiInputLabel-animated-150"
+        class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
         data-shrink="false"
       >
         Notes
       </label>
       <div
-        class="MuiInput-root-156 MuiInput-formControl-157 MuiInput-inkbar-158 MuiInput-underline-162"
+        class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
       >
         <input
-          class="MuiInput-input-165 MuiInput-inputSingleline-168"
+          class="MuiInput-input-171 MuiInput-inputSingleline-174"
           name="notes"
           type="text"
           value=""
@@ -117,18 +225,18 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
       </div>
     </div>
     <button
-      class="MuiButtonBase-root-186 MuiButton-root-171 MuiButton-raised-178 MuiButton-raisedPrimary-180"
+      class="MuiButtonBase-root-192 MuiButton-root-177 MuiButton-raised-184 MuiButton-raisedPrimary-186"
       role="button"
       tabindex="0"
       type="submit"
     >
       <span
-        class="MuiButton-label-173"
+        class="MuiButton-label-179"
       >
         Enregistrer
       </span>
       <span
-        class="MuiTouchRipple-root-188"
+        class="MuiTouchRipple-root-194"
       />
     </button>
   </form>

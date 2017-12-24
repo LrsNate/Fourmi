@@ -1,4 +1,11 @@
-import { AppBar, Toolbar, Typography, withStyles } from "material-ui";
+import {
+  AppBar,
+  IconButton,
+  Toolbar,
+  Typography,
+  withStyles
+} from "material-ui";
+import { ChevronLeft } from "material-ui-icons";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -18,7 +25,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    redirectToSearch() {
+    returnToSearch() {
       return dispatch(push(searchRoute()));
     },
     saveEpigram(epigram) {
@@ -27,28 +34,38 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const styles = () => ({
+const styles = {
+  backButton: {
+    marginLeft: -12,
+    marginRight: 20
+  },
   epigramEditor: {
     marginTop: 84
   }
-});
+};
 
 class Edit extends Component {
   handleSubmit = epigram => {
-    console.log(epigram);
-    const { saveEpigram, redirectToSearch } = this.props;
+    const { saveEpigram, returnToSearch } = this.props;
     saveEpigram(epigram);
-    redirectToSearch();
+    returnToSearch();
   };
 
   render() {
-    const { classes, epigram } = this.props;
+    const { classes, epigram, returnToSearch } = this.props;
     return (
       <div>
         <AppBar>
           <Toolbar>
+            <IconButton
+              className={classes.backButton}
+              color="contrast"
+              onClick={returnToSearch}
+            >
+              <ChevronLeft />
+            </IconButton>
             <Typography type="title" color="inherit">
-              Title
+              Éditer une oeuvre
             </Typography>
           </Toolbar>
         </AppBar>
@@ -66,7 +83,7 @@ Edit.propTypes = {
   classes: PropTypes.object.isRequired,
   // eslint-disable-next-line react/no-typos
   epigram: FourmiPropTypes.epigram.isRequired,
-  redirectToSearch: PropTypes.func.isRequired,
+  returnToSearch: PropTypes.func.isRequired,
   saveEpigram: PropTypes.func.isRequired
 };
 

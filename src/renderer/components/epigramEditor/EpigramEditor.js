@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Grid, Typography } from "material-ui";
+import { Button, Card, CardContent, CardHeader, Grid } from "material-ui";
 import PropTypes from "prop-types";
 import React from "react";
 import { Form } from "react-final-form";
@@ -10,16 +10,28 @@ const AttributesEditor = () => {
   return (
     <Card>
       <CardContent>
-        <Typography type="headline">Propriétés</Typography>
+        <CardHeader title="Propriétés" />
         <Grid container>
           <Grid item sm={3}>
-            <TextInput label="Auteur" name="author" fullWidth />
+            <TextInput label="Auteur" name="author" />
           </Grid>
           <Grid item sm={3}>
-            <TextInput label="Référence" name="reference" fullWidth />
+            <TextInput label="Référence" name="reference" />
           </Grid>
           <Grid item sm={6}>
-            <TextInput label="Titre" name="title" fullWidth />
+            <TextInput label="Titre" name="title" />
+          </Grid>
+          <Grid item sm={3}>
+            <TextInput label="Mètre" name="meter" />
+          </Grid>
+          <Grid item sm={3}>
+            <TextInput label="Strophe" name="stanza" />
+          </Grid>
+          <Grid item sm={3}>
+            <TextInput label="Destinataire" name="addressee" />
+          </Grid>
+          <Grid item sm={3}>
+            <TextInput label="Date" name="date" />
           </Grid>
         </Grid>
       </CardContent>
