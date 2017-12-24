@@ -9,8 +9,8 @@ import TextInput from "../forms/TextInput";
 const AttributesEditor = () => {
   return (
     <Card>
+      <CardHeader title="Propriétés" />
       <CardContent>
-        <CardHeader title="Propriétés" />
         <Grid container>
           <Grid item sm={3}>
             <TextInput label="Auteur" name="author" />
@@ -68,6 +68,10 @@ EpigramEditor.propTypes = {
   className: PropTypes.string,
   epigram: FourmiPropTypes.epigram.isRequired,
   onSave: PropTypes.func.isRequired
+};
+
+EpigramEditor.defaultProps = {
+  className: ""
 };
 
 export default EpigramEditor;

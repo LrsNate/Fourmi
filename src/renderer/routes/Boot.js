@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { push } from "react-router-redux";
+import { replace } from "react-router-redux";
 
 import {
   ensureDatabaseExistsAction,
@@ -43,7 +43,7 @@ export const mapDispatchToProps = dispatch => ({
     );
   },
   redirectToSearchPage() {
-    return dispatch(push(searchRoute()));
+    return dispatch(replace(searchRoute()));
   }
 });
 

@@ -90,6 +90,6 @@
     "reformat": "run-s reformat:src reformat:test reformat:scripts",
     "reformat:src": "prettier --write app/*.js app/**/*.js",
     "reformat:test": "prettier --write test/*.js test/**/*.js",
-    "lint": "eslint scripts app test"
+    "lint": "eslint src test"
   }
 }

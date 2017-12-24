@@ -8,7 +8,7 @@ import {
 } from "../../src/renderer/routes/Boot";
 
 jest.mock("react-router-redux", () => ({
-  push(path) {
+  replace(path) {
     expect(path).toBe("/search");
     return Promise.resolve("redirectToSearchPage");
   }

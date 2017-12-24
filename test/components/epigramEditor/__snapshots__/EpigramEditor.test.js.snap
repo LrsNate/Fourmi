@@ -1,27 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The EpigramEditor component on an initial load matches the snapshot 1`] = `
-<div>
+<div
+  class=""
+>
   <form>
     <div
       class="MuiPaper-root-1 MuiPaper-shadow2-5 MuiPaper-rounded-2"
     >
       <div
-        class="MuiCardContent-root-28"
+        class="MuiCardContent-root-34 MuiCardHeader-root-28"
       >
         <div
-          class="MuiCardContent-root-28 MuiCardHeader-root-29"
+          class="MuiCardHeader-content-31"
         >
-          <div
-            class="MuiCardHeader-content-32"
+          <span
+            class="MuiTypography-root-35 MuiTypography-headline-40 MuiCardHeader-title-32"
           >
-            <span
-              class="MuiTypography-root-35 MuiTypography-headline-40 MuiCardHeader-title-33"
-            >
-              Propriétés
-            </span>
-          </div>
+            Propriétés
+          </span>
         </div>
+      </div>
+      <div
+        class="MuiCardContent-root-34"
+      >
         <div
           class="MuiGrid-typeContainer-59 MuiGrid-spacing-xs-16-80"
         >

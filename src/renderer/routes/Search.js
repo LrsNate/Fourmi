@@ -1,3 +1,4 @@
+import { Card, CardHeader, withStyles } from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -8,6 +9,8 @@ import { epigramsLoadingStatus } from "../constants/reducers";
 import { editRoute } from "../constants/routes";
 import FourmiPropTypes from "../constants/types";
 import { sortEpigrams } from "../lib/epigrams";
+import Page from "../components/Page";
+import EpigramView from "../components/EpigramView";
 
 const mapStateToProps = state => {
   const { epigrams: { status, epigrams } } = state;
@@ -29,6 +32,12 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const styles = theme => ({
+  searchCard: {
+    marginBottom: theme.spacing.unit
+  }
+});
+
 class Search extends Component {
   componentWillMount() {
     const { status, loadEpigrams } = this.props;
@@ -38,28 +47,33 @@ class Search extends Component {
   }
 
   render() {
-    const { epigrams, goToEditPage } = this.props;
+    const { classes, epigrams, goToEditPage } = this.props;
     return (
-      <div>
-        <ul>
-          {epigrams.map(e => (
-            <li key={e._id}>
-              {e.author} {e.reference} {e.title}
-              <button type="button" onClick={() => goToEditPage(e._id)}>
-                Edit
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Page title="Rechercher une oeuvre">
+        <Card className={classes.searchCard}>
+          <CardHeader title="Recherche" />
+        </Card>
+        <hr />
+        {epigrams.map(e => (
+          <EpigramView epigram={e} goToEditPage={goToEditPage} key={e._id} />
+        ))}
+      </Page>
     );
   }
 }
 
 Search.propTypes = {
+  classes: PropTypes.object,
   epigrams: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired,
   goToEditPage: PropTypes.func.isRequired,
   loadEpigrams: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+
+Search.defaultProps = {
+  classes: {}
+};
+
+export default withStyles(styles)(
+  connect(mapStateToProps, mapDispatchToProps)(Search)
+);

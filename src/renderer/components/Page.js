@@ -5,7 +5,7 @@ import {
   Typography,
   withStyles
 } from "material-ui";
-import { ChevronLeft } from "material-ui-icons";
+import { KeyboardArrowLeft } from "material-ui-icons";
 import PropTypes from "prop-types";
 import React from "react";
 import { goBack } from "react-router-redux";
@@ -21,15 +21,17 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-const styles = {
+const styles = theme => ({
   appBarLeftButton: {
     marginLeft: -12,
     marginRight: 20
   },
   pageContent: {
-    marginTop: 84
+    marginTop: 84,
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit
   }
-};
+});
 
 export const Page = ({ classes, goBack, title, children }) => {
   return (
@@ -41,7 +43,7 @@ export const Page = ({ classes, goBack, title, children }) => {
             color="contrast"
             onClick={goBack}
           >
-            <ChevronLeft />
+            <KeyboardArrowLeft />
           </IconButton>
           <Typography type="title" color="inherit">
             {title}
