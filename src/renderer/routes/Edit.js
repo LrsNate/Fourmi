@@ -1,20 +1,14 @@
-import {
-  AppBar,
-  IconButton,
-  Toolbar,
-  Typography,
-  withStyles
-} from "material-ui";
-import { ChevronLeft } from "material-ui-icons";
+import {withStyles} from "material-ui";
 import PropTypes from "prop-types";
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { push } from "react-router-redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {push} from "react-router-redux";
 
-import { saveEpigramAction } from "../actions/epigrams";
+import {saveEpigramAction} from "../actions/epigrams";
 import FourmiPropTypes from "../constants/types";
 import EpigramEditor from "../components/epigramEditor/EpigramEditor";
-import { searchRoute } from "../constants/routes";
+import {searchRoute} from "../constants/routes";
+import Page from "../components/Page";
 
 const mapStateToProps = (state, ownProps) => {
   const { id } = ownProps.match.params;
@@ -52,29 +46,15 @@ class Edit extends Component {
   };
 
   render() {
-    const { classes, epigram, returnToSearch } = this.props;
+    const { classes, epigram } = this.props;
     return (
-      <div>
-        <AppBar>
-          <Toolbar>
-            <IconButton
-              className={classes.backButton}
-              color="contrast"
-              onClick={returnToSearch}
-            >
-              <ChevronLeft />
-            </IconButton>
-            <Typography type="title" color="inherit">
-              Éditer une oeuvre
-            </Typography>
-          </Toolbar>
-        </AppBar>
+      <Page title="Éditer une oeuvre">
         <EpigramEditor
           className={classes.epigramEditor}
           epigram={epigram}
           onSave={this.handleSubmit}
         />
-      </div>
+      </Page>
     );
   }
 }

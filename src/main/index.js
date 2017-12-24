@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { app, BrowserWindow, Menu } from "electron";
+import "babel-polyfill";
+import { app, BrowserWindow } from "electron";
 
 const installExtensions = async () => {
   const installer = require("electron-devtools-installer");

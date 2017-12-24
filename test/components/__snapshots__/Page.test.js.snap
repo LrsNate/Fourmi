@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Page component on an initial load matches the snapshot 1`] = `
+<div>
+  <header
+    class="MuiPaper-root-8 MuiPaper-shadow4-14 MuiAppBar-root-1 MuiAppBar-positionFixed-2 MuiAppBar-colorPrimary-6 mui-fixed"
+  >
+    <div
+      class="MuiToolbar-root-35 MuiToolbar-gutters-36"
+    >
+      <button
+        class="MuiButtonBase-root-46 MuiIconButton-root-37 MuiIconButton-colorContrast-39 appBarLeftButton"
+        role="button"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label-43"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root-48 MuiIconButton-icon-44"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root-55"
+        />
+      </button>
+      <h2
+        class="MuiTypography-root-62 MuiTypography-title-68 MuiTypography-colorInherit-81"
+      >
+        Some page
+      </h2>
+    </div>
+  </header>
+  <div
+    class="pageContent"
+  >
+    <p>
+      Some content
+    </p>
+  </div>
+</div>
+`;
