@@ -64,6 +64,7 @@ class TextEditor extends Component {
         editorState={editorState}
         editorClassName={classes.editor}
         toolbarClassName={classes.toolbar}
+        onBlur={this.handleBlur}
         onEditorStateChange={this.onEditorStateChange}
         localization={{ locale: "fr" }}
       />
@@ -71,20 +72,23 @@ class TextEditor extends Component {
   }
 }
 
-const TextEditorWrapper = ({ name }) => {
-  const EditorComponent = withStyles(styles)(TextEditor);
-
+const TextEditorWrapper = ({ name, classes }) => {
   return (
     <Field name={name}>
       {({ input: { value, onChange } }) => (
-        <EditorComponent value={value} onChange={onChange} />
+        <TextEditor classes={classes} value={value} onChange={onChange} />
       )}
     </Field>
   );
 };
 
 TextEditorWrapper.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  classes: PropTypes.object
 };
 
-export default TextEditorWrapper;
+TextEditorWrapper.defaultProps = {
+  classes: {}
+};
+
+export default withStyles(styles)(TextEditorWrapper);

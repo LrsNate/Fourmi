@@ -66,14 +66,14 @@ class EpigramEditor extends Component {
     );
   }
 
-  renderNotes() {
+  renderTextEditor(label, name) {
     const { classes } = this.props;
 
     return (
       <Card className={classes.card}>
-        <CardHeader title="Notes" />
+        <CardHeader title={label} />
         <CardContent>
-          <TextEditor name="notes" />
+          <TextEditor name={name} />
         </CardContent>
       </Card>
     );
@@ -86,7 +86,9 @@ class EpigramEditor extends Component {
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             {this.renderAttributes()}
-            {this.renderNotes()}
+            {this.renderTextEditor("Texte latin", "latinText")}
+            {this.renderTextEditor("Texte français", "frenchText")}
+            {this.renderTextEditor("Notes", "notes")}
             <Button type="submit" raised color="primary">
               Enregistrer
             </Button>
