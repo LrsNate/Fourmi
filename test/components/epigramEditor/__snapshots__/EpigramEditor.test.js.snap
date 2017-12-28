@@ -29,7 +29,6 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
         >
           <div
             class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
-            color="accent"
           >
             <label
               class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
@@ -54,7 +53,6 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
         >
           <div
             class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
-            color="accent"
           >
             <label
               class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
@@ -79,7 +77,6 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
         >
           <div
             class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
-            color="accent"
           >
             <label
               class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
@@ -104,7 +101,6 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
         >
           <div
             class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
-            color="accent"
           >
             <label
               class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
@@ -129,7 +125,6 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
         >
           <div
             class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
-            color="accent"
           >
             <label
               class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
@@ -154,7 +149,6 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
         >
           <div
             class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
-            color="accent"
           >
             <label
               class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
@@ -179,7 +173,6 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
         >
           <div
             class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
-            color="accent"
           >
             <label
               class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
@@ -199,6 +192,78 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
             </div>
           </div>
         </div>
+        <div
+          class="MuiGrid-typeItem-61 MuiGrid-grid-sm-12-109"
+        >
+          <div
+            class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
+          >
+            <label
+              class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
+              data-shrink="false"
+            >
+              Vices
+            </label>
+            <div
+              class="MuiInput-root-163 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
+            >
+              <input
+                class="MuiInput-input-172 MuiInput-inputSingleline-175"
+                name="vices"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="MuiPaper-root-2 MuiPaper-shadow2-6 MuiPaper-rounded-3 EpigramEditor-card-1"
+  >
+    <div
+      class="MuiCardContent-root-35 MuiCardHeader-root-29"
+    >
+      <div
+        class="MuiCardHeader-content-32"
+      >
+        <span
+          class="MuiTypography-root-36 MuiTypography-headline-41 MuiCardHeader-title-33"
+        >
+          Texte latin
+        </span>
+      </div>
+    </div>
+    <div
+      class="MuiCardContent-root-35"
+    >
+      <div>
+        Rich text editor mock
+      </div>
+    </div>
+  </div>
+  <div
+    class="MuiPaper-root-2 MuiPaper-shadow2-6 MuiPaper-rounded-3 EpigramEditor-card-1"
+  >
+    <div
+      class="MuiCardContent-root-35 MuiCardHeader-root-29"
+    >
+      <div
+        class="MuiCardHeader-content-32"
+      >
+        <span
+          class="MuiTypography-root-36 MuiTypography-headline-41 MuiCardHeader-title-33"
+        >
+          Texte français
+        </span>
+      </div>
+    </div>
+    <div
+      class="MuiCardContent-root-35"
+    >
+      <div>
+        Rich text editor mock
       </div>
     </div>
   </div>

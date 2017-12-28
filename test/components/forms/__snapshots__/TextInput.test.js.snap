@@ -4,7 +4,6 @@ exports[`The TextInput component On an initial load matches the snapshot 1`] = `
 <form>
   <div
     class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
-    color="accent"
   >
     <label
       class="MuiFormLabel-root-11 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9"
