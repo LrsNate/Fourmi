@@ -1,10 +1,30 @@
 import padStart from "lodash/padStart";
 import sortBy from "lodash/sortBy";
+import traverse from "traverse";
 
 import { ofRoman } from "./numerals";
 
 export const sortEpigrams = epigrams =>
   sortBy(epigrams, doc => getSortKey(epigrams, doc));
+
+export const filterEpigrams = (epigrams, query) => {
+  const searchTerms = query.phrase.split(/\s+/);
+  console.log(searchTerms);
+  if (searchTerms.length === 0) {
+    return epigrams;
+  }
+
+  return epigrams.filter(epigram => {
+    return searchTerms.every(term => {
+      return traverse(epigram).reduce(function(acc, value) {
+        if (this.notLeaf) {
+          return acc;
+        }
+        return acc || (typeof value === "string" && value.includes(term));
+      }, false);
+    });
+  });
+};
 
 export const getSortKey = (docs, doc) => {
   const { author } = doc;

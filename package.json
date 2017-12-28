@@ -34,6 +34,7 @@
     "redux": "^3.0.0",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
+    "traverse": "^0.6.6",
     "typeface-roboto": "^0.0.45"
   },
   "devDependencies": {

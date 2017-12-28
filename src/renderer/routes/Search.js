@@ -1,4 +1,10 @@
-import { Card, CardHeader, withStyles } from "material-ui";
+import {
+  Card,
+  CardContent,
+  TextField,
+  Typography,
+  withStyles
+} from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -8,7 +14,7 @@ import { loadEpigramsAction } from "../actions/epigrams";
 import { epigramsLoadingStatus } from "../constants/reducers";
 import { editRoute } from "../constants/routes";
 import FourmiPropTypes from "../constants/types";
-import { sortEpigrams } from "../lib/epigrams";
+import { filterEpigrams, sortEpigrams } from "../lib/epigrams";
 import Page from "../components/Page";
 import EpigramView from "../components/EpigramView";
 
@@ -17,7 +23,7 @@ const mapStateToProps = state => {
 
   return {
     status,
-    epigrams: sortEpigrams(Object.values(epigrams)).slice(0, 20)
+    epigrams: sortEpigrams(Object.values(epigrams))
   };
 };
 
@@ -39,6 +45,12 @@ const styles = theme => ({
 });
 
 class Search extends Component {
+  state = {
+    searchQuery: {
+      phrase: ""
+    }
+  };
+
   componentWillMount() {
     const { status, loadEpigrams } = this.props;
     if (status === epigramsLoadingStatus) {
@@ -46,17 +58,36 @@ class Search extends Component {
     }
   }
 
+  handleSearchPhraseChange = event => {
+    const { target: { value } } = event;
+    this.setState({ searchQuery: { phrase: value } });
+  };
+
   render() {
-    const { classes, epigrams, goToEditPage } = this.props;
+    const { classes, epigrams: allEpigrams, goToEditPage } = this.props;
+    const { searchQuery } = this.state;
+    const epigrams = filterEpigrams(allEpigrams, searchQuery);
+
     return (
       <Page title="Rechercher une oeuvre">
         <Card className={classes.searchCard}>
-          <CardHeader title="Recherche" />
+          <CardContent>
+            <TextField
+              placeholder="Rechercher..."
+              value={searchQuery.phrase}
+              onChange={this.handleSearchPhraseChange}
+              fullWidth
+              margin="normal"
+            />
+            <Typography>{epigrams.length} résultats</Typography>
+          </CardContent>
         </Card>
         <hr />
-        {epigrams.map(e => (
-          <EpigramView epigram={e} goToEditPage={goToEditPage} key={e._id} />
-        ))}
+        {epigrams
+          .slice(0, 20)
+          .map(e => (
+            <EpigramView epigram={e} goToEditPage={goToEditPage} key={e._id} />
+          ))}
       </Page>
     );
   }
