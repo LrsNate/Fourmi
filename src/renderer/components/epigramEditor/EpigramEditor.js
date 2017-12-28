@@ -60,6 +60,9 @@ class EpigramEditor extends Component {
             <Grid item sm={3}>
               <TextInput label="Date" name="date" />
             </Grid>
+            <Grid item sm={12}>
+              <TextInput label="Vices" name="vices" />
+            </Grid>
           </Grid>
         </CardContent>
       </Card>

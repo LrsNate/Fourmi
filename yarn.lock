@@ -2569,6 +2569,10 @@ draft-js@^0.10.4:
     immutable "~3.7.4"
     object-assign "^4.1.0"
 
+draftjs-to-html@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/draftjs-to-html/-/draftjs-to-html-0.8.1.tgz#a696789c61c689c01f7884a91c71944cc69738d7"
+
 draftjs-utils@^0.8.07:
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/draftjs-utils/-/draftjs-utils-0.8.8.tgz#5835daed95f59d3ee1f96fdcbbb9809772c86490"
@@ -3982,6 +3986,10 @@ html-minifier@^3.0.1, html-minifier@^3.2.3:
     param-case "2.1.x"
     relateurl "0.2.x"
     uglify-js "3.1.x"
+
+html-to-draftjs@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/html-to-draftjs/-/html-to-draftjs-1.1.1.tgz#d16874952f9eadf9dee5796ddec2d4da39d963d6"
 
 html-webpack-plugin@^2.30.1:
   version "2.30.1"

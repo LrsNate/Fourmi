@@ -12,8 +12,10 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "draft-js": "^0.10.4",
+    "draftjs-to-html": "^0.8.1",
     "final-form": "^3.0.0",
     "history": "^4.7.2",
+    "html-to-draftjs": "^1.1.1",
     "immutable": "^3.8.2",
     "lodash": "^4.17.4",
     "material-ui": "^1.0.0-beta.25",

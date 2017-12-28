@@ -1,4 +1,6 @@
-import { ContentState, EditorState } from "draft-js";
+import { ContentState, EditorState, convertToRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
+import htmlToDraft from "html-to-draftjs";
 import { withStyles } from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
@@ -34,10 +36,11 @@ class TextEditor extends Component {
   constructor(props) {
     super(props);
     const { value } = this.props;
+    const { contentBlocks, entityMap } = htmlToDraft(value);
 
     this.state = {
       editorState: EditorState.createWithContent(
-        ContentState.createFromText(value)
+        ContentState.createFromBlockArray(contentBlocks, entityMap)
       )
     };
   }
@@ -45,7 +48,8 @@ class TextEditor extends Component {
   onEditorStateChange = editorState => {
     const { onChange } = this.props;
     this.setState({ editorState });
-    onChange(editorState.getCurrentContent().getPlainText());
+    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+    onChange(draftToHtml(convertToRaw(editorState.getCurrentContent())));
   };
 
   render() {
