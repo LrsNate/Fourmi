@@ -97,7 +97,6 @@
     "dist": "yarn compile && electron-builder",
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
     "test": "jest",
-    "test:coverage": "jest --collectCoverage",
     "reformat": "run-s reformat:src reformat:test reformat:scripts",
     "reformat:src": "prettier --write app/*.js app/**/*.js",
     "reformat:test": "prettier --write test/*.js test/**/*.js",
