@@ -20,9 +20,6 @@ import TextTypography from "./TextTypography";
 const styles = theme => ({
   card: {
     marginBottom: theme.spacing.unit
-  },
-  content: {
-    transitionDuration: 0.5
   }
 });
 
@@ -41,10 +38,10 @@ class EpigramView extends Component {
   }
 
   renderEpigramContent() {
-    const { classes, epigram: { frenchText, latinText } } = this.props;
+    const { epigram: { frenchText, latinText } } = this.props;
 
     return (
-      <CardContent className={classes.content}>
+      <CardContent>
         <Grid container>
           <Grid item sm={6}>
             <TextTypography>{latinText}</TextTypography>
@@ -77,7 +74,7 @@ class EpigramView extends Component {
             </IconButton>
           }
         />
-        {collapsed || this.renderEpigramContent()}
+        {!collapsed && this.renderEpigramContent()}
       </Card>
     );
   }

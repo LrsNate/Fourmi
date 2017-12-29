@@ -9,7 +9,6 @@ export const sortEpigrams = epigrams =>
 
 export const filterEpigrams = (epigrams, query) => {
   const searchTerms = query.phrase.split(/\s+/);
-  console.log(searchTerms);
   if (searchTerms.length === 0) {
     return epigrams;
   }
