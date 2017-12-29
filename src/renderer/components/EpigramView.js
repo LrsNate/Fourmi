@@ -2,8 +2,8 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Grid,
   IconButton,
-  Typography,
   withStyles
 } from "material-ui";
 import {
@@ -15,6 +15,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 import FourmiPropTypes from "../constants/types";
+import TextTypography from "./TextTypography";
 
 const styles = theme => ({
   card: {
@@ -40,10 +41,18 @@ class EpigramView extends Component {
   }
 
   renderEpigramContent() {
-    const { classes, epigram: { latinText } } = this.props;
+    const { classes, epigram: { frenchText, latinText } } = this.props;
+
     return (
       <CardContent className={classes.content}>
-        <Typography>{latinText}</Typography>
+        <Grid container>
+          <Grid item sm={6}>
+            <TextTypography>{latinText}</TextTypography>
+          </Grid>
+          <Grid item sm={6}>
+            <TextTypography>{frenchText}</TextTypography>
+          </Grid>
+        </Grid>
       </CardContent>
     );
   }
