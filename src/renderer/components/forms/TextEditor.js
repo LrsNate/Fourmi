@@ -48,7 +48,6 @@ class TextEditor extends Component {
   onEditorStateChange = editorState => {
     const { onChange } = this.props;
     this.setState({ editorState });
-    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     onChange(draftToHtml(convertToRaw(editorState.getCurrentContent())));
   };
 

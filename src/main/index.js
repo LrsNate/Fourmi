@@ -10,6 +10,7 @@ const installExtensions = async () => {
     try {
       await installer.default(installer[name], forceDownload);
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log(`Error installing ${name} extension: ${e.message}`);
     }
   }

@@ -97,8 +97,8 @@
     "dist": "yarn compile && electron-builder",
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
     "test": "jest",
-    "reformat": "run-s reformat:src reformat:test reformat:scripts",
-    "reformat:src": "prettier --write app/*.js app/**/*.js",
+    "reformat": "run-s reformat:src reformat:test",
+    "reformat:src": "prettier --write src/*.js src/**/*.js",
     "reformat:test": "prettier --write test/*.js test/**/*.js",
     "lint": "eslint src test"
   }
