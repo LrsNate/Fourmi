@@ -1,11 +1,7 @@
 import { render, shallow } from "enzyme";
 import React from "react";
 
-import {
-  Boot,
-  mapDispatchToProps,
-  mapStateToProps
-} from "../../src/renderer/routes/Boot";
+import { Boot, mapDispatchToProps, mapStateToProps } from "./Boot";
 
 jest.mock("react-router-redux", () => ({
   replace(path) {
@@ -14,7 +10,7 @@ jest.mock("react-router-redux", () => ({
   }
 }));
 
-jest.mock("../../src/renderer/actions/database", () => ({
+jest.mock("../actions/database", () => ({
   ensureDatabaseFolderExistsAction: jest.fn(() =>
     Promise.resolve("ensureDatabaseFolderExists")
   ),
@@ -23,7 +19,7 @@ jest.mock("../../src/renderer/actions/database", () => ({
   )
 }));
 
-jest.mock("../../src/renderer/lib/files", () => ({
+jest.mock("../lib/files", () => ({
   getDataFolderPath: jest.fn(() => "/home/foo/stuff")
 }));
 

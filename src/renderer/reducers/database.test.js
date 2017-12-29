@@ -1,6 +1,6 @@
 import databaseReducer, {
   initialState
-} from "../../src/renderer/reducers/database";
+} from "./database";
 
 describe("The initial state", () => {
   it("has an empty status history", () => {

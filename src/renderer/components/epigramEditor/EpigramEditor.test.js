@@ -1,7 +1,7 @@
 import { render } from "enzyme";
 import React from "react";
 
-import EpigramEditor from "../../../src/renderer/components/epigramEditor/EpigramEditor";
+import EpigramEditor from "./EpigramEditor";
 
 describe("The EpigramEditor component", () => {
   describe("on an initial load", () => {

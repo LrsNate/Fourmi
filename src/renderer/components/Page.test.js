@@ -5,7 +5,7 @@ import {
   mapDispatchToProps,
   mapStateToProps,
   Page
-} from "../../src/renderer/components/Page";
+} from "./Page";
 
 jest.mock("react-router-redux", () => ({
   goBack() {

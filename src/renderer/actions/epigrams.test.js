@@ -1,7 +1,7 @@
 import {
   loadEpigramsAction,
   saveEpigramAction
-} from "../../src/renderer/actions/epigrams";
+} from "./epigrams";
 
 jest.mock("nedb");
 jest.mock("os");
