@@ -292,7 +292,7 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
     </div>
   </div>
   <button
-    class="MuiButtonBase-root-195 MuiButton-root-180 MuiButton-raised-187 MuiButton-raisedPrimary-189"
+    class="MuiButtonBase-root-195 MuiButton-root-180 MuiButton-raised-187 MuiButton-raisedAccent-190"
     role="button"
     tabindex="0"
     type="submit"

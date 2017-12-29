@@ -1,6 +1,6 @@
 import { createMemoryHistory } from "history";
 import { createMuiTheme, MuiThemeProvider } from "material-ui";
-import { amber, teal } from "material-ui/colors";
+import { orange, teal } from "material-ui/colors";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -26,7 +26,7 @@ syncHistoryWithStore(store, routerHistory);
 const theme = createMuiTheme({
   palette: {
     primary: teal,
-    secondary: amber
+    secondary: orange
   }
 });
 

@@ -92,7 +92,7 @@ class EpigramEditor extends Component {
             {this.renderTextEditor("Texte latin", "latinText")}
             {this.renderTextEditor("Texte français", "frenchText")}
             {this.renderTextEditor("Notes", "notes")}
-            <Button type="submit" raised color="primary">
+            <Button type="submit" raised color="accent">
               Enregistrer
             </Button>
           </form>
