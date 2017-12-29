@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The TextTypography component on an initial load matches the snapshot 1`] = `
+<div
+  class="TextTypography-textTypography-1"
+>
+  Some text
+</div>
+`;
