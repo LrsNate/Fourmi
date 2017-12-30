@@ -4,24 +4,15 @@ import {
   CardHeader,
   Grid,
   IconButton,
-  ListItemIcon,
-  ListItemText,
-  Menu,
-  MenuItem,
   withStyles
 } from "material-ui";
-import {
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-  ModeEdit,
-  MoreVert,
-  Reply
-} from "material-ui-icons";
+import { KeyboardArrowDown, KeyboardArrowUp } from "material-ui-icons";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 
-import FourmiPropTypes from "../constants/types";
-import TextTypography from "./TextTypography";
+import FourmiPropTypes from "../../constants/types";
+import TextTypography from "../TextTypography";
+import ActionsMenu from "./ActionsMenu";
 
 const styles = theme => ({
   card: {
@@ -34,7 +25,8 @@ class EpigramView extends Component {
     classes: PropTypes.object,
     // eslint-disable-next-line react/no-typos
     epigram: FourmiPropTypes.epigram.isRequired,
-    goToEditPage: PropTypes.func.isRequired
+    goToEditPage: PropTypes.func.isRequired,
+    filterByImitations: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -42,11 +34,7 @@ class EpigramView extends Component {
   };
 
   state = {
-    collapsed: true,
-    menu: {
-      open: false,
-      anchorElement: null
-    }
+    collapsed: true
   };
 
   toggleCollapse = () => {
@@ -54,49 +42,10 @@ class EpigramView extends Component {
     this.setState({ collapsed: !collapsed });
   };
 
-  handleMenuOpen = event => {
-    this.setState({ menu: { open: true, anchorElement: event.currentTarget } });
-  };
-
-  handleMenuClose = () => {
-    this.setState({ menu: { open: false, anchorElement: null } });
-  };
-
   renderTitle() {
     const { epigram: { author, reference, title } } = this.props;
     const core = `${author} - ${reference}`;
     return title ? `${core}: ${title}` : core;
-  }
-
-  renderActionsMenu() {
-    const { epigram, goToEditPage } = this.props;
-    const { menu: { open, anchorElement } } = this.state;
-
-    return (
-      <div>
-        <IconButton onClick={this.handleMenuOpen}>
-          <MoreVert />
-        </IconButton>
-        <Menu
-          open={open}
-          anchorEl={anchorElement}
-          onClose={this.handleMenuClose}
-        >
-          <MenuItem onClick={this.handleMenuClose}>
-            <ListItemIcon>
-              <Reply />
-            </ListItemIcon>
-            <ListItemText inset primary="Imitations" />
-          </MenuItem>
-          <MenuItem onClick={() => goToEditPage(epigram._id)}>
-            <ListItemIcon>
-              <ModeEdit />
-            </ListItemIcon>
-            <ListItemText inset primary="Éditer" />
-          </MenuItem>
-        </Menu>
-      </div>
-    );
   }
 
   renderEpigramContent() {
@@ -117,7 +66,7 @@ class EpigramView extends Component {
   }
 
   render() {
-    const { classes, epigram } = this.props;
+    const { classes, epigram, filterByImitations, goToEditPage } = this.props;
     const { collapsed } = this.state;
 
     return (
@@ -130,7 +79,13 @@ class EpigramView extends Component {
           }
           title={this.renderTitle()}
           subheader={collapsed && epigram.frenchText.substr(0, 50)}
-          action={this.renderActionsMenu()}
+          action={
+            <ActionsMenu
+              epigram={epigram}
+              filterByImitations={filterByImitations}
+              goToEditPage={goToEditPage}
+            />
+          }
         />
         {!collapsed && this.renderEpigramContent()}
       </Card>

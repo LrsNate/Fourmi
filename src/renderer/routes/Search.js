@@ -14,9 +14,10 @@ import { loadEpigramsAction } from "../actions/epigrams";
 import { epigramsLoadingStatus } from "../constants/reducers";
 import { editRoute } from "../constants/routes";
 import FourmiPropTypes from "../constants/types";
-import { filterEpigrams, sortEpigrams } from "../lib/epigrams";
+import { filterEpigrams } from "../lib/epigrams/filter";
+import { sortEpigrams } from "../lib/epigrams/sort";
 import Page from "../components/Page";
-import EpigramView from "../components/EpigramView";
+import EpigramView from "../components/epigramView/EpigramView";
 
 const mapStateToProps = state => {
   const { epigrams: { status, epigrams } } = state;
@@ -45,6 +46,18 @@ const styles = theme => ({
 });
 
 class Search extends Component {
+  static propTypes = {
+    classes: PropTypes.object,
+    epigrams: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired,
+    goToEditPage: PropTypes.func.isRequired,
+    loadEpigrams: PropTypes.func.isRequired,
+    status: PropTypes.string.isRequired
+  };
+
+  static defaultProps = {
+    classes: {}
+  };
+
   state = {
     searchQuery: {
       phrase: ""
@@ -61,6 +74,10 @@ class Search extends Component {
   handleSearchPhraseChange = event => {
     const { target: { value } } = event;
     this.setState({ searchQuery: { phrase: value } });
+  };
+
+  handleImitationFilterRequest = originId => {
+    this.setState({ searchQuery: { phrase: "", originId } });
   };
 
   render() {
@@ -86,24 +103,17 @@ class Search extends Component {
         {epigrams
           .slice(0, 20)
           .map(e => (
-            <EpigramView epigram={e} goToEditPage={goToEditPage} key={e._id} />
+            <EpigramView
+              epigram={e}
+              goToEditPage={goToEditPage}
+              filterByImitations={this.handleImitationFilterRequest}
+              key={e._id}
+            />
           ))}
       </Page>
     );
   }
 }
-
-Search.propTypes = {
-  classes: PropTypes.object,
-  epigrams: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired,
-  goToEditPage: PropTypes.func.isRequired,
-  loadEpigrams: PropTypes.func.isRequired,
-  status: PropTypes.string.isRequired
-};
-
-Search.defaultProps = {
-  classes: {}
-};
 
 export default withStyles(styles)(
   connect(mapStateToProps, mapDispatchToProps)(Search)

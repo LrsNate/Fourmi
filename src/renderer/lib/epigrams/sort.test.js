@@ -2,7 +2,7 @@ import {
   getSortKey,
   resolveOrigin,
   sortEpigrams
-} from "./epigrams";
+} from "./sort";
 
 describe("The sortEpigrams function", () => {
   it("sorts epigrams", () => {
