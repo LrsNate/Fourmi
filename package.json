@@ -1,5 +1,6 @@
 {
   "name": "fourmi",
+  "private": true,
   "version": "2.0.0-alpha.2",
   "description": "fourmi",
   "main": "src/main/index.js",
@@ -66,6 +67,7 @@
     "npm-run-all": "^4.1.2",
     "prettier": "^1.9.2",
     "react-test-renderer": "^16.2.0",
+    "release-it": "^5.1.2",
     "rimraf": "^2.6.2",
     "source-map-support": "^0.5.0",
     "webpack": "3.8.1"
@@ -96,6 +98,7 @@
     "compile": "NODE_ENV=production electron-webpack",
     "dist": "yarn compile && electron-builder",
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
+    "release": "yarn dist && release-it",
     "test": "jest",
     "reformat": "run-s reformat:src reformat:test",
     "reformat:src": "prettier --write src/*.js src/**/*.js",
