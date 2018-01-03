@@ -35,6 +35,7 @@
     "redux": "^3.0.0",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
+    "source-map-support": "^0.5.0",
     "traverse": "^0.6.6",
     "typeface-eb-garamond": "^0.0.45",
     "typeface-roboto": "^0.0.45"
@@ -69,7 +70,6 @@
     "react-test-renderer": "^16.2.0",
     "release-it": "^5.1.2",
     "rimraf": "^2.6.2",
-    "source-map-support": "^0.5.0",
     "webpack": "3.8.1"
   },
   "jest": {
