@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import "babel-polyfill";
 import { app, BrowserWindow } from "electron";
+import packageConfig from "../../package.json";
 
 const installExtensions = async () => {
   const installer = require("electron-devtools-installer");
@@ -24,7 +25,9 @@ let mainWindow;
 
 function createMainWindow() {
   // Construct new BrowserWindow
-  const window = new BrowserWindow();
+  const window = new BrowserWindow({
+    title: `Fourmi [v${packageConfig.version}]`
+  });
 
   // Set url for `win`
   // points to `webpack-dev-server` in development
