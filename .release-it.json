@@ -1,4 +1,5 @@
 {
+  "buildCommand": "yarn clean && yarn dist",
   "src": {
     "tagName": "v%s"
   },

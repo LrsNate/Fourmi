@@ -96,9 +96,10 @@
   "scripts": {
     "dev": "electron-webpack dev",
     "compile": "NODE_ENV=production electron-webpack",
+    "clean": "rimraf dist build coverage",
     "dist": "yarn compile && electron-builder",
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
-    "release": "yarn dist && release-it",
+    "release": "release-it",
     "test": "jest",
     "reformat": "run-s reformat:src reformat:test",
     "reformat:src": "prettier --write src/*.js src/**/*.js",
