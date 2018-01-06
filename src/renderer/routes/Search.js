@@ -1,30 +1,24 @@
-import {
-  Card,
-  CardContent,
-  TextField,
-  Typography,
-  withStyles
-} from "material-ui";
+import { withStyles } from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
 
 import { loadEpigramsAction } from "../actions/epigrams";
+import EpigramView from "../components/epigramView/EpigramView";
+import Page from "../components/Page";
+import SearchCard from "../components/SearchCard";
 import { epigramsLoadingStatus } from "../constants/reducers";
 import { editRoute } from "../constants/routes";
 import FourmiPropTypes from "../constants/types";
-import { filterEpigrams } from "../lib/epigrams/filter";
 import { sortEpigrams } from "../lib/epigrams/sort";
-import Page from "../components/Page";
-import EpigramView from "../components/epigramView/EpigramView";
 
 const mapStateToProps = state => {
-  const { epigrams: { status, epigrams } } = state;
+  const { epigrams: { status, epigrams }, search: { results } } = state;
 
   return {
     status,
-    epigrams: sortEpigrams(Object.values(epigrams))
+    epigrams: sortEpigrams(epigrams, Object.values(results))
   };
 };
 
@@ -58,12 +52,6 @@ class Search extends Component {
     classes: {}
   };
 
-  state = {
-    searchQuery: {
-      phrase: ""
-    }
-  };
-
   componentWillMount() {
     const { status, loadEpigrams } = this.props;
     if (status === epigramsLoadingStatus) {
@@ -71,34 +59,16 @@ class Search extends Component {
     }
   }
 
-  handleSearchPhraseChange = event => {
-    const { target: { value } } = event;
-    this.setState({ searchQuery: { phrase: value } });
-  };
-
   handleImitationFilterRequest = originId => {
-    this.setState({ searchQuery: { phrase: "", originId } });
+    // this.setState({ searchQuery: { phrase: "", originId } });
   };
 
   render() {
-    const { classes, epigrams: allEpigrams, goToEditPage } = this.props;
-    const { searchQuery } = this.state;
-    const epigrams = filterEpigrams(allEpigrams, searchQuery);
+    const { classes, epigrams, goToEditPage } = this.props;
 
     return (
       <Page title="Rechercher une oeuvre">
-        <Card className={classes.searchCard}>
-          <CardContent>
-            <TextField
-              placeholder="Rechercher..."
-              value={searchQuery.phrase}
-              onChange={this.handleSearchPhraseChange}
-              fullWidth
-              margin="normal"
-            />
-            <Typography>{epigrams.length} résultats</Typography>
-          </CardContent>
-        </Card>
+        <SearchCard className={classes.searchCard} />
         <hr />
         {epigrams
           .slice(0, 20)

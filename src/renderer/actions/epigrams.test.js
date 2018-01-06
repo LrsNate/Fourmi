@@ -1,7 +1,4 @@
-import {
-  loadEpigramsAction,
-  saveEpigramAction
-} from "./epigrams";
+import { loadEpigramsAction, saveEpigramAction } from "./epigrams";
 
 jest.mock("nedb");
 jest.mock("os");
@@ -12,7 +9,11 @@ describe("The loadEpigrams action", () => {
 
     return loadEpigramsAction()(dispatch).then(({ type, epigrams }) => {
       expect(type).toBe("LOAD_EPIGRAMS");
-      expect(epigrams).toEqual([{ _id: "a" }, { _id: "b" }, { _id: "c" }]);
+      expect(epigrams).toEqual({
+        a: { _id: "a" },
+        b: { _id: "b" },
+        c: { _id: "c" }
+      });
     });
   });
 });

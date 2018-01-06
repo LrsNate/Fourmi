@@ -7,3 +7,4 @@ export const databaseReadyType = "DATABASE_READY";
 
 export const loadEpigramsType = "LOAD_EPIGRAMS";
 export const saveEpigramType = "SAVE_EPIGRAM";
+export const searchEpigramsType = "SEARCH_EPIGRAMS";

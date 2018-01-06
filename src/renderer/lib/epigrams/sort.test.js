@@ -1,24 +1,33 @@
-import {
-  getSortKey,
-  resolveOrigin,
-  sortEpigrams
-} from "./sort";
+import { getSortKey, resolveOrigin, sortEpigrams } from "./sort";
 
 describe("The sortEpigrams function", () => {
   it("sorts epigrams", () => {
-    const epigrams = [
-      { _id: "id_1", originId: "id_2", author: "aaa" },
-      { _id: "id_3", reference: "III, 0", author: "Martial" },
-      { _id: "id_2", reference: "De Spectaculis, 2", author: "Martial" },
-      { _id: "id_4", originId: "id_3", author: "aaa" }
-    ];
+    const epigrams = {
+      id_1: {
+        _id: "id_1",
+        originId: "id_2",
+        author: "aaa"
+      },
+      id_3: {
+        _id: "id_3",
+        reference: "III, 0",
+        author: "Martial"
+      },
+      id_2: {
+        _id: "id_2",
+        reference: "De Spectaculis, 2",
+        author: "Martial"
+      },
+      id_4: {
+        _id: "id_4",
+        originId: "id_3",
+        author: "aaa"
+      }
+    };
 
-    expect(sortEpigrams(epigrams).map(e => e._id)).toEqual([
-      "id_2",
-      "id_1",
-      "id_3",
-      "id_4"
-    ]);
+    expect(
+      sortEpigrams(epigrams, Object.values(epigrams)).map(e => e._id)
+    ).toEqual(["id_2", "id_1", "id_3", "id_4"]);
   });
 });
 
@@ -46,17 +55,26 @@ describe("The getSortKey function", () => {
 
     it("returns a sort key with converted references and the author", () => {
       expect(
-        getSortKey([{ _id: "id_a", reference: "I, 5", author: "Martial" }], {
-          ...epigram,
-          author: "Knuth"
-        })
+        getSortKey(
+          { id_a: { _id: "id_a", reference: "I, 5", author: "Martial" } },
+          {
+            ...epigram,
+            author: "Knuth"
+          }
+        )
       ).toEqual(["0001", "0005", "knuth"]);
     });
 
     it("treats `De Spectaculis` as book 0", () => {
       expect(
         getSortKey(
-          [{ _id: "id_a", reference: "De Spectaculis, 24", author: "Martial" }],
+          {
+            id_a: {
+              _id: "id_a",
+              reference: "De Spectaculis, 24",
+              author: "Martial"
+            }
+          },
           {
             ...epigram,
             author: "Knuth"
@@ -67,10 +85,13 @@ describe("The getSortKey function", () => {
 
     it("treats `Martial` as author 0", () => {
       expect(
-        getSortKey([], {
-          reference: "De Spectaculis, 24",
-          author: "Martial"
-        })
+        getSortKey(
+          {},
+          {
+            reference: "De Spectaculis, 24",
+            author: "Martial"
+          }
+        )
       ).toEqual(["0000", "0024", "a"]);
     });
   });
@@ -81,35 +102,41 @@ describe("The resolveOrigin function", () => {
     it("returns the epigram's own reference", () => {
       const epigram = { reference: "a", author: "Martial" };
 
-      expect(resolveOrigin([], epigram)).toBe("a");
+      expect(resolveOrigin({}, epigram)).toBe("a");
     });
   });
 
   describe("when the epigram has no origin", () => {
     it("returns null", () => {
-      expect(resolveOrigin([], {})).toBeNull();
+      expect(resolveOrigin({}, {})).toBeNull();
     });
   });
 
   describe("when the epigram has a Martial origin", () => {
     it("returns the Martial origin reference", () => {
-      const epigrams = [
-        { _id: "id_a", reference: "ref_a", author: "Martial" },
-        { originId: "id_a" }
-      ];
+      const epigrams = {
+        id_a: {
+          _id: "id_a",
+          reference: "ref_a",
+          author: "Martial"
+        }
+      };
 
-      expect(resolveOrigin(epigrams, epigrams[1])).toEqual("ref_a");
+      expect(
+        resolveOrigin(epigrams, {
+          originId: "id_a"
+        })
+      ).toEqual("ref_a");
     });
   });
 
   describe("when the epigram has a non-Martial origin", () => {
     it("returns null", () => {
-      const epigrams = [
-        { _id: "id_a", reference: "ref_a" },
-        { originId: "id_a" }
-      ];
+      const epigrams = {
+        id_a: { _id: "id_a", reference: "ref_a" }
+      };
 
-      expect(resolveOrigin(epigrams, epigrams[1])).toBeNull();
+      expect(resolveOrigin(epigrams, { originId: "id_a" })).toBeNull();
     });
   });
 });

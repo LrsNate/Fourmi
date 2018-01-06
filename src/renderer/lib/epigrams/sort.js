@@ -1,12 +1,10 @@
 import padStart from "lodash/padStart";
 import sortBy from "lodash/sortBy";
 
-import {ofRoman} from "../numerals";
+import { ofRoman } from "../numerals";
 
-export const sortEpigrams = epigrams =>
-  sortBy(epigrams, doc => getSortKey(epigrams, doc));
-
-
+export const sortEpigrams = (allDocs, filteredDocs) =>
+  sortBy(filteredDocs, doc => getSortKey(allDocs, doc));
 
 export const getSortKey = (docs, doc) => {
   const { author } = doc;
@@ -34,7 +32,7 @@ export const resolveOrigin = (docs, doc) => {
     return doc.reference;
   }
   if (doc.originId) {
-    const originWork = docs.find(o => doc.originId === o._id);
+    const originWork = docs[doc.originId];
     if (originWork.author === "Martial") {
       return originWork.reference;
     }

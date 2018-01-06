@@ -11,6 +11,7 @@ import { loadEpigramsAction } from "./actions/epigrams";
 
 import database from "./reducers/database";
 import epigrams from "./reducers/epigrams";
+import search from "./reducers/search";
 
 export default function configureStore(initialState, routerHistory) {
   const router = routerMiddleware(routerHistory);
@@ -23,7 +24,8 @@ export default function configureStore(initialState, routerHistory) {
   const reducers = {
     database,
     epigrams,
-    routing
+    routing,
+    search
   };
 
   const middlewares = [thunk, router];

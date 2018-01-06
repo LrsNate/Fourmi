@@ -10,7 +10,7 @@ describe("The epigrams reducer", () => {
   it("loads epigrams", () => {
     const action = {
       type: "LOAD_EPIGRAMS",
-      epigrams: [{ _id: "a" }, { _id: "b" }, { _id: "c" }]
+      epigrams: { a: { _id: "a" }, b: { _id: "b" }, c: { _id: "c" } }
     };
 
     const state = epigramsReducer(initialState, action);

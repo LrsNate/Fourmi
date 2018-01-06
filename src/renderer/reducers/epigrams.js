@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
     case loadEpigramsType:
       return {
         status: epigramsLoadedStatus,
-        epigrams: keyBy(action.epigrams, "_id")
+        epigrams: action.epigrams
       };
     case saveEpigramType:
       return {
