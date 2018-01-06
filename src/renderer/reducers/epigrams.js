@@ -1,5 +1,3 @@
-import keyBy from "lodash/keyBy";
-
 import { loadEpigramsType, saveEpigramType } from "../constants/actions";
 import {
   epigramsLoadedStatus,

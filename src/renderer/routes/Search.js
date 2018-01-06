@@ -59,10 +59,6 @@ class Search extends Component {
     }
   }
 
-  handleImitationFilterRequest = originId => {
-    // this.setState({ searchQuery: { phrase: "", originId } });
-  };
-
   render() {
     const { classes, epigrams, goToEditPage } = this.props;
 
@@ -76,7 +72,7 @@ class Search extends Component {
             <EpigramView
               epigram={e}
               goToEditPage={goToEditPage}
-              filterByImitations={this.handleImitationFilterRequest}
+              filterByImitations={() => {}}
               key={e._id}
             />
           ))}
