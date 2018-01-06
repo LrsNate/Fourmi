@@ -48,6 +48,8 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.1.18",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
     "electron": "^1.7.10",
     "electron-builder": "^19.49.2",
     "electron-devtools-installer": "^2.2.3",
@@ -104,6 +106,12 @@
     "reformat": "run-s reformat:src reformat:test",
     "reformat:src": "prettier --write src/*.js src/**/*.js",
     "reformat:test": "prettier --write test/*.js test/**/*.js",
-    "lint": "eslint src test"
+    "lint": "eslint src test",
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
