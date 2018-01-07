@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 import { push } from "react-router-redux";
 
 import { loadEpigramsAction } from "../actions/epigrams";
-import EpigramView from "../components/epigramView/EpigramView";
 import Page from "../components/Page";
 import SearchCard from "../components/SearchCard";
+import SearchResults from "../components/SearchResults";
 import { epigramsLoadingStatus } from "../constants/reducers";
 import { editRoute } from "../constants/routes";
 import FourmiPropTypes from "../constants/types";
@@ -72,7 +72,7 @@ class Search extends Component {
   };
 
   handleFilterByImitations = originId => {
-    this.setState({ query: { originId } });
+    this.setState({ query: { phrase: "", originId } });
   };
 
   render() {
@@ -89,16 +89,11 @@ class Search extends Component {
           results={results}
         />
         <hr />
-        {results
-          .slice(0, 20)
-          .map(e => (
-            <EpigramView
-              epigram={e}
-              goToEditPage={goToEditPage}
-              filterByImitations={this.handleFilterByImitations}
-              key={e._id}
-            />
-          ))}
+        <SearchResults
+          results={results}
+          goToEditPage={goToEditPage}
+          onFilterByImitations={this.handleFilterByImitations}
+        />
       </Page>
     );
   }
