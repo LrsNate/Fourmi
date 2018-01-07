@@ -11,14 +11,15 @@ import SearchCard from "../components/SearchCard";
 import { epigramsLoadingStatus } from "../constants/reducers";
 import { editRoute } from "../constants/routes";
 import FourmiPropTypes from "../constants/types";
+import { filterEpigrams } from "../lib/epigrams/filter";
 import { sortEpigrams } from "../lib/epigrams/sort";
 
 const mapStateToProps = state => {
-  const { epigrams: { status, epigrams }, search: { results } } = state;
+  const { epigrams: { status, epigrams } } = state;
 
   return {
     status,
-    epigrams: sortEpigrams(epigrams, Object.values(results))
+    epigrams
   };
 };
 
@@ -52,6 +53,13 @@ class Search extends Component {
     classes: {}
   };
 
+  state = {
+    query: {
+      phrase: "",
+      originId: ""
+    }
+  };
+
   componentWillMount() {
     const { status, loadEpigrams } = this.props;
     if (status === epigramsLoadingStatus) {
@@ -59,20 +67,36 @@ class Search extends Component {
     }
   }
 
+  handleQueryChange = query => {
+    this.setState({ query });
+  };
+
+  handleFilterByImitations = originId => {
+    this.setState({ query: { originId } });
+  };
+
   render() {
     const { classes, epigrams, goToEditPage } = this.props;
+    const { query } = this.state;
+    const results = filterEpigrams(epigrams, query);
+    const sortedEpigrams = sortEpigrams(epigrams, results);
 
     return (
       <Page title="Rechercher une oeuvre">
-        <SearchCard className={classes.searchCard} />
+        <SearchCard
+          className={classes.searchCard}
+          query={query}
+          onChange={this.handleQueryChange}
+          results={results}
+        />
         <hr />
-        {epigrams
+        {sortedEpigrams
           .slice(0, 20)
           .map(e => (
             <EpigramView
               epigram={e}
               goToEditPage={goToEditPage}
-              filterByImitations={() => {}}
+              filterByImitations={this.handleFilterByImitations}
               key={e._id}
             />
           ))}

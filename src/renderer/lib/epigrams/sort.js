@@ -4,7 +4,7 @@ import sortBy from "lodash/sortBy";
 import { ofRoman } from "../numerals";
 
 export const sortEpigrams = (allDocs, filteredDocs) =>
-  sortBy(filteredDocs, doc => getSortKey(allDocs, doc));
+  sortBy(Object.values(filteredDocs), doc => getSortKey(allDocs, doc));
 
 export const getSortKey = (docs, doc) => {
   const { author } = doc;

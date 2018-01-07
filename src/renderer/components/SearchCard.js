@@ -2,23 +2,8 @@ import size from "lodash/size";
 import { Card, CardContent, TextField, Typography } from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { searchEpigramsAction } from "../actions/epigrams";
 
-const mapStateToProps = state => {
-  const { search: { query, results } } = state;
-  return { query, results };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onChange(query) {
-      dispatch(searchEpigramsAction(query));
-    }
-  };
-};
-
-class SearchCard extends Component {
+export default class SearchCard extends Component {
   static propTypes = {
     className: PropTypes.string,
     query: PropTypes.shape({
@@ -55,5 +40,3 @@ class SearchCard extends Component {
     );
   }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchCard);
