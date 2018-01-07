@@ -58,9 +58,7 @@ function createMainWindow() {
 
 // Quit application when all windows are closed
 app.on("window-all-closed", () => {
-  // On macOS it is common for applications to stay open
-  // until the user explicitly quits
-  if (process.platform !== "darwin") app.quit();
+  app.quit();
 });
 
 app.on("activate", () => {
