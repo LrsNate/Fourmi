@@ -1,4 +1,11 @@
-import { Card, CardContent, TextField, Typography } from "material-ui";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  TextField,
+  Typography
+} from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import FourmiPropTypes from "../constants/types";
@@ -7,7 +14,8 @@ export default class SearchCard extends Component {
   static propTypes = {
     className: PropTypes.string,
     query: PropTypes.shape({
-      phrase: PropTypes.string
+      phrase: PropTypes.string,
+      originId: PropTypes.string
     }).isRequired,
     onChange: PropTypes.func.isRequired,
     results: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired
@@ -20,6 +28,11 @@ export default class SearchCard extends Component {
   handleSearchPhraseChange = event => {
     const { query, onChange } = this.props;
     onChange({ ...query, phrase: event.target.value });
+  };
+
+  handleReset = () => {
+    const { onChange } = this.props;
+    onChange({ phrase: "", originId: "" });
   };
 
   render() {
@@ -36,6 +49,10 @@ export default class SearchCard extends Component {
           />
           <Typography>{results.length} résultats</Typography>
         </CardContent>
+        <CardActions>
+          <Button onClick={this.handleReset}>Réinitialiser</Button>
+          <Button color="primary">Ajouter un filtre</Button>
+        </CardActions>
       </Card>
     );
   }
