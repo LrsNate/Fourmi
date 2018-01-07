@@ -1,9 +1,9 @@
 import {
+  push,
   routerMiddleware,
-  routerReducer as routing,
-  push
+  routerReducer as routing
 } from "react-router-redux";
-import { createStore, applyMiddleware, combineReducers } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
@@ -11,7 +11,6 @@ import { loadEpigramsAction } from "./actions/epigrams";
 
 import database from "./reducers/database";
 import epigrams from "./reducers/epigrams";
-import search from "./reducers/search";
 
 export default function configureStore(initialState, routerHistory) {
   const router = routerMiddleware(routerHistory);
@@ -24,8 +23,7 @@ export default function configureStore(initialState, routerHistory) {
   const reducers = {
     database,
     epigrams,
-    routing,
-    search
+    routing
   };
 
   const middlewares = [thunk, router];

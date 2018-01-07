@@ -37,8 +37,3 @@ export const saveEpigramAction = epigram => dispatch => {
     );
   }).then(epigram => dispatch({ type: saveEpigramType, epigram }));
 };
-
-export const searchEpigramsAction = query => (dispatch, getState) => {
-  const {epigrams: {epigrams}} = getState();
-  dispatch({type: searchEpigramsType, query, epigrams});
-};
