@@ -25,9 +25,12 @@ describe("The sortEpigrams function", () => {
       }
     };
 
-    expect(
-      sortEpigrams(epigrams, Object.values(epigrams)).map(e => e._id)
-    ).toEqual(["id_2", "id_1", "id_3", "id_4"]);
+    expect(sortEpigrams(epigrams).map(e => e._id)).toEqual([
+      "id_2",
+      "id_1",
+      "id_3",
+      "id_4"
+    ]);
   });
 });
 

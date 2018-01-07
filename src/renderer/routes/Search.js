@@ -19,7 +19,7 @@ const mapStateToProps = state => {
 
   return {
     status,
-    epigrams
+    epigrams: sortEpigrams(epigrams)
   };
 };
 
@@ -79,7 +79,6 @@ class Search extends Component {
     const { classes, epigrams, goToEditPage } = this.props;
     const { query } = this.state;
     const results = filterEpigrams(epigrams, query);
-    const sortedEpigrams = sortEpigrams(epigrams, results);
 
     return (
       <Page title="Rechercher une oeuvre">
@@ -90,7 +89,7 @@ class Search extends Component {
           results={results}
         />
         <hr />
-        {sortedEpigrams
+        {results
           .slice(0, 20)
           .map(e => (
             <EpigramView

@@ -1,7 +1,7 @@
-import size from "lodash/size";
 import { Card, CardContent, TextField, Typography } from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import FourmiPropTypes from "../constants/types";
 
 export default class SearchCard extends Component {
   static propTypes = {
@@ -10,7 +10,7 @@ export default class SearchCard extends Component {
       phrase: PropTypes.string
     }).isRequired,
     onChange: PropTypes.func.isRequired,
-    results: PropTypes.object.isRequired
+    results: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired
   };
 
   static defaultProps = {
@@ -34,7 +34,7 @@ export default class SearchCard extends Component {
             fullWidth
             margin="normal"
           />
-          <Typography>{size(results)} résultats</Typography>
+          <Typography>{results.length} résultats</Typography>
         </CardContent>
       </Card>
     );

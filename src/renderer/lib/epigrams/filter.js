@@ -1,4 +1,3 @@
-import pickBy from "lodash/pickBy";
 import traverse from "traverse";
 
 export const filterEpigrams = (epigrams, query) => {
@@ -16,7 +15,7 @@ export const filterByTerms = (epigrams, query) => {
     return epigrams;
   }
 
-  return pickBy(epigrams, epigram => {
+  return epigrams.filter(epigram => {
     return searchTerms.every(term => {
       return traverse(epigram).reduce(function(acc, value) {
         if (this.notLeaf) {
@@ -34,8 +33,7 @@ export const filterByOrigin = (epigrams, query) => {
     return epigrams;
   }
 
-  return pickBy(
-    epigrams,
+  return epigrams.filter(
     epigram => epigram._id === originId || epigram.originId === originId
   );
 };
