@@ -98,7 +98,7 @@
   "scripts": {
     "dev": "electron-webpack dev",
     "compile": "NODE_ENV=production electron-webpack",
-    "clean": "rimraf dist build coverage",
+    "clean": "rimraf dist coverage",
     "dist": "yarn compile && electron-builder",
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
     "release": "release-it",
