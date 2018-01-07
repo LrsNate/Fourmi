@@ -1,11 +1,7 @@
-import keyBy from 'lodash/keyBy'
+import keyBy from "lodash/keyBy";
 import DataStore from "nedb";
 
-import {
-  loadEpigramsType,
-  saveEpigramType,
-  searchEpigramsType
-} from "../constants/actions";
+import { loadEpigramsType, saveEpigramType } from "../constants/actions";
 import { getFilePath } from "../lib/files";
 
 let db;
@@ -25,7 +21,7 @@ export const loadEpigramsAction = () => dispatch => {
   }).then(docs =>
     dispatch({
       type: loadEpigramsType,
-      epigrams: keyBy(docs, '_id')
+      epigrams: keyBy(docs, "_id")
     })
   );
 };
