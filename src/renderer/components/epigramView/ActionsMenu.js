@@ -19,16 +19,15 @@ export default class ActionsMenu extends Component {
   };
 
   state = {
-    open: false,
     anchorElement: null
   };
 
   handleMenuOpen = event => {
-    this.setState({ open: true, anchorElement: event.currentTarget });
+    this.setState({ anchorElement: event.currentTarget });
   };
 
   handleMenuClose = () => {
-    this.setState({ open: false, anchorElement: null });
+    this.setState({ anchorElement: null });
   };
 
   handleImitationsClick = () => {
@@ -44,7 +43,7 @@ export default class ActionsMenu extends Component {
   };
 
   render() {
-    const { open, anchorElement } = this.state;
+    const { anchorElement } = this.state;
 
     return (
       <div>
@@ -52,17 +51,17 @@ export default class ActionsMenu extends Component {
           <MoreVert />
         </IconButton>
         <Menu
-          open={open}
+          open={!!anchorElement}
           anchorEl={anchorElement}
           onClose={this.handleMenuClose}
         >
-          <MenuItem onClick={this.handleImitationsClick}>
+          <MenuItem selected={false} onClick={this.handleImitationsClick}>
             <ListItemIcon>
               <Reply />
             </ListItemIcon>
             <ListItemText inset primary="Imitations" />
           </MenuItem>
-          <MenuItem onClick={this.handleEditClick}>
+          <MenuItem selected={false} onClick={this.handleEditClick}>
             <ListItemIcon>
               <ModeEdit />
             </ListItemIcon>

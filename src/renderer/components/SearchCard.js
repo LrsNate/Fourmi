@@ -8,21 +8,34 @@ import {
 } from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import FourmiPropTypes from "../constants/types";
 
-export default class SearchCard extends Component {
+const mapStateToProps = (state, ownProps) => {
+  const { query: { originId } } = ownProps;
+
+  if (originId) {
+    return { ...ownProps, originWork: state.epigrams.epigrams[originId] };
+  } else {
+    return ownProps;
+  }
+};
+
+class SearchCard extends Component {
   static propTypes = {
     className: PropTypes.string,
     query: PropTypes.shape({
       phrase: PropTypes.string,
       originId: PropTypes.string
     }).isRequired,
+    originWork: FourmiPropTypes.epigram,
     onChange: PropTypes.func.isRequired,
     results: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired
   };
 
   static defaultProps = {
-    className: ""
+    className: "",
+    originWork: null
   };
 
   handleSearchPhraseChange = event => {
@@ -36,7 +49,7 @@ export default class SearchCard extends Component {
   };
 
   render() {
-    const { className, query, results } = this.props;
+    const { className, originWork, query, results } = this.props;
     return (
       <Card className={className}>
         <CardContent>
@@ -47,6 +60,11 @@ export default class SearchCard extends Component {
             fullWidth
             margin="normal"
           />
+          {originWork && (
+            <Typography>
+              Origine: {originWork.author} - {originWork.reference}
+            </Typography>
+          )}
           <Typography>{results.length} résultats</Typography>
         </CardContent>
         <CardActions>
@@ -57,3 +75,5 @@ export default class SearchCard extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(SearchCard);
