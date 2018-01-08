@@ -40,6 +40,8 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               class="MuiInput-root-163 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
+                aria-invalid="false"
+                aria-required="false"
                 class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="author"
                 type="text"
@@ -64,6 +66,8 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               class="MuiInput-root-163 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
+                aria-invalid="false"
+                aria-required="false"
                 class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="reference"
                 type="text"
@@ -88,6 +92,8 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               class="MuiInput-root-163 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
+                aria-invalid="false"
+                aria-required="false"
                 class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="title"
                 type="text"
@@ -112,6 +118,8 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               class="MuiInput-root-163 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
+                aria-invalid="false"
+                aria-required="false"
                 class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="meter"
                 type="text"
@@ -136,6 +144,8 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               class="MuiInput-root-163 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
+                aria-invalid="false"
+                aria-required="false"
                 class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="stanza"
                 type="text"
@@ -160,6 +170,8 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               class="MuiInput-root-163 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
+                aria-invalid="false"
+                aria-required="false"
                 class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="addressee"
                 type="text"
@@ -184,6 +196,8 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               class="MuiInput-root-163 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
+                aria-invalid="false"
+                aria-required="false"
                 class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="date"
                 type="text"
@@ -208,6 +222,8 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               class="MuiInput-root-163 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
+                aria-invalid="false"
+                aria-required="false"
                 class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="vices"
                 type="text"
