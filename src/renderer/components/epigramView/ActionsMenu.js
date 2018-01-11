@@ -7,7 +7,7 @@ import {
 } from "material-ui";
 import { ModeEdit, MoreVert, Reply } from "material-ui-icons";
 import PropTypes from "prop-types";
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import FourmiPropTypes from "../../constants/types";
 
 export default class ActionsMenu extends Component {
@@ -46,7 +46,7 @@ export default class ActionsMenu extends Component {
     const { anchorElement } = this.state;
 
     return (
-      <div>
+      <Fragment>
         <IconButton onClick={this.handleMenuOpen}>
           <MoreVert />
         </IconButton>
@@ -68,7 +68,7 @@ export default class ActionsMenu extends Component {
             <ListItemText inset primary="Éditer" />
           </MenuItem>
         </Menu>
-      </div>
+      </Fragment>
     );
   }
 }
