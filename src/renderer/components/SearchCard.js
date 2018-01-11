@@ -68,8 +68,12 @@ class SearchCard extends Component {
           <Typography>{results.length} résultats</Typography>
         </CardContent>
         <CardActions>
-          <Button onClick={this.handleReset}>Réinitialiser</Button>
-          <Button color="primary">Ajouter un filtre</Button>
+          <Button dense onClick={this.handleReset}>
+            Réinitialiser
+          </Button>
+          <Button dense color="primary">
+            Ajouter un filtre
+          </Button>
         </CardActions>
       </Card>
     );
