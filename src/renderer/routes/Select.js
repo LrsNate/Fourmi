@@ -3,12 +3,9 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
-
-import { loadEpigramsAction } from "../actions/epigrams";
 import Page from "../components/Page";
 import SearchCard from "../components/SearchCard";
 import SearchResults from "../components/SearchResults";
-import { epigramsLoadingStatus } from "../constants/reducers";
 import { editRoute } from "../constants/routes";
 import FourmiPropTypes from "../constants/types";
 import { filterEpigrams } from "../lib/epigrams/filter";

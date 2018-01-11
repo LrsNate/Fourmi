@@ -10,12 +10,10 @@ import { Save } from "material-ui-icons";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Form } from "react-final-form";
-import { Link } from "react-router-dom";
-import { selectRoute } from "../../constants/routes";
 
 import FourmiPropTypes from "../../constants/types";
-import TextInput from "../forms/TextInput";
 import TextEditor from "../forms/TextEditor";
+import TextInput from "../forms/TextInput";
 
 const styles = theme => ({
   card: {
