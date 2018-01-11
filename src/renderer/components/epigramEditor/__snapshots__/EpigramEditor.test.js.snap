@@ -233,6 +233,25 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
           </div>
         </div>
       </div>
+      <div
+        class="MuiGrid-typeItem-62 MuiGrid-grid-sm-12-110"
+      >
+        <button
+          class="MuiButtonBase-root-194 MuiButton-root-179"
+          role="button"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label-181"
+          >
+            Origine
+          </span>
+          <span
+            class="MuiTouchRipple-root-196"
+          />
+        </button>
+      </div>
     </div>
   </div>
   <div
@@ -308,17 +327,17 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
     </div>
   </div>
   <button
-    class="MuiButtonBase-root-196 MuiButton-root-181 MuiButton-raised-188 MuiButton-fab-194 MuiButton-raisedAccent-191 EpigramEditor-saveButton-2"
+    class="MuiButtonBase-root-194 MuiButton-root-179 MuiButton-raised-186 MuiButton-fab-192 MuiButton-raisedAccent-189 EpigramEditor-saveButton-2"
     role="button"
     tabindex="0"
     type="submit"
   >
     <span
-      class="MuiButton-label-183"
+      class="MuiButton-label-181"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root-198"
+        class="MuiSvgIcon-root-205"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -328,7 +347,7 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
       </svg>
     </span>
     <span
-      class="MuiTouchRipple-root-205"
+      class="MuiTouchRipple-root-196"
     />
   </button>
 </form>

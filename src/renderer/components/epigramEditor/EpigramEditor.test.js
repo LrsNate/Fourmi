@@ -8,7 +8,11 @@ describe("The EpigramEditor component", () => {
     it("matches the snapshot", () => {
       const epigram = {};
       const wrapper = render(
-        <EpigramEditor epigram={epigram} onSave={() => {}} />
+        <EpigramEditor
+          epigram={epigram}
+          onSave={() => {}}
+          goToSelectPage={() => {}}
+        />
       );
 
       expect(wrapper).toMatchSnapshot();

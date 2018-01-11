@@ -10,6 +10,8 @@ import { Save } from "material-ui-icons";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Form } from "react-final-form";
+import { Link } from "react-router-dom";
+import { selectRoute } from "../../constants/routes";
 
 import FourmiPropTypes from "../../constants/types";
 import TextInput from "../forms/TextInput";
@@ -31,6 +33,7 @@ class EpigramEditor extends Component {
   static propTypes = {
     classes: PropTypes.object,
     epigram: FourmiPropTypes.epigram.isRequired,
+    goToSelectPage: PropTypes.func.isRequired,
     onSave: PropTypes.func.isRequired
   };
 
@@ -39,7 +42,7 @@ class EpigramEditor extends Component {
   };
 
   renderAttributes() {
-    const { classes } = this.props;
+    const { classes, goToSelectPage } = this.props;
 
     return (
       <Card className={classes.card}>
@@ -70,6 +73,9 @@ class EpigramEditor extends Component {
             <Grid item sm={12}>
               <TextInput label="Vices" name="vices" />
             </Grid>
+          </Grid>
+          <Grid item sm={12}>
+            <Button onClick={goToSelectPage}>Origine</Button>
           </Grid>
         </CardContent>
       </Card>

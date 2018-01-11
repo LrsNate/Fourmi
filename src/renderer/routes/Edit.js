@@ -1,13 +1,13 @@
-import {withStyles} from "material-ui";
+import { withStyles } from "material-ui";
 import PropTypes from "prop-types";
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {push} from "react-router-redux";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { push } from "react-router-redux";
 
-import {saveEpigramAction} from "../actions/epigrams";
+import { saveEpigramAction } from "../actions/epigrams";
 import FourmiPropTypes from "../constants/types";
 import EpigramEditor from "../components/epigramEditor/EpigramEditor";
-import {searchRoute} from "../constants/routes";
+import { searchRoute, selectRoute } from "../constants/routes";
 import Page from "../components/Page";
 
 const mapStateToProps = (state, ownProps) => {
@@ -21,6 +21,9 @@ const mapDispatchToProps = dispatch => {
   return {
     returnToSearch() {
       return dispatch(push(searchRoute()));
+    },
+    goToSelectPage() {
+      return dispatch(push(selectRoute()));
     },
     saveEpigram(epigram) {
       return dispatch(saveEpigramAction(epigram));
@@ -46,12 +49,13 @@ class Edit extends Component {
   };
 
   render() {
-    const { classes, epigram } = this.props;
+    const { classes, epigram, goToSelectPage } = this.props;
     return (
       <Page title="Éditer une oeuvre">
         <EpigramEditor
           className={classes.epigramEditor}
           epigram={epigram}
+          goToSelectPage={goToSelectPage}
           onSave={this.handleSubmit}
         />
       </Page>
@@ -64,6 +68,7 @@ Edit.propTypes = {
   // eslint-disable-next-line react/no-typos
   epigram: FourmiPropTypes.epigram.isRequired,
   returnToSearch: PropTypes.func.isRequired,
+  goToSelectPage: PropTypes.func.isRequired,
   saveEpigram: PropTypes.func.isRequired
 };
 

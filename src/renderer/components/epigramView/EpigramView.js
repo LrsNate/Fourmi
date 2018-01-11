@@ -1,5 +1,6 @@
 import {
   Card,
+  CardActions,
   CardContent,
   CardHeader,
   Grid,
@@ -23,6 +24,7 @@ const styles = theme => ({
 class EpigramView extends Component {
   static propTypes = {
     classes: PropTypes.object,
+    actions: PropTypes.func,
     // eslint-disable-next-line react/no-typos
     epigram: FourmiPropTypes.epigram.isRequired,
     goToEditPage: PropTypes.func.isRequired,
@@ -30,7 +32,8 @@ class EpigramView extends Component {
   };
 
   static defaultProps = {
-    classes: {}
+    classes: {},
+    actions: null
   };
 
   state = {
@@ -66,7 +69,13 @@ class EpigramView extends Component {
   }
 
   render() {
-    const { classes, epigram, filterByImitations, goToEditPage } = this.props;
+    const {
+      classes,
+      actions,
+      epigram,
+      filterByImitations,
+      goToEditPage
+    } = this.props;
     const { collapsed } = this.state;
 
     return (
@@ -88,6 +97,7 @@ class EpigramView extends Component {
           }
         />
         {!collapsed && this.renderEpigramContent()}
+        {actions && <CardActions>{actions(epigram)}</CardActions>}
       </Card>
     );
   }
