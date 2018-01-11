@@ -6,6 +6,7 @@ import {
   Grid,
   withStyles
 } from "material-ui";
+import { Save } from "material-ui-icons";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Form } from "react-final-form";
@@ -17,6 +18,12 @@ import TextEditor from "../forms/TextEditor";
 const styles = theme => ({
   card: {
     marginBottom: theme.spacing.unit
+  },
+  saveButton: {
+    position: "fixed",
+    right: theme.spacing.unit * 2,
+    bottom: theme.spacing.unit * 2,
+    zIndex: 1
   }
 });
 
@@ -83,7 +90,7 @@ class EpigramEditor extends Component {
   }
 
   render() {
-    const { epigram, onSave } = this.props;
+    const { classes, epigram, onSave } = this.props;
     return (
       <Form initialValues={epigram} onSubmit={onSave}>
         {({ handleSubmit }) => (
@@ -92,8 +99,13 @@ class EpigramEditor extends Component {
             {this.renderTextEditor("Texte latin", "latinText")}
             {this.renderTextEditor("Texte français", "frenchText")}
             {this.renderTextEditor("Notes", "notes")}
-            <Button type="submit" raised color="accent">
-              Enregistrer
+            <Button
+              className={classes.saveButton}
+              type="submit"
+              fab
+              color="accent"
+            >
+              <Save />
             </Button>
           </form>
         )}
