@@ -7,3 +7,6 @@ export const databaseReadyType = "DATABASE_READY";
 
 export const loadEpigramsType = "LOAD_EPIGRAMS";
 export const saveEpigramType = "SAVE_EPIGRAM";
+
+export const discardDraftType = "DISCARD_DRAFT";
+export const saveDraftType = "SAVE_DRAFT";

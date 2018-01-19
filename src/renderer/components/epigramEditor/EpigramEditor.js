@@ -39,7 +39,7 @@ class EpigramEditor extends Component {
     classes: {}
   };
 
-  renderAttributes() {
+  renderAttributes(values) {
     const { classes, goToSelectPage } = this.props;
 
     return (
@@ -73,7 +73,7 @@ class EpigramEditor extends Component {
             </Grid>
           </Grid>
           <Grid item sm={12}>
-            <Button onClick={goToSelectPage}>Origine</Button>
+            <Button onClick={() => goToSelectPage(values)}>Origine</Button>
           </Grid>
         </CardContent>
       </Card>
@@ -97,9 +97,9 @@ class EpigramEditor extends Component {
     const { classes, epigram, onSave } = this.props;
     return (
       <Form initialValues={epigram} onSubmit={onSave}>
-        {({ handleSubmit }) => (
+        {({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit}>
-            {this.renderAttributes()}
+            {this.renderAttributes(values)}
             {this.renderTextEditor("Texte latin", "latinText")}
             {this.renderTextEditor("Texte français", "frenchText")}
             {this.renderTextEditor("Notes", "notes")}

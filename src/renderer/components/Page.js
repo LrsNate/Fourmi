@@ -13,9 +13,10 @@ import { connect } from "react-redux";
 
 export const mapStateToProps = (state, ownProps) => ownProps;
 
-export const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = (dispatch, { onGoBack }) => {
   return {
     goBack() {
+      onGoBack && onGoBack();
       dispatch(goBack());
     }
   };
