@@ -1,11 +1,7 @@
 import { mount, render } from "enzyme";
 import React from "react";
 
-import {
-  mapDispatchToProps,
-  mapStateToProps,
-  Page
-} from "./Page";
+import { mapDispatchToProps, mapStateToProps, Page } from "./Page";
 
 jest.mock("react-router-redux", () => ({
   goBack() {
@@ -61,7 +57,7 @@ describe("The mapStateToProps function", () => {
 describe("The mapDispatchToProps function", () => {
   it("dispatches the goBack function", () => {
     const dispatch = jest.fn(i => i);
-    const { goBack } = mapDispatchToProps(dispatch);
+    const { goBack } = mapDispatchToProps(dispatch, {});
 
     goBack();
 
