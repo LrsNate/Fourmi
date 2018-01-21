@@ -14,8 +14,12 @@ export default class ActionsMenu extends Component {
   static propTypes = {
     // eslint-disable-next-line react/no-typos
     epigram: FourmiPropTypes.epigram.isRequired,
-    goToEditPage: PropTypes.func.isRequired,
+    goToEditPage: PropTypes.func,
     filterByImitations: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    goToEditPage: null
   };
 
   state = {
@@ -43,6 +47,7 @@ export default class ActionsMenu extends Component {
   };
 
   render() {
+    const { goToEditPage } = this.props;
     const { anchorElement } = this.state;
 
     return (
@@ -55,18 +60,20 @@ export default class ActionsMenu extends Component {
           anchorEl={anchorElement}
           onClose={this.handleMenuClose}
         >
-          <MenuItem selected={false} onClick={this.handleImitationsClick}>
+          <MenuItem onClick={this.handleImitationsClick}>
             <ListItemIcon>
               <Reply />
             </ListItemIcon>
             <ListItemText inset primary="Imitations" />
           </MenuItem>
-          <MenuItem selected={false} onClick={this.handleEditClick}>
-            <ListItemIcon>
-              <ModeEdit />
-            </ListItemIcon>
-            <ListItemText inset primary="Éditer" />
-          </MenuItem>
+          {goToEditPage && (
+            <MenuItem onClick={this.handleEditClick}>
+              <ListItemIcon>
+                <ModeEdit />
+              </ListItemIcon>
+              <ListItemText inset primary="Éditer" />
+            </MenuItem>
+          )}
         </Menu>
       </Fragment>
     );

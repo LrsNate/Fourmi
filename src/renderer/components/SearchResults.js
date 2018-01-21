@@ -24,13 +24,14 @@ const SearchResults = ({
 
 SearchResults.propTypes = {
   actions: PropTypes.func,
-  goToEditPage: PropTypes.func.isRequired,
+  goToEditPage: PropTypes.func,
   onFilterByImitations: PropTypes.func.isRequired,
   results: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired
 };
 
 SearchResults.defaultProps = {
-  actions: null
+  actions: null,
+  goToEditPage: null
 };
 
 export default SearchResults;

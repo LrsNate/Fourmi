@@ -27,13 +27,14 @@ class EpigramView extends Component {
     actions: PropTypes.func,
     // eslint-disable-next-line react/no-typos
     epigram: FourmiPropTypes.epigram.isRequired,
-    goToEditPage: PropTypes.func.isRequired,
+    goToEditPage: PropTypes.func,
     filterByImitations: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     classes: {},
-    actions: null
+    actions: null,
+    goToEditPage: null
   };
 
   state = {

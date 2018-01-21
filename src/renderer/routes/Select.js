@@ -2,11 +2,9 @@ import { Button, withStyles } from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { push } from "react-router-redux";
 import Page from "../components/Page";
 import SearchCard from "../components/SearchCard";
 import SearchResults from "../components/SearchResults";
-import { editRoute } from "../constants/routes";
 import FourmiPropTypes from "../constants/types";
 import { filterEpigrams } from "../lib/epigrams/filter";
 import { sortEpigrams } from "../lib/epigrams/sort";
@@ -20,14 +18,6 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    goToEditPage(id) {
-      dispatch(push(editRoute(id)));
-    }
-  };
-};
-
 const styles = theme => ({
   searchCard: {
     marginBottom: theme.spacing.unit
@@ -37,8 +27,7 @@ const styles = theme => ({
 class Select extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    epigrams: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired,
-    goToEditPage: PropTypes.func.isRequired
+    epigrams: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired
   };
 
   static defaultProps = {
@@ -61,7 +50,7 @@ class Select extends Component {
   };
 
   render() {
-    const { classes, epigrams, goToEditPage } = this.props;
+    const { classes, epigrams } = this.props;
     const { query } = this.state;
     const results = filterEpigrams(epigrams, query);
 
@@ -76,7 +65,6 @@ class Select extends Component {
         <hr />
         <SearchResults
           results={results}
-          goToEditPage={goToEditPage}
           onFilterByImitations={this.handleFilterByImitations}
           actions={() => <Button dense>Sélectionner</Button>}
         />
@@ -85,6 +73,4 @@ class Select extends Component {
   }
 }
 
-export default withStyles(styles)(
-  connect(mapStateToProps, mapDispatchToProps)(Select)
-);
+export default withStyles(styles)(connect(mapStateToProps)(Select));
