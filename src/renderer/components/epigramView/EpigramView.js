@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 import FourmiPropTypes from "../../constants/types";
+import { getEpigramTitle } from "../../lib/epigrams/display";
 import TextTypography from "../TextTypography";
 import ActionsMenu from "./ActionsMenu";
 
@@ -45,12 +46,6 @@ class EpigramView extends Component {
     const { collapsed } = this.state;
     this.setState({ collapsed: !collapsed });
   };
-
-  renderTitle() {
-    const { epigram: { author, reference, title } } = this.props;
-    const core = `${author} - ${reference}`;
-    return title ? `${core}: ${title}` : core;
-  }
 
   renderEpigramContent() {
     const { epigram: { frenchText, latinText } } = this.props;
@@ -87,7 +82,7 @@ class EpigramView extends Component {
               {collapsed ? <KeyboardArrowDown /> : <KeyboardArrowUp />}
             </IconButton>
           }
-          title={this.renderTitle()}
+          title={getEpigramTitle(epigram)}
           subheader={collapsed && epigram.frenchText.substr(0, 50)}
           action={
             <ActionsMenu

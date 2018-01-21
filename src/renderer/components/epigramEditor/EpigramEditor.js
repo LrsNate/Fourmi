@@ -4,16 +4,29 @@ import {
   CardContent,
   CardHeader,
   Grid,
+  Typography,
   withStyles
 } from "material-ui";
 import { Save } from "material-ui-icons";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Form } from "react-final-form";
+import { connect } from "react-redux";
 
 import FourmiPropTypes from "../../constants/types";
+import { getEpigramTitle } from "../../lib/epigrams/display";
 import TextEditor from "../forms/TextEditor";
 import TextInput from "../forms/TextInput";
+
+const mapStateToProps = (state, ownProps) => {
+  const { epigrams: { epigrams } } = state;
+  const { epigram: { originId } } = ownProps;
+
+  return {
+    ...ownProps,
+    originEpigram: originId ? epigrams[originId] : null
+  };
+};
 
 const styles = theme => ({
   card: {
@@ -27,20 +40,22 @@ const styles = theme => ({
   }
 });
 
-class EpigramEditor extends Component {
+export class EpigramEditor extends Component {
   static propTypes = {
     classes: PropTypes.object,
     epigram: FourmiPropTypes.epigram.isRequired,
+    originEpigram: FourmiPropTypes.epigram,
     goToSelectPage: PropTypes.func.isRequired,
     onSave: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    classes: {}
+    classes: {},
+    originEpigram: null
   };
 
-  renderAttributes(values) {
-    const { classes, goToSelectPage } = this.props;
+  renderAttributes() {
+    const { classes } = this.props;
 
     return (
       <Card className={classes.card}>
@@ -72,9 +87,22 @@ class EpigramEditor extends Component {
               <TextInput label="Vices" name="vices" />
             </Grid>
           </Grid>
-          <Grid item sm={12}>
-            <Button onClick={() => goToSelectPage(values)}>Origine</Button>
-          </Grid>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  renderOrigin(values) {
+    const { classes, goToSelectPage, originEpigram } = this.props;
+
+    return (
+      <Card className={classes.card}>
+        <CardHeader title="Oeuvre d'origine" />
+        <CardContent>
+          <Typography>
+            {originEpigram ? getEpigramTitle(originEpigram) : "aucune"}
+          </Typography>
+          <Button onClick={() => goToSelectPage(values)}>Modifier</Button>
         </CardContent>
       </Card>
     );
@@ -100,6 +128,7 @@ class EpigramEditor extends Component {
         {({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit}>
             {this.renderAttributes(values)}
+            {this.renderOrigin(values)}
             {this.renderTextEditor("Texte latin", "latinText")}
             {this.renderTextEditor("Texte français", "frenchText")}
             {this.renderTextEditor("Notes", "notes")}
@@ -118,4 +147,4 @@ class EpigramEditor extends Component {
   }
 }
 
-export default withStyles(styles)(EpigramEditor);
+export default connect(mapStateToProps)(withStyles(styles)(EpigramEditor));
