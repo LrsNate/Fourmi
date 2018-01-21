@@ -10,3 +10,4 @@ export const saveEpigramType = "SAVE_EPIGRAM";
 
 export const discardDraftType = "DISCARD_DRAFT";
 export const saveDraftType = "SAVE_DRAFT";
+export const saveOriginIdType = "SAVE_ORIGIN_ID";

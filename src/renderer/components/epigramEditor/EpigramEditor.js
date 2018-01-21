@@ -19,8 +19,9 @@ import TextEditor from "../forms/TextEditor";
 import TextInput from "../forms/TextInput";
 
 const mapStateToProps = (state, ownProps) => {
-  const { epigrams: { epigrams } } = state;
-  const { epigram: { originId } } = ownProps;
+  const { draft, epigrams: { epigrams } } = state;
+  const epigram = draft || ownProps.epigram;
+  const { originId } = epigram;
 
   return {
     ...ownProps,

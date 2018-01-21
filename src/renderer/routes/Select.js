@@ -2,6 +2,8 @@ import { Button, withStyles } from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { goBack } from "react-router-redux";
+import { saveOriginIdAction } from "../actions/draft";
 import Page from "../components/Page";
 import SearchCard from "../components/SearchCard";
 import SearchResults from "../components/SearchResults";
@@ -18,6 +20,15 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onSubmit(originId) {
+      dispatch(saveOriginIdAction(originId));
+      dispatch(goBack());
+    }
+  };
+};
+
 const styles = theme => ({
   searchCard: {
     marginBottom: theme.spacing.unit
@@ -27,7 +38,8 @@ const styles = theme => ({
 class Select extends Component {
   static propTypes = {
     classes: PropTypes.object,
-    epigrams: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired
+    epigrams: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired,
+    onSubmit: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -49,6 +61,16 @@ class Select extends Component {
     this.setState({ query: { phrase: "", originId } });
   };
 
+  renderActions = epigram => {
+    const { onSubmit } = this.props;
+
+    return (
+      <Button onClick={() => onSubmit(epigram._id)} dense>
+        Sélectionner
+      </Button>
+    );
+  };
+
   render() {
     const { classes, epigrams } = this.props;
     const { query } = this.state;
@@ -66,11 +88,13 @@ class Select extends Component {
         <SearchResults
           results={results}
           onFilterByImitations={this.handleFilterByImitations}
-          actions={() => <Button dense>Sélectionner</Button>}
+          actions={this.renderActions}
         />
       </Page>
     );
   }
 }
 
-export default withStyles(styles)(connect(mapStateToProps)(Select));
+export default withStyles(styles)(
+  connect(mapStateToProps, mapDispatchToProps)(Select)
+);
