@@ -6,10 +6,9 @@ import {
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-
 import { loadEpigramsAction } from "./actions/epigrams";
-
 import database from "./reducers/database";
+import draft from "./reducers/draft";
 import epigrams from "./reducers/epigrams";
 
 export default function configureStore(initialState, routerHistory) {
@@ -22,6 +21,7 @@ export default function configureStore(initialState, routerHistory) {
 
   const reducers = {
     database,
+    draft,
     epigrams,
     routing
   };

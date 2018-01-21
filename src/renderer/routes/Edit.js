@@ -12,10 +12,10 @@ import Page from "../components/Page";
 
 const mapStateToProps = (state, ownProps) => {
   const { id } = ownProps.match.params;
+  const { draft } = state;
   const { epigrams: { epigrams } } = state;
 
-  // TODO: Fetch draft here
-  return { epigram: epigrams[id] };
+  return { epigram: draft || epigrams[id] };
 };
 
 const mapDispatchToProps = dispatch => {
