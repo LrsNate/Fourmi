@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import "babel-polyfill";
 import { app } from "electron";
+import { setUpAutoUpdater } from "./autoUpdater";
 import { installExtensions } from "./devExtensions";
 import { createMainWindow } from "./window";
 
@@ -18,6 +19,8 @@ app.on("window-all-closed", () => {
 app.on("ready", async () => {
   if (isDevelopment) {
     await installExtensions();
+  } else {
+    setUpAutoUpdater();
   }
   mainWindow = createMainWindow(isDevelopment);
 });
