@@ -137,7 +137,7 @@ export class EpigramEditor extends Component {
               className={classes.saveButton}
               type="submit"
               fab
-              color="accent"
+              color="secondary"
             >
               <Save />
             </Button>

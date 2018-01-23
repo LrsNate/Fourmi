@@ -12,7 +12,7 @@ exports[`The TextInput component On an initial load matches the snapshot 1`] = `
       Some label
     </label>
     <div
-      class="MuiInput-root-15 MuiInput-formControl-16 MuiInput-inkbar-17 MuiInput-underline-21"
+      class="MuiInput-root-15 MuiInput-fullWidth-23 MuiInput-formControl-16 MuiInput-inkbar-17 MuiInput-underline-21"
     >
       <input
         aria-invalid="false"

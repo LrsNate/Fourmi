@@ -41,7 +41,7 @@ export const Page = ({ classes, goBack, title, children }) => {
         <Toolbar>
           <IconButton
             className={classes.appBarLeftButton}
-            color="contrast"
+            color="inherit"
             onClick={goBack}
           >
             <KeyboardArrowLeft />

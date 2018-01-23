@@ -9,17 +9,16 @@ exports[`The Page component on an initial load matches the snapshot 1`] = `
       class="MuiToolbar-root-35 MuiToolbar-gutters-36"
     >
       <button
-        class="MuiButtonBase-root-46 MuiIconButton-root-37 MuiIconButton-colorContrast-39 appBarLeftButton"
-        role="button"
+        class="MuiButtonBase-root-44 MuiIconButton-root-37 MuiIconButton-colorInherit-38 appBarLeftButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="MuiIconButton-label-43"
+          class="MuiIconButton-label-42"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root-48 MuiIconButton-icon-44"
+            class="MuiSvgIcon-root-46 MuiIconButton-icon-43"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -29,11 +28,11 @@ exports[`The Page component on an initial load matches the snapshot 1`] = `
           </svg>
         </span>
         <span
-          class="MuiTouchRipple-root-55"
+          class="MuiTouchRipple-root-52"
         />
       </button>
       <h2
-        class="MuiTypography-root-62 MuiTypography-title-68 MuiTypography-colorInherit-81"
+        class="MuiTypography-root-59 MuiTypography-title-65 MuiTypography-colorInherit-78"
       >
         Some page
       </h2>

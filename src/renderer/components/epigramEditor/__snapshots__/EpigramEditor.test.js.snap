@@ -6,43 +6,43 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
     class="MuiPaper-root-1 MuiPaper-shadow2-5 MuiPaper-rounded-2"
   >
     <div
-      class="MuiCardContent-root-34 MuiCardHeader-root-28"
+      class="MuiCardHeader-root-28"
     >
       <div
         class="MuiCardHeader-content-31"
       >
         <span
-          class="MuiTypography-root-35 MuiTypography-headline-40 MuiCardHeader-title-32"
+          class="MuiTypography-root-34 MuiTypography-headline-39 MuiCardHeader-title-32"
         >
           Propriétés
         </span>
       </div>
     </div>
     <div
-      class="MuiCardContent-root-34"
+      class="MuiCardContent-root-58"
     >
       <div
-        class="MuiGrid-typeContainer-59 MuiGrid-spacing-xs-16-80"
+        class="MuiGrid-typeContainer-59 MuiGrid-spacing-xs-16-81"
       >
         <div
-          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
+          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-100"
         >
           <div
-            class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+            class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
           >
             <label
-              class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+              class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
               data-shrink="false"
             >
               Auteur
             </label>
             <div
-              class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              class="MuiInput-root-163 MuiInput-fullWidth-171 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="author"
                 type="text"
                 value=""
@@ -51,24 +51,24 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
           </div>
         </div>
         <div
-          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
+          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-100"
         >
           <div
-            class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+            class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
           >
             <label
-              class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+              class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
               data-shrink="false"
             >
               Référence
             </label>
             <div
-              class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              class="MuiInput-root-163 MuiInput-fullWidth-171 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="reference"
                 type="text"
                 value=""
@@ -77,24 +77,24 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
           </div>
         </div>
         <div
-          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-6-102"
+          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-6-103"
         >
           <div
-            class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+            class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
           >
             <label
-              class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+              class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
               data-shrink="false"
             >
               Titre
             </label>
             <div
-              class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              class="MuiInput-root-163 MuiInput-fullWidth-171 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="title"
                 type="text"
                 value=""
@@ -103,24 +103,24 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
           </div>
         </div>
         <div
-          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
+          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-100"
         >
           <div
-            class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+            class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
           >
             <label
-              class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+              class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
               data-shrink="false"
             >
               Mètre
             </label>
             <div
-              class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              class="MuiInput-root-163 MuiInput-fullWidth-171 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="meter"
                 type="text"
                 value=""
@@ -129,24 +129,24 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
           </div>
         </div>
         <div
-          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
+          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-100"
         >
           <div
-            class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+            class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
           >
             <label
-              class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+              class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
               data-shrink="false"
             >
               Strophe
             </label>
             <div
-              class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              class="MuiInput-root-163 MuiInput-fullWidth-171 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="stanza"
                 type="text"
                 value=""
@@ -155,24 +155,24 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
           </div>
         </div>
         <div
-          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
+          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-100"
         >
           <div
-            class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+            class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
           >
             <label
-              class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+              class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
               data-shrink="false"
             >
               Destinataire
             </label>
             <div
-              class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              class="MuiInput-root-163 MuiInput-fullWidth-171 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="addressee"
                 type="text"
                 value=""
@@ -181,24 +181,24 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
           </div>
         </div>
         <div
-          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-99"
+          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-3-100"
         >
           <div
-            class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+            class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
           >
             <label
-              class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+              class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
               data-shrink="false"
             >
               Date
             </label>
             <div
-              class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              class="MuiInput-root-163 MuiInput-fullWidth-171 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="date"
                 type="text"
                 value=""
@@ -207,24 +207,24 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
           </div>
         </div>
         <div
-          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-12-108"
+          class="MuiGrid-typeItem-60 MuiGrid-grid-sm-12-109"
         >
           <div
-            class="MuiFormControl-root-148 MuiFormControl-marginNormal-149 MuiFormControl-fullWidth-151"
+            class="MuiFormControl-root-149 MuiFormControl-marginNormal-150 MuiFormControl-fullWidth-152"
           >
             <label
-              class="MuiFormLabel-root-158 MuiInputLabel-root-152 MuiInputLabel-formControl-153 MuiInputLabel-animated-156"
+              class="MuiFormLabel-root-159 MuiInputLabel-root-153 MuiInputLabel-formControl-154 MuiInputLabel-animated-157"
               data-shrink="false"
             >
               Vices
             </label>
             <div
-              class="MuiInput-root-162 MuiInput-formControl-163 MuiInput-inkbar-164 MuiInput-underline-168"
+              class="MuiInput-root-163 MuiInput-fullWidth-171 MuiInput-formControl-164 MuiInput-inkbar-165 MuiInput-underline-169"
             >
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-171 MuiInput-inputSingleline-174"
+                class="MuiInput-input-172 MuiInput-inputSingleline-175"
                 name="vices"
                 type="text"
                 value=""
@@ -239,34 +239,33 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
     class="MuiPaper-root-1 MuiPaper-shadow2-5 MuiPaper-rounded-2"
   >
     <div
-      class="MuiCardContent-root-34 MuiCardHeader-root-28"
+      class="MuiCardHeader-root-28"
     >
       <div
         class="MuiCardHeader-content-31"
       >
         <span
-          class="MuiTypography-root-35 MuiTypography-headline-40 MuiCardHeader-title-32"
+          class="MuiTypography-root-34 MuiTypography-headline-39 MuiCardHeader-title-32"
         >
           Oeuvre d'origine
         </span>
       </div>
     </div>
     <div
-      class="MuiCardContent-root-34"
+      class="MuiCardContent-root-58"
     >
       <p
-        class="MuiTypography-root-35 MuiTypography-body1-44"
+        class="MuiTypography-root-34 MuiTypography-body1-43"
       >
         aucune
       </p>
       <button
-        class="MuiButtonBase-root-192 MuiButton-root-177"
-        role="button"
+        class="MuiButtonBase-root-192 MuiButton-root-178"
         tabindex="0"
         type="button"
       >
         <span
-          class="MuiButton-label-179"
+          class="MuiButton-label-180"
         >
           Modifier
         </span>
@@ -280,20 +279,20 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
     class="MuiPaper-root-1 MuiPaper-shadow2-5 MuiPaper-rounded-2"
   >
     <div
-      class="MuiCardContent-root-34 MuiCardHeader-root-28"
+      class="MuiCardHeader-root-28"
     >
       <div
         class="MuiCardHeader-content-31"
       >
         <span
-          class="MuiTypography-root-35 MuiTypography-headline-40 MuiCardHeader-title-32"
+          class="MuiTypography-root-34 MuiTypography-headline-39 MuiCardHeader-title-32"
         >
           Texte latin
         </span>
       </div>
     </div>
     <div
-      class="MuiCardContent-root-34"
+      class="MuiCardContent-root-58"
     >
       <div>
         Rich text editor mock
@@ -304,20 +303,20 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
     class="MuiPaper-root-1 MuiPaper-shadow2-5 MuiPaper-rounded-2"
   >
     <div
-      class="MuiCardContent-root-34 MuiCardHeader-root-28"
+      class="MuiCardHeader-root-28"
     >
       <div
         class="MuiCardHeader-content-31"
       >
         <span
-          class="MuiTypography-root-35 MuiTypography-headline-40 MuiCardHeader-title-32"
+          class="MuiTypography-root-34 MuiTypography-headline-39 MuiCardHeader-title-32"
         >
           Texte français
         </span>
       </div>
     </div>
     <div
-      class="MuiCardContent-root-34"
+      class="MuiCardContent-root-58"
     >
       <div>
         Rich text editor mock
@@ -328,20 +327,20 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
     class="MuiPaper-root-1 MuiPaper-shadow2-5 MuiPaper-rounded-2"
   >
     <div
-      class="MuiCardContent-root-34 MuiCardHeader-root-28"
+      class="MuiCardHeader-root-28"
     >
       <div
         class="MuiCardHeader-content-31"
       >
         <span
-          class="MuiTypography-root-35 MuiTypography-headline-40 MuiCardHeader-title-32"
+          class="MuiTypography-root-34 MuiTypography-headline-39 MuiCardHeader-title-32"
         >
           Notes
         </span>
       </div>
     </div>
     <div
-      class="MuiCardContent-root-34"
+      class="MuiCardContent-root-58"
     >
       <div>
         Rich text editor mock
@@ -349,13 +348,13 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
     </div>
   </div>
   <button
-    class="MuiButtonBase-root-192 MuiButton-root-177 MuiButton-raised-184 MuiButton-fab-190 MuiButton-raisedAccent-187"
+    class="MuiButtonBase-root-192 MuiButton-root-178 MuiButton-raised-184 MuiButton-fab-189 MuiButton-raisedSecondary-187"
     role="button"
     tabindex="0"
     type="submit"
   >
     <span
-      class="MuiButton-label-179"
+      class="MuiButton-label-180"
     >
       <svg
         aria-hidden="true"
