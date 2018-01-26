@@ -3,6 +3,7 @@ install:
   - npm install -g codecov yarn
   - yarn
 script:
+ - yarn compile
   - yarn lint
   - yarn test --coverage
   - codecov
