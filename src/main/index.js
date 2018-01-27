@@ -3,6 +3,7 @@ import "babel-polyfill";
 import { app } from "electron";
 import { setUpAutoUpdater } from "./autoUpdater";
 import { installExtensions } from "./devExtensions";
+import { initializeContextualMenu } from "./menu";
 import { createMainWindow } from "./window";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -22,5 +23,6 @@ app.on("ready", async () => {
   } else {
     setUpAutoUpdater();
   }
+  initializeContextualMenu();
   mainWindow = createMainWindow(isDevelopment);
 });
