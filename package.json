@@ -14,7 +14,7 @@
     "babel-runtime": "^6.26.0",
     "draft-js": "^0.10.4",
     "draftjs-to-html": "^0.8.1",
-    "final-form": "^3.0.0",
+    "final-form": "^4.1.0",
     "history": "^4.7.2",
     "html-to-draftjs": "^1.1.1",
     "immutable": "^3.8.2",
@@ -27,7 +27,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-draft-wysiwyg": "^1.12.2",
-    "react-final-form": "^2.1.1",
+    "react-final-form": "^3.0.5",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -37,8 +37,8 @@
     "redux-thunk": "^2.2.0",
     "source-map-support": "^0.5.0",
     "traverse": "^0.6.6",
-    "typeface-eb-garamond": "^0.0.45",
-    "typeface-roboto": "^0.0.45"
+    "typeface-eb-garamond": "^0.0.54",
+    "typeface-roboto": "^0.0.54"
   },
   "devDependencies": {
     "ajv": "^5.5.2",

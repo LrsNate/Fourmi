@@ -3693,9 +3693,9 @@ fill-range@^2.1.0:
     repeat-element "^1.1.2"
     repeat-string "^1.5.2"
 
-final-form@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/final-form/-/final-form-3.1.0.tgz#b27fb2261e41ed68b99760f024431ef180461341"
+final-form@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.1.0.tgz#7f9414bbef9737dbec9637d6b59b6207112b87f8"
 
 finalhandler@1.1.0:
   version "1.1.0"
@@ -7196,9 +7196,9 @@ react-event-listener@^0.5.0, react-event-listener@^0.5.1:
     prop-types "^15.6.0"
     warning "^3.0.0"
 
-react-final-form@^2.1.1:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-2.2.0.tgz#29c63cf944fc4c70c647a85085664dd89dbf2a06"
+react-final-form@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.0.5.tgz#6b20314bd4ba99923c5c032245ab55c153f9250c"
 
 react-jss@^8.1.0:
   version "8.2.1"
@@ -8591,13 +8591,13 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typeface-eb-garamond@^0.0.45:
-  version "0.0.45"
-  resolved "https://registry.yarnpkg.com/typeface-eb-garamond/-/typeface-eb-garamond-0.0.45.tgz#2afe3114d9d45a2da1ab440a8c28ef077dea7549"
+typeface-eb-garamond@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-eb-garamond/-/typeface-eb-garamond-0.0.54.tgz#5274c1c8b5ceecaf64c4fa810a4b26c6d73359bf"
 
-typeface-roboto@^0.0.45:
-  version "0.0.45"
-  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.45.tgz#4686bdd505b2db3b7ba0a980d216eb3d5aec4788"
+typeface-roboto@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.54.tgz#8f02c9a18d1cfa7f49381a6ff0d21ff061f38ad2"
 
 ua-parser-js@^0.7.9:
   version "0.7.17"
