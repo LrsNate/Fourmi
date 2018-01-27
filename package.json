@@ -1,7 +1,7 @@
 {
   "name": "Fourmi",
   "private": true,
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "fourmi",
   "main": "src/main/index.js",
   "author": {
