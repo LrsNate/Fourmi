@@ -85,7 +85,7 @@ export class EpigramEditor extends Component {
               <TextInput label="Date" name="date" />
             </Grid>
             <Grid item sm={12}>
-              <TextInput label="Vices" name="vices" />
+              <TextInput label="Thèmes" name="themes" />
             </Grid>
           </Grid>
         </CardContent>
