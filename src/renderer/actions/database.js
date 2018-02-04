@@ -44,7 +44,7 @@ const downloadDatabase = (status, databasePath) => {
       resolve(databaseReadyType);
     } else {
       downloadFile(
-        "https://s3-eu-west-1.amazonaws.com/martial-db-versions/20170119232140000-incompressible-spoon",
+        "https://s3-eu-west-1.amazonaws.com/martial-db-versions/epigrams.db",
         databasePath
       ).then(() => resolve(databaseReadyType));
     }
