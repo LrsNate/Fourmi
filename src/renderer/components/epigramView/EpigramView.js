@@ -55,12 +55,20 @@ class EpigramView extends Component {
         <Grid container>
           <Grid item sm={6}>
             <TextTypography>
-              <span dangerouslySetInnerHTML={{ __html: latinText }} />
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: latinText.replace(/ {2}/g, "\u00a0\u00a0")
+                }}
+              />
             </TextTypography>
           </Grid>
           <Grid item sm={6}>
             <TextTypography>
-              <span dangerouslySetInnerHTML={{ __html: frenchText }} />
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: frenchText.replace(/ {2}/g, "\u00a0\u00a0")
+                }}
+              />
             </TextTypography>
           </Grid>
         </Grid>
