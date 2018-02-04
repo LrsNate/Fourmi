@@ -54,10 +54,14 @@ class EpigramView extends Component {
       <CardContent>
         <Grid container>
           <Grid item sm={6}>
-            <TextTypography>{latinText}</TextTypography>
+            <TextTypography>
+              <span dangerouslySetInnerHTML={{ __html: latinText }} />
+            </TextTypography>
           </Grid>
           <Grid item sm={6}>
-            <TextTypography>{frenchText}</TextTypography>
+            <TextTypography>
+              <span dangerouslySetInnerHTML={{ __html: frenchText }} />
+            </TextTypography>
           </Grid>
         </Grid>
       </CardContent>
