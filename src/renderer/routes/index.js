@@ -5,18 +5,20 @@ import {
   bootRoute,
   editRoute,
   searchRoute,
-  selectRoute
+  selectRoute, settingsRoute
 } from "../constants/routes";
 import Boot from "./Boot";
 import Edit from "./Edit";
 import Search from "./Search";
 import Select from "./Select";
+import Settings from "./Settings";
 
 export default (
   <Switch>
     <Route path={editRoute(":id")} component={Edit} />
     <Route path={searchRoute()} component={Search} />
     <Route path={selectRoute()} component={Select} />
+    <Route path={settingsRoute()} component={Settings} />
     <Route exact path={bootRoute()} component={Boot} />
   </Switch>
 );

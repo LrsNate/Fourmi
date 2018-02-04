@@ -5,11 +5,12 @@ import {
   Typography,
   withStyles
 } from "material-ui";
-import { KeyboardArrowLeft } from "material-ui-icons";
+import { KeyboardArrowLeft, Settings } from "material-ui-icons";
 import PropTypes from "prop-types";
 import React from "react";
-import { goBack } from "react-router-redux";
+import { goBack, push } from "react-router-redux";
 import { connect } from "react-redux";
+import { settingsRoute } from "../constants/routes";
 
 export const mapStateToProps = (state, ownProps) => ownProps;
 
@@ -18,6 +19,9 @@ export const mapDispatchToProps = (dispatch, { onGoBack }) => {
     goBack() {
       onGoBack && onGoBack();
       dispatch(goBack());
+    },
+    goToSettings() {
+      dispatch(push(settingsRoute()));
     }
   };
 };
@@ -27,6 +31,9 @@ const styles = theme => ({
     marginLeft: -12,
     marginRight: 20
   },
+  title: {
+    flex: 1
+  },
   pageContent: {
     marginTop: 84,
     marginLeft: theme.spacing.unit,
@@ -34,7 +41,7 @@ const styles = theme => ({
   }
 });
 
-export const Page = ({ classes, goBack, title, children }) => {
+export const Page = ({ classes, goBack, goToSettings, title, children }) => {
   return (
     <div>
       <AppBar>
@@ -46,9 +53,12 @@ export const Page = ({ classes, goBack, title, children }) => {
           >
             <KeyboardArrowLeft />
           </IconButton>
-          <Typography type="title" color="inherit">
+          <Typography type="title" className={classes.title} color="inherit">
             {title}
           </Typography>
+          <IconButton color="inherit" onClick={goToSettings}>
+            <Settings />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <div className={classes.pageContent}>{children}</div>
@@ -59,6 +69,7 @@ export const Page = ({ classes, goBack, title, children }) => {
 Page.propTypes = {
   classes: PropTypes.object,
   goBack: PropTypes.func,
+  goToSettings: PropTypes.func,
   title: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -69,7 +80,8 @@ Page.propTypes = {
 Page.defaultProps = {
   children: null,
   classes: {},
-  goBack: () => {}
+  goBack: () => {},
+  goToSettings: () => {}
 };
 
 export default withStyles(styles)(
