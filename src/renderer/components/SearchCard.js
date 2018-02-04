@@ -9,7 +9,6 @@ import {
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { transformEpigramsAction } from "../actions/epigrams";
 import FourmiPropTypes from "../constants/types";
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,14 +21,6 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    transformEpigrams() {
-      dispatch(transformEpigramsAction());
-    }
-  };
-};
-
 class SearchCard extends Component {
   static propTypes = {
     className: PropTypes.string,
@@ -39,7 +30,6 @@ class SearchCard extends Component {
     }).isRequired,
     originWork: FourmiPropTypes.epigram,
     onChange: PropTypes.func.isRequired,
-    transformEpigrams: PropTypes.func.isRequired,
     results: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired
   };
 
@@ -59,13 +49,7 @@ class SearchCard extends Component {
   };
 
   render() {
-    const {
-      className,
-      originWork,
-      query,
-      results,
-      transformEpigrams
-    } = this.props;
+    const { className, originWork, query, results } = this.props;
     return (
       <Card className={className}>
         <CardContent>
@@ -90,13 +74,10 @@ class SearchCard extends Component {
           <Button dense color="primary">
             Ajouter un filtre
           </Button>
-          <Button dense color="primary" onClick={transformEpigrams}>
-            Transformer
-          </Button>
         </CardActions>
       </Card>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchCard);
+export default connect(mapStateToProps)(SearchCard);
