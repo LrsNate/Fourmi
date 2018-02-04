@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 import FourmiPropTypes from "../../constants/types";
-import { getEpigramTitle } from "../../lib/epigrams/display";
+import { getEpigramIncipit, getEpigramTitle } from "../../lib/epigrams/display";
 import TextTypography from "../TextTypography";
 import ActionsMenu from "./ActionsMenu";
 
@@ -83,7 +83,7 @@ class EpigramView extends Component {
             </IconButton>
           }
           title={getEpigramTitle(epigram)}
-          subheader={collapsed && epigram.frenchText.substr(0, 50)}
+          subheader={collapsed && getEpigramIncipit(epigram)}
           action={
             <ActionsMenu
               epigram={epigram}
