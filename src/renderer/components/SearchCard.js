@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import FourmiPropTypes from "../constants/types";
+import AddFilter from "./AddFilter";
 
 const mapStateToProps = (state, ownProps) => {
   const { query: { originId } } = ownProps;
@@ -71,9 +72,7 @@ class SearchCard extends Component {
           <Button dense onClick={this.handleReset}>
             Réinitialiser
           </Button>
-          <Button dense color="primary">
-            Ajouter un filtre
-          </Button>
+          <AddFilter query={query} />
         </CardActions>
       </Card>
     );
