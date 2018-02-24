@@ -56,6 +56,7 @@ class EpigramView extends Component {
           <Grid item sm={6}>
             <TextTypography>
               <span
+                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   __html: latinText.replace(/ {2}/g, "\u00a0\u00a0")
                 }}
@@ -65,6 +66,7 @@ class EpigramView extends Component {
           <Grid item sm={6}>
             <TextTypography>
               <span
+                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   __html: frenchText.replace(/ {2}/g, "\u00a0\u00a0")
                 }}
