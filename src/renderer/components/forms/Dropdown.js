@@ -8,8 +8,8 @@ const Dropdown = ({ name, id, label, options, value, onChange }) => {
     <FormControl fullWidth>
       <InputLabel htmlFor={id}>{label}</InputLabel>
       <Select value={value} onChange={onChange} inputProps={{ name, id }}>
-        {options.map(({ name, value }) => (
-          <MenuItem value={value} key={value}>
+        {options.map(({ name, key }) => (
+          <MenuItem value={key} key={key}>
             {name}
           </MenuItem>
         ))}
@@ -25,9 +25,11 @@ Dropdown.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired
+      key: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 const DropdownWrapper = ({ name, ...props }) => {
@@ -47,7 +49,7 @@ DropdownWrapper.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired
+      key: PropTypes.string.isRequired
     })
   ).isRequired
 };

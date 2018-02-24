@@ -9,6 +9,7 @@ import {
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Form } from "react-final-form";
+import { allFilters } from "../constants/filters";
 import Dropdown from "./forms/Dropdown";
 import TextInput from "./forms/TextInput";
 
@@ -21,6 +22,7 @@ const styles = theme => ({
 class AddFilter extends Component {
   static propTypes = {
     query: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func.isRequired,
     classes: PropTypes.object
   };
 
@@ -34,44 +36,18 @@ class AddFilter extends Component {
 
   get availableFilters() {
     const { query } = this.props;
-    const allFields = [
-      { name: "Auteur", value: "author" },
-      { name: "Référence", value: "reference" },
-      { name: "Titre", value: "titre" },
-      { name: "Mètre", value: "meter" },
-      { name: "Strophe", value: "stanza" },
-      { name: "Destinataire", value: "addressee" },
-      { name: "Thème", value: "themes" },
-      { name: "Texte latin", value: "latinText" },
-      { name: "Texte français", value: "frenchText" },
-      { name: "Notes", value: "notes" }
-    ];
     const existingFilters = Object.keys(query);
 
-    return allFields.filter(({ name }) => !existingFilters.includes(name));
+    return allFilters.filter(({ value }) => !existingFilters.includes(value));
   }
 
   handleClickAddFilter = () => this.setState({ openModal: true });
-
   handleCloseModal = () => this.setState({ openModal: false });
 
-  renderForm() {
-    return (
-      <Form onSubmit={() => {}}>
-        {({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <Dropdown
-              label="Champ"
-              options={this.availableFilters}
-              name="field"
-              id="field"
-            />
-            <TextInput label="Terme" name="term" />
-          </form>
-        )}
-      </Form>
-    );
-  }
+  handleSubmit = values => {
+    this.setState({ openModal: false });
+    this.props.onSubmit(values);
+  };
 
   render() {
     const { classes } = this.props;
@@ -82,14 +58,28 @@ class AddFilter extends Component {
           Ajouter un filtre
         </Button>
         <Dialog open={openModal} onClose={this.handleCloseModal}>
-          <DialogTitle>Ajouter un filtre</DialogTitle>
-          <DialogContent className={classes.dialog}>
-            {this.renderForm()}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleCloseModal}>Annuler</Button>
-            <Button color="primary">Ajouter</Button>
-          </DialogActions>
+          <Form onSubmit={this.handleSubmit}>
+            {({ handleSubmit }) => (
+              <form onSubmit={handleSubmit}>
+                <DialogTitle>Ajouter un filtre</DialogTitle>
+                <DialogContent className={classes.dialog}>
+                  <Dropdown
+                    label="Champ"
+                    options={this.availableFilters}
+                    name="field"
+                    id="field"
+                  />
+                  <TextInput label="Terme" name="term" />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={this.handleCloseModal}>Annuler</Button>
+                  <Button type="submit" color="primary">
+                    Ajouter
+                  </Button>
+                </DialogActions>
+              </form>
+            )}
+          </Form>
         </Dialog>
       </React.Fragment>
     );

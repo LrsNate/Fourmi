@@ -1,3 +1,4 @@
+import _ from "lodash";
 import {
   Button,
   Card,
@@ -8,35 +9,20 @@ import {
 } from "material-ui";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import FourmiPropTypes from "../constants/types";
 import AddFilter from "./AddFilter";
+import Filters from "./Filters";
 
-const mapStateToProps = (state, ownProps) => {
-  const { query: { originId } } = ownProps;
-
-  if (originId) {
-    return { ...ownProps, originWork: state.epigrams.epigrams[originId] };
-  } else {
-    return ownProps;
-  }
-};
-
-class SearchCard extends Component {
+export default class SearchCard extends Component {
   static propTypes = {
     className: PropTypes.string,
-    query: PropTypes.shape({
-      phrase: PropTypes.string,
-      originId: PropTypes.string
-    }).isRequired,
-    originWork: FourmiPropTypes.epigram,
+    query: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     results: PropTypes.arrayOf(FourmiPropTypes.epigram).isRequired
   };
 
   static defaultProps = {
-    className: "",
-    originWork: null
+    className: ""
   };
 
   handleSearchPhraseChange = event => {
@@ -44,13 +30,23 @@ class SearchCard extends Component {
     onChange({ ...query, phrase: event.target.value });
   };
 
+  handleQueryChange = query => {
+    const { onChange } = this.props;
+    onChange(query);
+  };
+
+  handleAddFilter = ({ field, term }) => {
+    const { query, onChange } = this.props;
+    onChange({ ...query, [field]: term });
+  };
+
   handleReset = () => {
     const { onChange } = this.props;
-    onChange({ phrase: "", originId: "" });
+    onChange({});
   };
 
   render() {
-    const { className, originWork, query, results } = this.props;
+    const { className, query, results } = this.props;
     return (
       <Card className={className}>
         <CardContent>
@@ -61,22 +57,18 @@ class SearchCard extends Component {
             fullWidth
             margin="normal"
           />
-          {originWork && (
-            <Typography>
-              Origine: {originWork.author} - {originWork.reference}
-            </Typography>
-          )}
-          <Typography>{results.length} résultats</Typography>
+          <Filters query={query} onChange={this.handleQueryChange} />
+          <Typography>
+            {results.length} résultat{results.length > 1 && "s"}
+          </Typography>
         </CardContent>
         <CardActions>
           <Button dense onClick={this.handleReset}>
             Réinitialiser
           </Button>
-          <AddFilter query={query} />
+          <AddFilter query={query} onSubmit={this.handleAddFilter} />
         </CardActions>
       </Card>
     );
   }
 }
-
-export default connect(mapStateToProps)(SearchCard);

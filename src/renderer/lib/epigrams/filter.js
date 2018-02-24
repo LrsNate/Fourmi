@@ -10,6 +10,12 @@ export const filterEpigrams = (epigrams, query) => {
 };
 
 export const filterByTerms = (epigrams, query) => {
+  const { phrase } = query;
+
+  if (!phrase) {
+    return epigrams;
+  }
+
   const searchTerms = query.phrase.split(/\s+/);
   if (searchTerms.length === 0) {
     return epigrams;

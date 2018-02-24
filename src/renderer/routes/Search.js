@@ -72,7 +72,8 @@ class Search extends Component {
   };
 
   handleFilterByImitations = originId => {
-    this.setState({ query: { phrase: "", originId } });
+    const { query } = this.state;
+    this.setState({ query: { ...query, phrase: "", originId } });
   };
 
   render() {
