@@ -1,7 +1,8 @@
+import _ from "lodash";
 import traverse from "traverse";
 
 export const filterEpigrams = (epigrams, query) => {
-  const filters = [filterByTerms, filterByOrigin];
+  const filters = [filterByTerms, filterByOrigin, filterByField];
 
   return filters.reduce(
     (epigrams, filter) => filter(epigrams, query),
@@ -16,7 +17,7 @@ export const filterByTerms = (epigrams, query) => {
     return epigrams;
   }
 
-  const searchTerms = query.phrase.split(/\s+/);
+  const searchTerms = phrase.split(/\s+/);
   if (searchTerms.length === 0) {
     return epigrams;
   }
@@ -42,4 +43,18 @@ export const filterByOrigin = (epigrams, query) => {
   return epigrams.filter(
     epigram => epigram._id === originId || epigram.originId === originId
   );
+};
+
+export const filterByField = (epigrams, query) => {
+  const filters = Object.entries(_.omit(query, ["originId", "phrase"]));
+
+  return epigrams.filter(epigram => {
+    return filters.every(([key, term]) => {
+      return (
+        epigram[key] === term ||
+        (_.isString(epigram[key]) && epigram[key].includes(term)) ||
+        (_.isArray(epigram[key]) && epigram[key].some(t => t.includes(term)))
+      );
+    });
+  });
 };

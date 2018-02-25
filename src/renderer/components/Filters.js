@@ -59,7 +59,7 @@ class Filters extends Component {
     const name = getFilterName(key);
 
     return (
-      <ListItem key={key} button dense>
+      <ListItem key={key} dense>
         <ListItemText primary={`${name}: ${term}`} />
         <ListItemSecondaryAction>
           <IconButton onClick={() => this.deleteFilter(key)}>
