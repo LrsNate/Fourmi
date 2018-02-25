@@ -41,7 +41,7 @@ export default class SearchCard extends Component {
 
   handleReset = () => {
     const { onChange } = this.props;
-    onChange({});
+    onChange({ phrase: "" });
   };
 
   render() {

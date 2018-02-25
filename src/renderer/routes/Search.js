@@ -54,10 +54,7 @@ class Search extends Component {
   };
 
   state = {
-    query: {
-      phrase: "",
-      originId: ""
-    }
+    query: { phrase: "" }
   };
 
   componentWillMount() {

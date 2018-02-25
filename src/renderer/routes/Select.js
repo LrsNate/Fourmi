@@ -47,10 +47,7 @@ class Select extends Component {
   };
 
   state = {
-    query: {
-      phrase: "",
-      originId: ""
-    }
+    query: { phrase: "" }
   };
 
   handleQueryChange = query => {
@@ -58,7 +55,8 @@ class Select extends Component {
   };
 
   handleFilterByImitations = originId => {
-    this.setState({ query: { phrase: "", originId } });
+    const { query } = this.state;
+    this.setState({ query: { ...query, phrase: "", originId } });
   };
 
   renderActions = epigram => {
