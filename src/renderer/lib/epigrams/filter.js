@@ -49,11 +49,13 @@ export const filterByField = (epigrams, query) => {
   const filters = Object.entries(_.omit(query, ["originId", "phrase"]));
 
   return epigrams.filter(epigram => {
-    return filters.every(([key, term]) => {
+    return filters.every(([key, filter]) => {
+      const { term } = filter;
+      let field = epigram[key];
       return (
-        epigram[key] === term ||
-        (_.isString(epigram[key]) && epigram[key].includes(term)) ||
-        (_.isArray(epigram[key]) && epigram[key].some(t => t.includes(term)))
+        field === term ||
+        (_.isString(field) && field.includes(term)) ||
+        (_.isArray(field) && field.some(t => t.includes(term)))
       );
     });
   });

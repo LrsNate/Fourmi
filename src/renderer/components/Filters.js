@@ -55,7 +55,7 @@ class Filters extends Component {
   }
 
   renderFilter = key => {
-    const { query: { [key]: term } } = this.props;
+    const { query: { [key]: { term } } } = this.props;
     const name = getFilterName(key);
 
     return (
