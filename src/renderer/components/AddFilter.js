@@ -10,12 +10,14 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Form } from "react-final-form";
 import { allFilters } from "../constants/filters";
+import Checkbox from "./forms/Checkbox";
 import Dropdown from "./forms/Dropdown";
 import TextInput from "./forms/TextInput";
 
 const styles = theme => ({
   dialog: {
-    width: theme.spacing.unit * 40
+    width: theme.spacing.unit * 40,
+    paddingBottom: 0
   }
 });
 
@@ -70,6 +72,10 @@ class AddFilter extends Component {
                     id="field"
                   />
                   <TextInput label="Terme" name="term" />
+                  <Checkbox
+                    label="Insensible à la casse"
+                    name="caseInsensitive"
+                  />
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={this.handleCloseModal}>Annuler</Button>

@@ -50,13 +50,16 @@ export const filterByField = (epigrams, query) => {
 
   return epigrams.filter(epigram => {
     return filters.every(([key, filter]) => {
-      const { term } = filter;
+      const { term, caseInsensitive } = filter;
       let field = epigram[key];
       return (
         field === term ||
-        (_.isString(field) && field.includes(term)) ||
-        (_.isArray(field) && field.some(t => t.includes(term)))
+        (_.isString(field) && compare(field, term, caseInsensitive)) ||
+        (_.isArray(field) && field.some(t => compare(t, term, caseInsensitive)))
       );
     });
   });
 };
+
+const compare = (a, b, caseInsensitive) =>
+  caseInsensitive ? a.toUpperCase().includes(b.toUpperCase()) : a.includes(b);

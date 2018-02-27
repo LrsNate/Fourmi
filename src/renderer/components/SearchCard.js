@@ -34,9 +34,9 @@ export default class SearchCard extends Component {
     onChange(query);
   };
 
-  handleAddFilter = ({ field, term, caseSensitive }) => {
+  handleAddFilter = ({ field, term, caseInsensitive }) => {
     const { query, onChange } = this.props;
-    onChange({ ...query, [field]: { term, caseSensitive } });
+    onChange({ ...query, [field]: { term, caseInsensitive } });
   };
 
   handleReset = () => {
