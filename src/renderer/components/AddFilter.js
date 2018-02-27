@@ -56,7 +56,7 @@ class AddFilter extends Component {
     const { openModal } = this.state;
     return (
       <React.Fragment>
-        <Button dense color="primary" onClick={this.handleClickAddFilter}>
+        <Button color="primary" onClick={this.handleClickAddFilter}>
           Ajouter un filtre
         </Button>
         <Dialog open={openModal} onClose={this.handleCloseModal}>

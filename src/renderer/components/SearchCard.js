@@ -62,7 +62,7 @@ export default class SearchCard extends Component {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button dense onClick={this.handleReset}>
+          <Button onClick={this.handleReset}>
             Réinitialiser
           </Button>
           <AddFilter query={query} onSubmit={this.handleAddFilter} />

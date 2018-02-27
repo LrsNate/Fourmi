@@ -62,11 +62,7 @@ class Select extends Component {
   renderActions = epigram => {
     const { onSubmit } = this.props;
 
-    return (
-      <Button onClick={() => onSubmit(epigram._id)} dense>
-        Sélectionner
-      </Button>
-    );
+    return <Button onClick={() => onSubmit(epigram._id)}>Sélectionner</Button>;
   };
 
   render() {

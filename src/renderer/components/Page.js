@@ -53,7 +53,7 @@ export const Page = ({ classes, goBack, goToSettings, title, children }) => {
           >
             <KeyboardArrowLeft />
           </IconButton>
-          <Typography type="title" className={classes.title} color="inherit">
+          <Typography variant="title" className={classes.title} color="inherit">
             {title}
           </Typography>
           <IconButton color="inherit" onClick={goToSettings}>

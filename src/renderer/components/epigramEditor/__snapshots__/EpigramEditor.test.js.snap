@@ -42,7 +42,7 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-172 MuiInput-inputSingleline-175"
+                class="MuiInput-input-172"
                 name="author"
                 type="text"
                 value=""
@@ -68,7 +68,7 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-172 MuiInput-inputSingleline-175"
+                class="MuiInput-input-172"
                 name="reference"
                 type="text"
                 value=""
@@ -94,7 +94,7 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-172 MuiInput-inputSingleline-175"
+                class="MuiInput-input-172"
                 name="title"
                 type="text"
                 value=""
@@ -120,7 +120,7 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-172 MuiInput-inputSingleline-175"
+                class="MuiInput-input-172"
                 name="meter"
                 type="text"
                 value=""
@@ -146,7 +146,7 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-172 MuiInput-inputSingleline-175"
+                class="MuiInput-input-172"
                 name="stanza"
                 type="text"
                 value=""
@@ -172,7 +172,7 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-172 MuiInput-inputSingleline-175"
+                class="MuiInput-input-172"
                 name="addressee"
                 type="text"
                 value=""
@@ -198,7 +198,7 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-172 MuiInput-inputSingleline-175"
+                class="MuiInput-input-172"
                 name="date"
                 type="text"
                 value=""
@@ -224,7 +224,7 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
               <input
                 aria-invalid="false"
                 aria-required="false"
-                class="MuiInput-input-172 MuiInput-inputSingleline-175"
+                class="MuiInput-input-172"
                 name="themes"
                 type="text"
                 value=""
@@ -260,17 +260,17 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
         aucune
       </p>
       <button
-        class="MuiButtonBase-root-192 MuiButton-root-178"
+        class="MuiButtonBase-root-193 MuiButton-root-178"
         tabindex="0"
         type="button"
       >
         <span
-          class="MuiButton-label-180"
+          class="MuiButton-label-179"
         >
           Modifier
         </span>
         <span
-          class="MuiTouchRipple-root-194"
+          class="MuiTouchRipple-root-195"
         />
       </button>
     </div>
@@ -348,17 +348,16 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
     </div>
   </div>
   <button
-    class="MuiButtonBase-root-192 MuiButton-root-178 MuiButton-raised-184 MuiButton-fab-189 MuiButton-raisedSecondary-187"
-    role="button"
+    class="MuiButtonBase-root-193 MuiButton-root-178 MuiButton-raised-183 MuiButton-fab-188 MuiButton-raisedSecondary-186"
     tabindex="0"
     type="submit"
   >
     <span
-      class="MuiButton-label-180"
+      class="MuiButton-label-179"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root-203"
+        class="MuiSvgIcon-root-204 MuiSvgIcon-fontSize-210"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -368,7 +367,7 @@ exports[`The EpigramEditor component on an initial load matches the snapshot 1`]
       </svg>
     </span>
     <span
-      class="MuiTouchRipple-root-194"
+      class="MuiTouchRipple-root-195"
     />
   </button>
 </form>

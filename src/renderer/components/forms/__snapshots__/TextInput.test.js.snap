@@ -17,7 +17,7 @@ exports[`The TextInput component On an initial load matches the snapshot 1`] = `
       <input
         aria-invalid="false"
         aria-required="false"
-        class="MuiInput-input-24 MuiInput-inputSingleline-27"
+        class="MuiInput-input-24"
         name="someName"
         type="text"
         value=""

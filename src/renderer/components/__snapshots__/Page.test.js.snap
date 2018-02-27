@@ -3,22 +3,22 @@
 exports[`The Page component on an initial load matches the snapshot 1`] = `
 <div>
   <header
-    class="MuiPaper-root-8 MuiPaper-shadow4-14 MuiAppBar-root-1 MuiAppBar-positionFixed-2 MuiAppBar-colorPrimary-6 mui-fixed"
+    class="MuiPaper-root-9 MuiPaper-shadow4-15 MuiAppBar-root-1 MuiAppBar-positionFixed-2 MuiAppBar-colorPrimary-7 mui-fixed"
   >
     <div
-      class="MuiToolbar-root-35 MuiToolbar-gutters-36"
+      class="MuiToolbar-root-36 MuiToolbar-gutters-37"
     >
       <button
-        class="MuiButtonBase-root-44 MuiIconButton-root-37 MuiIconButton-colorInherit-38 appBarLeftButton"
+        class="MuiButtonBase-root-44 MuiIconButton-root-38 MuiIconButton-colorInherit-39 appBarLeftButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="MuiIconButton-label-42"
+          class="MuiIconButton-label-43"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root-46 MuiIconButton-icon-43"
+            class="MuiSvgIcon-root-46 MuiSvgIcon-fontSize-52"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -28,25 +28,26 @@ exports[`The Page component on an initial load matches the snapshot 1`] = `
           </svg>
         </span>
         <span
-          class="MuiTouchRipple-root-52"
+          class="MuiTouchRipple-root-53"
         />
       </button>
-      <h2
-        class="MuiTypography-root-59 MuiTypography-title-65 MuiTypography-colorInherit-78"
+      <p
+        class="MuiTypography-root-60 MuiTypography-body1-69 MuiTypography-colorInherit-79"
+        type="title"
       >
         Some page
-      </h2>
+      </p>
       <button
-        class="MuiButtonBase-root-44 MuiIconButton-root-37 MuiIconButton-colorInherit-38"
+        class="MuiButtonBase-root-44 MuiIconButton-root-38 MuiIconButton-colorInherit-39"
         tabindex="0"
         type="button"
       >
         <span
-          class="MuiIconButton-label-42"
+          class="MuiIconButton-label-43"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root-46 MuiIconButton-icon-43"
+            class="MuiSvgIcon-root-46 MuiSvgIcon-fontSize-52"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -56,7 +57,7 @@ exports[`The Page component on an initial load matches the snapshot 1`] = `
           </svg>
         </span>
         <span
-          class="MuiTouchRipple-root-52"
+          class="MuiTouchRipple-root-53"
         />
       </button>
     </div>
