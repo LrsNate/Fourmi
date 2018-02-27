@@ -31,12 +31,11 @@ exports[`The Page component on an initial load matches the snapshot 1`] = `
           class="MuiTouchRipple-root-53"
         />
       </button>
-      <p
-        class="MuiTypography-root-60 MuiTypography-body1-69 MuiTypography-colorInherit-79"
-        type="title"
+      <h2
+        class="MuiTypography-root-60 MuiTypography-title-66 MuiTypography-colorInherit-79"
       >
         Some page
-      </p>
+      </h2>
       <button
         class="MuiButtonBase-root-44 MuiIconButton-root-38 MuiIconButton-colorInherit-39"
         tabindex="0"
