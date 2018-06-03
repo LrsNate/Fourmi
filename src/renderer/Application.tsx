@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import ApplicationLoader from "./components/ApplicationLoader";
 import { RootState } from "./reducers";
 
 function mapStateToProps(state: RootState) {
@@ -17,7 +18,18 @@ interface ApplicationProps {
 class Application extends React.Component<ApplicationProps> {
   public render() {
     const { isLoaded } = this.props;
-    return <p>MyApp! {isLoaded ? "Y" : "N"}</p>;
+
+    return isLoaded
+      ? this.renderApplicationContainer()
+      : this.renderApplicationLoader();
+  }
+
+  private renderApplicationLoader() {
+    return <ApplicationLoader />;
+  }
+
+  private renderApplicationContainer() {
+    return <p>MyApp!</p>;
   }
 }
 

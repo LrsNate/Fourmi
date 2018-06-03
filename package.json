@@ -9,11 +9,14 @@
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "dependencies": {
+    "@material-ui/core": "^1.2.0",
+    "@material-ui/icons": "^1.1.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "source-map-support": "^0.5.5"
+    "source-map-support": "^0.5.5",
+    "typeface-roboto": "^0.0.54"
   },
   "devDependencies": {
     "@types/react": "^16.3.16",
@@ -23,7 +26,9 @@
     "electron-builder": "^20.11.1",
     "electron-webpack": "^2.0.1",
     "electron-webpack-ts": "^2.0.2",
+    "node-sass": "^4.9.0",
     "prettier": "^1.13.4",
+    "sass-loader": "^7.0.2",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
     "tslint-react": "^3.6.0",
