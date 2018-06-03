@@ -1,6 +1,11 @@
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import logger from "redux-logger";
+import thunk from "redux-thunk";
 import rootReducer from "./reducers";
 
 export default function configureStore() {
-  return createStore(rootReducer);
+  const middlewares = [thunk, logger];
+
+  const enhancer = applyMiddleware(...middlewares);
+  return createStore(rootReducer, enhancer);
 }
