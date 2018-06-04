@@ -11,7 +11,9 @@
   "dependencies": {
     "@material-ui/core": "^1.2.0",
     "@material-ui/icons": "^1.1.0",
+    "lodash": "^4.17.10",
     "mkdirp": "^0.5.1",
+    "nedb": "^1.8.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
@@ -22,7 +24,9 @@
     "typeface-roboto": "^0.0.54"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.109",
     "@types/mkdirp": "^0.5.2",
+    "@types/nedb": "^1.8.5",
     "@types/react": "^16.3.16",
     "@types/react-dom": "^16.0.5",
     "@types/react-redux": "^6.0.1",

@@ -1,4 +1,5 @@
 import { DatabaseReadyAction, databaseReadyType } from "../actions/database";
+import { LoadEpigramsAction, loadEpigramsType } from "../actions/epigrams";
 
 export enum LoadingStatus {
   Loading,
@@ -30,7 +31,7 @@ export class ApplicationState {
   }
 }
 
-type ApplicationAction = DatabaseReadyAction;
+type ApplicationAction = DatabaseReadyAction | LoadEpigramsAction;
 
 export default function application(
   state = ApplicationState.empty(),
@@ -39,6 +40,8 @@ export default function application(
   switch (action.type) {
     case databaseReadyType:
       return state.withDatabaseReady();
+    case loadEpigramsType:
+      return state.withEpigramsReady();
     default:
       return state;
   }

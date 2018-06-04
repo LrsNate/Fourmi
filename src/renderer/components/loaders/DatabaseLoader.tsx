@@ -12,13 +12,13 @@ function mapDispatchToProps(
 ) {
   return {
     loadDatabase() {
-      return dispatch(ensureDatabaseExistsAction());
+      dispatch(ensureDatabaseExistsAction());
     }
   };
 }
 
 interface DatabaseLoaderProps {
-  loadDatabase: () => Promise<DatabaseReadyAction>;
+  loadDatabase: () => void;
 }
 
 class DatabaseLoader extends React.Component<DatabaseLoaderProps> {
