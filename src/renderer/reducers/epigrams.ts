@@ -5,7 +5,7 @@ export type EpigramsState = { [key: string]: Epigram };
 
 type EpigramsAction = LoadEpigramsAction;
 
-export default function epigrams(state = [], action: EpigramsAction) {
+export default function epigrams(state = {}, action: EpigramsAction) {
   switch (action.type) {
     case loadEpigramsType:
       return action.epigrams;

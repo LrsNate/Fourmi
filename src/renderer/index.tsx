@@ -1,10 +1,10 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import Application from "./Application";
-import configureStore from "./store";
 
 import "./app.global.css";
+import Application from "./Application";
+import configureStore from "./store";
 
 const store = configureStore();
 

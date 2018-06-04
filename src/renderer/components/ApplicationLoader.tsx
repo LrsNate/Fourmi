@@ -8,6 +8,7 @@ import {
   withStyles
 } from "@material-ui/core";
 import * as React from "react";
+
 import { ApplicationState, LoadingStatus } from "../reducers/application";
 import DatabaseLoader from "./loaders/DatabaseLoader";
 import EpigramsLoader from "./loaders/EpigramsLoader";
@@ -38,9 +39,7 @@ class ApplicationLoader extends React.Component<ApplicationLoaderProps> {
       <Dialog open={true}>
         <DialogContent className={classes.dialog}>
           <CircularProgress size={50} className={classes.progress} />
-          <DialogContentText>
-            {this.renderSubLoader()}
-          </DialogContentText>
+          <DialogContentText>{this.renderSubLoader()}</DialogContentText>
         </DialogContent>
       </Dialog>
     );

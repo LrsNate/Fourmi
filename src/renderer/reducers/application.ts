@@ -34,7 +34,7 @@ export class ApplicationState {
 type ApplicationAction = DatabaseReadyAction | LoadEpigramsAction;
 
 export default function application(
-  state = ApplicationState.empty(),
+  state: ApplicationState = ApplicationState.empty(),
   action: ApplicationAction
 ) {
   switch (action.type) {

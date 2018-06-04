@@ -1,7 +1,7 @@
-@import '~typeface-roboto';
+@import "~typeface-roboto";
 
 body {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   margin: 0;
   padding: 0;
 }

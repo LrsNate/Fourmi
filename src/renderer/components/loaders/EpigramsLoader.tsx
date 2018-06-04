@@ -1,6 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
+
 import { loadEpigramsAction, LoadEpigramsAction } from "../../actions/epigrams";
 import { RootState } from "../../reducers";
 
