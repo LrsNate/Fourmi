@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import ApplicationContainer from "./components/ApplicationContainer";
 import ApplicationLoader from "./components/ApplicationLoader";
 import { RootState } from "./reducers";
 import { ApplicationState, LoadingStatus } from "./reducers/application";
@@ -16,27 +17,18 @@ interface ApplicationProps {
 
 class Application extends React.Component<ApplicationProps> {
   public render() {
-    const {
-      application: { databaseStatus, epigramsStatus }
-    } = this.props;
+    const { application } = this.props;
+    const { databaseStatus, epigramsStatus } = application;
 
     const isLoaded =
       databaseStatus === LoadingStatus.Ready &&
       epigramsStatus === LoadingStatus.Ready;
 
-    return isLoaded
-      ? this.renderApplicationContainer()
-      : this.renderApplicationLoader();
-  }
-
-  private renderApplicationLoader() {
-    const { application } = this.props;
-
-    return <ApplicationLoader application={application} />;
-  }
-
-  private renderApplicationContainer() {
-    return <p>MyApp!</p>;
+    if (isLoaded) {
+      return <ApplicationContainer />;
+    } else {
+      return <ApplicationLoader application={application} />;
+    }
   }
 }
 
