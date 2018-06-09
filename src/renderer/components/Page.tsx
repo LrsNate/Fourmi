@@ -66,9 +66,9 @@ class Page extends React.Component<PageProps> {
     );
   }
 
-  private goBack() {
+  private goBack = () => {
     this.props.history.goBack();
-  }
+  };
 
   private goToSettings() {}
 }

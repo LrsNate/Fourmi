@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { MemoryRouter } from "react-router";
 import ApplicationContainer from "./components/ApplicationContainer";
 import ApplicationLoader from "./components/ApplicationLoader";
 import { RootState } from "./reducers";
@@ -25,7 +26,11 @@ class Application extends React.Component<ApplicationProps> {
       epigramsStatus === LoadingStatus.Ready;
 
     if (isLoaded) {
-      return <ApplicationContainer />;
+      return (
+        <MemoryRouter>
+          <ApplicationContainer />
+        </MemoryRouter>
+      );
     } else {
       return <ApplicationLoader application={application} />;
     }
