@@ -8,21 +8,6 @@ export const getDataFolderPath = () => `${os.homedir()}/Documents/Fourmi`;
 export const getFilePath = (filename: string) =>
   `${getDataFolderPath()}/${filename}`;
 
-export const checkIfFolderExists = (folderPath: string) =>
-  new Promise(resolve => {
-    fs.stat(folderPath, (err, stats) => {
-      if (!err && stats.isDirectory()) {
-        resolve(true);
-      } else if (!err && !stats.isDirectory()) {
-        fs.unlink(folderPath, () => {
-          resolve(false);
-        });
-      } else {
-        resolve(false);
-      }
-    });
-  });
-
 export const createFolder = (dataFolderPath: string) =>
   new Promise(resolve => {
     mkdirp(dataFolderPath, path => resolve(path));

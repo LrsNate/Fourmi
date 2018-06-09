@@ -3,27 +3,29 @@ import {
   IconButton,
   Theme,
   Toolbar,
-  Typography, withStyles
+  Typography,
+  withStyles
 } from "@material-ui/core";
 import { KeyboardArrowLeft, Settings } from "@material-ui/icons";
 import * as React from "react";
+import { RouteComponentProps, withRouter } from "react-router";
 
 const styles = (theme: Theme) => ({
   appBarLeftButton: {
     marginLeft: -12,
     marginRight: 20
   },
+  pageContent: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    marginTop: 84
+  },
   title: {
     flex: 1
-  },
-  pageContent: {
-    marginTop: 84,
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit
   }
 });
 
-export interface PageProps {
+export interface PageProps extends RouteComponentProps<{}> {
   classes: {
     appBarLeftButton: string;
     title: string;
@@ -34,10 +36,6 @@ export interface PageProps {
 }
 
 class Page extends React.Component<PageProps> {
-  private goBack() {}
-
-  private goToSettings() {}
-
   public render() {
     const { classes, title, children } = this.props;
     return (
@@ -67,6 +65,12 @@ class Page extends React.Component<PageProps> {
       </div>
     );
   }
+
+  private goBack() {
+    this.props.history.goBack();
+  }
+
+  private goToSettings() {}
 }
 
-export default withStyles(styles)(Page);
+export default withRouter(withStyles(styles)(Page));

@@ -1,3 +1,5 @@
+export type Epigrams = { [key: string]: Epigram };
+
 export interface Epigram {
   _id: string;
   originId?: string;
