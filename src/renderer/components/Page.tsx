@@ -70,7 +70,9 @@ class Page extends React.Component<PageProps> {
     this.props.history.goBack();
   };
 
-  private goToSettings() {}
+  private goToSettings = () => {
+    this.props.history.push("/settings");
+  };
 }
 
 export default withRouter(withStyles(styles)(Page));

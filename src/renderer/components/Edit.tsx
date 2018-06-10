@@ -1,14 +1,20 @@
 import * as React from "react";
+import { RouteComponentProps, withRouter } from "react-router";
+import { EditRouteArgs } from "../routes";
 import Page from "./Page";
 
-class Edit extends React.Component {
+interface EditProps extends RouteComponentProps<EditRouteArgs> {}
+
+class Edit extends React.Component<EditProps> {
   public render() {
+    const { id } = this.props.match.params;
+
     return (
       <Page title="Éditer une oeuvre">
-        <p>Foo!</p>
+        <p>{id}</p>
       </Page>
     );
   }
 }
 
-export default Edit;
+export default withRouter(Edit);

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Epigram } from "../constants/types";
 import { sortEpigrams } from "../lib/epigrams/sort";
 import { RootState } from "../reducers";
+import { editRoutePath } from "../routes";
 import Page from "./Page";
 
 function mapStateToProps(state: RootState) {
@@ -25,7 +26,7 @@ class Search extends React.Component<SearchProps> {
         <p>Search</p>
         {epigrams.slice(0, 20).map(e => (
           <p key={e._id}>
-            <Link to="/edit">{e._id}</Link>
+            <Link to={editRoutePath(e._id)}>{e._id}</Link>
           </p>
         ))}
       </Page>
