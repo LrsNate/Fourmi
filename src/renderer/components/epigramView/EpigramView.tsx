@@ -3,6 +3,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Collapse,
   Grid,
   IconButton,
   Theme,
@@ -44,33 +45,37 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
   };
 
   public renderEpigramContent() {
-    const {
-      epigram: { frenchText, latinText }
-    } = this.props;
+    const { epigram } = this.props;
+    const { collapsed } = this.state;
+
+    const latinText = epigram.latinText || "";
+    const frenchText = epigram.frenchText || "";
 
     return (
-      <CardContent>
-        <Grid container={true}>
-          <Grid item={true} sm={6}>
-            <Typography>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: latinText.replace(/ {2}/g, "\u00a0\u00a0")
-                }}
-              />
-            </Typography>
+      <Collapse in={!collapsed}>
+        <CardContent>
+          <Grid container={true}>
+            <Grid item={true} sm={6}>
+              <Typography>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: latinText.replace(/ {2}/g, "\u00a0\u00a0")
+                  }}
+                />
+              </Typography>
+            </Grid>
+            <Grid item={true} sm={6}>
+              <Typography>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: frenchText.replace(/ {2}/g, "\u00a0\u00a0")
+                  }}
+                />
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item={true} sm={6}>
-            <Typography>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: frenchText.replace(/ {2}/g, "\u00a0\u00a0")
-                }}
-              />
-            </Typography>
-          </Grid>
-        </Grid>
-      </CardContent>
+        </CardContent>
+      </Collapse>
     );
   }
 
@@ -102,7 +107,7 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
             />
           }
         />
-        {!collapsed && this.renderEpigramContent()}
+        {this.renderEpigramContent()}
         {actions && <CardActions>{actions(epigram)}</CardActions>}
       </Card>
     );
