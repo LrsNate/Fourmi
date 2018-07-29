@@ -33,6 +33,7 @@ class Search extends React.Component<SearchProps> {
             <EpigramView
               epigram={e}
               key={e._id}
+              showEditLink={true}
               filterByImitations={this.filterByImitations}
             />
           ))}

@@ -25,7 +25,7 @@ interface EpigramViewProps {
   classes: { card: string };
   actions?: (epigram: Epigram) => React.ReactNode;
   epigram: Epigram;
-  goToEditPage?: (id: string) => void;
+  showEditLink: boolean;
   filterByImitations: (id: string) => void;
 }
 
@@ -80,7 +80,7 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
       actions,
       epigram,
       filterByImitations,
-      goToEditPage
+      showEditLink
     } = this.props;
     const { collapsed } = this.state;
 
@@ -98,7 +98,7 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
             <ActionsMenu
               epigram={epigram}
               filterByImitations={filterByImitations}
-              goToEditPage={goToEditPage}
+              showEditLink={showEditLink}
             />
           }
         />

@@ -7,11 +7,13 @@ import {
 } from "@material-ui/core";
 import { ModeEdit, MoreVert, Reply } from "@material-ui/icons";
 import * as React from "react";
+import { RouteComponentProps, withRouter } from "react-router";
 import { Epigram } from "../../constants/types";
+import { editRoutePath } from "../../routes";
 
-interface ActionsMenuProps {
+interface ActionsMenuProps extends RouteComponentProps<{}> {
   epigram: Epigram;
-  goToEditPage?: (id: string) => void;
+  showEditLink: boolean;
   filterByImitations: (id: string) => void;
 }
 
@@ -19,10 +21,7 @@ interface ActionsMenuState {
   anchorElement?: HTMLElement;
 }
 
-export default class ActionsMenu extends React.Component<
-  ActionsMenuProps,
-  ActionsMenuState
-> {
+class ActionsMenu extends React.Component<ActionsMenuProps, ActionsMenuState> {
   public state = {
     anchorElement: undefined
   };
@@ -45,15 +44,12 @@ export default class ActionsMenu extends React.Component<
   };
 
   public handleEditClick = () => {
-    const { epigram, goToEditPage } = this.props;
-    if (goToEditPage) {
-      goToEditPage(epigram._id);
-    }
-    this.handleMenuClose();
+    const { epigram, history } = this.props;
+    history.push(editRoutePath(epigram._id));
   };
 
   public render() {
-    const { goToEditPage } = this.props;
+    const { showEditLink } = this.props;
     const { anchorElement } = this.state;
 
     return (
@@ -72,7 +68,7 @@ export default class ActionsMenu extends React.Component<
             </ListItemIcon>
             <ListItemText inset={true} primary="Imitations" />
           </MenuItem>
-          {goToEditPage && (
+          {showEditLink && (
             <MenuItem onClick={this.handleEditClick}>
               <ListItemIcon>
                 <ModeEdit />
@@ -85,3 +81,5 @@ export default class ActionsMenu extends React.Component<
     );
   }
 }
+
+export default withRouter(ActionsMenu);
