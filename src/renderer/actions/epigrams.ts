@@ -9,8 +9,8 @@ let db: DataStore | null = null;
 
 const initializeDatabase = () => {
   db = new DataStore({
-    filename: getFilePath("epigrams.db"),
-    autoload: true
+    autoload: true,
+    filename: getFilePath("epigrams.db")
   });
 };
 
@@ -40,5 +40,5 @@ export const saveEpigramAction = (epigram: Epigram) => (dispatch: Dispatch) => {
     db!.update({ _id: epigram._id }, epigram, { upsert: true }, () =>
       resolve(epigram)
     );
-  }).then(epigram => dispatch({ type: saveEpigramType, epigram }));
+  }).then(e => dispatch({ type: saveEpigramType, epigram: e }));
 };
