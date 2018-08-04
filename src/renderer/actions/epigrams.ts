@@ -27,8 +27,8 @@ export const loadEpigramsAction = () => (dispatch: Dispatch) => {
     db!.find<Epigram>({}, (err, docs) => resolve(docs));
   }).then(docs =>
     dispatch({
-      type: loadEpigramsType,
-      epigrams: _.keyBy(docs, "_id")
+      epigrams: _.keyBy(docs, "_id"),
+      type: loadEpigramsType
     })
   );
 };

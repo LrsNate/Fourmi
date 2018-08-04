@@ -7,8 +7,8 @@ export enum LoadingStatus {
 }
 
 export class ApplicationState {
-  readonly databaseStatus: LoadingStatus;
-  readonly epigramsStatus: LoadingStatus;
+  public readonly databaseStatus: LoadingStatus;
+  public readonly epigramsStatus: LoadingStatus;
 
   private constructor(
     databaseStatus: LoadingStatus,

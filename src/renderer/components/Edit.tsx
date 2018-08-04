@@ -1,10 +1,8 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
-import { Action } from "redux";
-import { ThunkDispatch } from "redux-thunk";
 import { saveEpigramAction } from "../actions/epigrams";
-import { Epigram } from "../constants/types";
+import { Dispatch, Epigram } from "../constants/types";
 import { RootState } from "../reducers";
 import { EditRouteArgs } from "../routes";
 import EpigramEditor from "./EpigramEditor";
@@ -15,9 +13,7 @@ const mapStateToProps = (state: RootState) => {
   return { epigrams };
 };
 
-const mapDispatchToProps = (
-  dispatch: ThunkDispatch<void, RootState, Action>
-) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     saveEpigram(epigram: Epigram) {
       dispatch(saveEpigramAction(epigram));

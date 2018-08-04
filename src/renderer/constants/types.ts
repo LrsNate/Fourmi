@@ -1,3 +1,7 @@
+import { Action } from "redux";
+import { ThunkDispatch } from "redux-thunk";
+import { RootState } from "../reducers";
+
 export type Epigrams = { [key: string]: Epigram };
 
 export interface Epigram {
@@ -16,3 +20,5 @@ export interface Epigram {
   tags: string[];
   notes: string;
 }
+
+export type Dispatch = ThunkDispatch<void, RootState, Action>;
