@@ -8,11 +8,13 @@ import {
 } from "@material-ui/core";
 import * as React from "react";
 import { Epigram } from "../../constants/types";
-import { SearchQuery } from "../../reducers/search";
+import { Filter, SearchQuery } from "../../reducers/search";
+import AddFilter from "./AddFilter";
 
 interface SearchCardProps {
   query: SearchQuery;
   results: Epigram[];
+  addFilter: (filter: Filter) => void;
   setSearchPhrase: (phrase: string) => void;
   resetSearchQuery: () => void;
 }
@@ -32,7 +34,7 @@ export default class SearchCard extends React.Component<SearchCardProps> {
   };
 
   public render() {
-    const { query, results } = this.props;
+    const { query, results, addFilter } = this.props;
 
     return (
       <Card>
@@ -51,7 +53,7 @@ export default class SearchCard extends React.Component<SearchCardProps> {
         </CardContent>
         <CardActions>
           <Button onClick={this.handleReset}>Réinitialiser</Button>
-          {/*<AddFilter query={query} onSubmit={this.handleAddFilter} />*/}
+          <AddFilter query={query} onSubmit={addFilter} />
         </CardActions>
       </Card>
     );
