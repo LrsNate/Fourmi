@@ -1,6 +1,8 @@
 import {
   AddFilterAction,
-  addFilterType, DeleteFilterAction, deleteFilterType,
+  addFilterType,
+  DeleteFilterAction,
+  deleteFilterType,
   ResetSearchQueryAction,
   resetSearchQueryType,
   SetSearchPhraseAction,
