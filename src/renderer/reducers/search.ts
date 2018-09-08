@@ -1,7 +1,8 @@
 import {
   AddFilterAction,
-  addFilterType,
-  ResetSearchQueryAction, resetSearchQueryType,
+  addFilterType, DeleteFilterAction, deleteFilterType,
+  ResetSearchQueryAction,
+  resetSearchQueryType,
   SetSearchPhraseAction,
   setSearchPhraseType
 } from "../actions/search";
@@ -29,6 +30,13 @@ export class SearchQuery {
     return new SearchQuery(this.phrase, [...this.filters, filter]);
   }
 
+  public withoutFilter(field: string) {
+    return new SearchQuery(
+      this.phrase,
+      this.filters.filter((f: Filter) => f.field !== field)
+    );
+  }
+
   public withSearchPhrase(phrase: string) {
     return new SearchQuery(phrase, this.filters);
   }
@@ -36,6 +44,7 @@ export class SearchQuery {
 
 type SearchAction =
   | AddFilterAction
+  | DeleteFilterAction
   | SetSearchPhraseAction
   | ResetSearchQueryAction;
 
@@ -46,6 +55,8 @@ export default function search(
   switch (action.type) {
     case addFilterType:
       return state.withFilter((action as AddFilterAction).filter);
+    case deleteFilterType:
+      return state.withoutFilter((action as DeleteFilterAction).field);
     case setSearchPhraseType:
       return state.withSearchPhrase((action as SetSearchPhraseAction).phrase);
     case resetSearchQueryType:

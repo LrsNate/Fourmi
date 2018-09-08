@@ -8,6 +8,7 @@ import {
 import { Delete } from "@material-ui/icons";
 import * as React from "react";
 import { connect } from "react-redux";
+import { deleteFilterAction } from "../../actions/search";
 import { Dispatch, Epigram } from "../../constants/types";
 import { getFilterName } from "../../lib/epigrams/filter";
 import { RootState } from "../../reducers";
@@ -26,8 +27,8 @@ function mapStateToProps(state: RootState) {
 
 function mapDispatchToProps(dispatch: Dispatch) {
   return {
-    deleteFilter() {
-      // TODO
+    deleteFilter(field: string) {
+      dispatch(deleteFilterAction(field));
     }
   };
 }
