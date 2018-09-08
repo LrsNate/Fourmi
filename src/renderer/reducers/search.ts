@@ -1,3 +1,4 @@
+import produce from "immer";
 import {
   AddFilterAction,
   addFilterType,
@@ -15,34 +16,12 @@ export interface Filter {
   term: string;
 }
 
-export class SearchQuery {
-  public readonly phrase: string;
-  public readonly filters: Filter[];
-
-  private constructor(phrase: string, filters: Filter[]) {
-    this.phrase = phrase;
-    this.filters = filters;
-  }
-
-  public static empty() {
-    return new SearchQuery("", []);
-  }
-
-  public withFilter(filter: Filter) {
-    return new SearchQuery(this.phrase, [...this.filters, filter]);
-  }
-
-  public withoutFilter(field: string) {
-    return new SearchQuery(
-      this.phrase,
-      this.filters.filter((f: Filter) => f.field !== field)
-    );
-  }
-
-  public withSearchPhrase(phrase: string) {
-    return new SearchQuery(phrase, this.filters);
-  }
+export interface SearchQuery {
+  phrase: string;
+  filters: Filter[];
 }
+
+const emptyQuery = { phrase: "", filters: [] };
 
 type SearchAction =
   | AddFilterAction
@@ -51,18 +30,24 @@ type SearchAction =
   | ResetSearchQueryAction;
 
 export default function search(
-  state: SearchQuery = SearchQuery.empty(),
+  state: SearchQuery = emptyQuery,
   action: SearchAction
-) {
+): SearchQuery {
   switch (action.type) {
     case addFilterType:
-      return state.withFilter((action as AddFilterAction).filter);
+      return produce(state, draft => {
+        draft.filters.push((action as AddFilterAction).filter);
+      });
     case deleteFilterType:
-      return state.withoutFilter((action as DeleteFilterAction).field);
+      return produce(state, draft => {
+        draft.filters = draft.filters.filter(
+          filter => filter.field === (action as DeleteFilterAction).field
+        );
+      });
     case setSearchPhraseType:
-      return state.withSearchPhrase((action as SetSearchPhraseAction).phrase);
+      return { ...state, phrase: (action as SetSearchPhraseAction).phrase };
     case resetSearchQueryType:
-      return SearchQuery.empty();
+      return emptyQuery;
     default:
       return state;
   }

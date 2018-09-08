@@ -6,42 +6,27 @@ export enum LoadingStatus {
   Ready
 }
 
-export class ApplicationState {
-  public readonly databaseStatus: LoadingStatus;
-  public readonly epigramsStatus: LoadingStatus;
-
-  private constructor(
-    databaseStatus: LoadingStatus,
-    epigramsStatus: LoadingStatus
-  ) {
-    this.databaseStatus = databaseStatus;
-    this.epigramsStatus = epigramsStatus;
-  }
-
-  public static empty() {
-    return new ApplicationState(LoadingStatus.Loading, LoadingStatus.Loading);
-  }
-
-  public withDatabaseReady() {
-    return new ApplicationState(LoadingStatus.Ready, this.epigramsStatus);
-  }
-
-  public withEpigramsReady() {
-    return new ApplicationState(this.databaseStatus, LoadingStatus.Ready);
-  }
+export interface ApplicationState {
+  databaseStatus: LoadingStatus;
+  epigramsStatus: LoadingStatus;
 }
+
+const emptyState = {
+  databaseStatus: LoadingStatus.Loading,
+  epigramsStatus: LoadingStatus.Loading
+};
 
 type ApplicationAction = DatabaseReadyAction | LoadEpigramsAction;
 
 export default function application(
-  state: ApplicationState = ApplicationState.empty(),
+  state: ApplicationState = emptyState,
   action: ApplicationAction
-) {
+): ApplicationState {
   switch (action.type) {
     case databaseReadyType:
-      return state.withDatabaseReady();
+      return { ...state, databaseStatus: LoadingStatus.Ready };
     case loadEpigramsType:
-      return state.withEpigramsReady();
+      return { ...state, epigramsStatus: LoadingStatus.Ready };
     default:
       return state;
   }
