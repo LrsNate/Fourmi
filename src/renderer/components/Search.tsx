@@ -1,3 +1,4 @@
+import { Grid } from "@material-ui/core";
 import * as React from "react";
 import { connect } from "react-redux";
 import {
@@ -63,23 +64,26 @@ class Search extends React.Component<SearchProps> {
 
     return (
       <Page title="Search">
-        <SearchCard
-          query={query}
-          results={epigrams}
-          addFilter={addFilter}
-          setSearchPhrase={setSearchPhrase}
-          resetSearchQuery={resetSearchQuery}
-        />
-        {epigrams
-          .slice(0, 20)
-          .map(e => (
-            <EpigramView
-              epigram={e}
-              key={e._id}
-              showEditLink={true}
-              filterByImitations={this.filterByImitations}
+        <Grid container={true} direction="column" spacing={8}>
+          <Grid item={true}>
+            <SearchCard
+              query={query}
+              results={epigrams}
+              addFilter={addFilter}
+              setSearchPhrase={setSearchPhrase}
+              resetSearchQuery={resetSearchQuery}
             />
+          </Grid>
+          {epigrams.slice(0, 20).map((e: Epigram) => (
+            <Grid item={true} key={e._id}>
+              <EpigramView
+                epigram={e}
+                showEditLink={true}
+                filterByImitations={this.filterByImitations}
+              />
+            </Grid>
           ))}
+        </Grid>
       </Page>
     );
   }

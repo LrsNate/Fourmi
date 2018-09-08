@@ -1,6 +1,6 @@
 import { TextField } from "@material-ui/core";
 import React from "react";
-import { Field } from "react-final-form";
+import { Field, FieldRenderProps } from "react-final-form";
 
 interface TextInputProps {
   name: string;
@@ -10,7 +10,7 @@ interface TextInputProps {
 const TextInput = ({ name, ...props }: TextInputProps) => {
   return (
     <Field name={name}>
-      {({ input }) => (
+      {({ input }: FieldRenderProps) => (
         <TextField {...input} {...props} fullWidth={true} margin="normal" />
       )}
     </Field>

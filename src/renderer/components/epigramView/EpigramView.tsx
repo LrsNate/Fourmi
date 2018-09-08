@@ -6,9 +6,7 @@ import {
   Collapse,
   Grid,
   IconButton,
-  Theme,
-  Typography,
-  withStyles
+  Typography
 } from "@material-ui/core";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import * as React from "react";
@@ -16,14 +14,7 @@ import { Epigram } from "../../constants/types";
 import { getEpigramIncipit, getEpigramTitle } from "../../lib/epigrams/display";
 import ActionsMenu from "./ActionsMenu";
 
-const styles = (theme: Theme) => ({
-  card: {
-    marginBottom: theme.spacing.unit
-  }
-});
-
 interface EpigramViewProps {
-  classes: { card: string };
   actions?: (epigram: Epigram) => React.ReactNode;
   epigram: Epigram;
   showEditLink: boolean;
@@ -80,17 +71,11 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
   }
 
   public render() {
-    const {
-      classes,
-      actions,
-      epigram,
-      filterByImitations,
-      showEditLink
-    } = this.props;
+    const { actions, epigram, filterByImitations, showEditLink } = this.props;
     const { collapsed } = this.state;
 
     return (
-      <Card className={classes.card}>
+      <Card>
         <CardHeader
           avatar={
             <IconButton onClick={this.toggleCollapse}>
@@ -114,4 +99,4 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
   }
 }
 
-export default withStyles(styles)(EpigramView);
+export default EpigramView;
