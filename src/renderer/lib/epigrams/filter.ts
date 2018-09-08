@@ -1,6 +1,6 @@
 import traverse from "traverse";
 import { Epigram } from "../../constants/types";
-import { SearchQuery } from "../../reducers/search";
+import { Filter, SearchQuery } from "../../reducers/search";
 
 export const allFilters = [
   { name: "Auteur", key: "author" },
@@ -14,6 +14,10 @@ export const allFilters = [
   { name: "Texte français", key: "frenchText" },
   { name: "Notes", key: "notes" }
 ];
+
+export function getFilterName(filter: Filter) {
+  return allFilters.find(f => f.key === filter.field)!!.name;
+}
 
 export function filterEpigrams(epigrams: Epigram[], query: SearchQuery) {
   return filterByTerms(epigrams, query);

@@ -10,6 +10,7 @@ import * as React from "react";
 import { Epigram } from "../../constants/types";
 import { Filter, SearchQuery } from "../../reducers/search";
 import AddFilter from "./AddFilter";
+import Filters from "./Filters";
 
 interface SearchCardProps {
   query: SearchQuery;
@@ -46,7 +47,7 @@ export default class SearchCard extends React.Component<SearchCardProps> {
             fullWidth={true}
             margin="normal"
           />
-          {/*<Filters query={query} onChange={this.handleQueryChange} />*/}
+          <Filters query={query} />
           <Typography>
             {results.length} résultat{results.length > 1 && "s"}
           </Typography>
