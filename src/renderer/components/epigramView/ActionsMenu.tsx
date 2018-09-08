@@ -5,7 +5,7 @@ import {
   Menu,
   MenuItem
 } from "@material-ui/core";
-import { ModeEdit, MoreVert, Reply } from "@material-ui/icons";
+import { Edit, MoreVert, Reply } from "@material-ui/icons";
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import { Epigram } from "../../constants/types";
@@ -71,7 +71,7 @@ class ActionsMenu extends React.Component<ActionsMenuProps, ActionsMenuState> {
           {showEditLink && (
             <MenuItem onClick={this.handleEditClick}>
               <ListItemIcon>
-                <ModeEdit />
+                <Edit />
               </ListItemIcon>
               <ListItemText inset={true} primary="Éditer" />
             </MenuItem>
