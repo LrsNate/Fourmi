@@ -41,7 +41,7 @@ export default function search(
     case deleteFilterType:
       return produce(state, draft => {
         draft.filters = draft.filters.filter(
-          filter => filter.field === (action as DeleteFilterAction).field
+          filter => filter.field !== (action as DeleteFilterAction).field
         );
       });
     case setSearchPhraseType:
