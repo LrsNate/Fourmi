@@ -45,7 +45,9 @@ export default function search(
         );
       });
     case setSearchPhraseType:
-      return { ...state, phrase: (action as SetSearchPhraseAction).phrase };
+      return produce(state, draft => {
+        draft.phrase = (action as SetSearchPhraseAction).phrase;
+      });
     case resetSearchQueryType:
       return emptyQuery;
     default:

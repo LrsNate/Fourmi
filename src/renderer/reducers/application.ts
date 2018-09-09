@@ -1,3 +1,4 @@
+import produce from "immer";
 import { DatabaseReadyAction, databaseReadyType } from "../actions/database";
 import { LoadEpigramsAction, loadEpigramsType } from "../actions/epigrams";
 
@@ -24,9 +25,13 @@ export default function application(
 ): ApplicationState {
   switch (action.type) {
     case databaseReadyType:
-      return { ...state, databaseStatus: LoadingStatus.Ready };
+      return produce(state, draft => {
+        draft.databaseStatus = LoadingStatus.Ready;
+      });
     case loadEpigramsType:
-      return { ...state, epigramsStatus: LoadingStatus.Ready };
+      return produce(state, draft => {
+        draft.epigramsStatus = LoadingStatus.Ready;
+      });
     default:
       return state;
   }
