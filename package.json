@@ -1,6 +1,6 @@
 {
-  "name": "electron-webpack-quick-start",
-  "version": "0.0.0",
+  "name": "fourmi",
+  "version": "4.0.0.alpha.0",
   "license": "MIT",
   "scripts": {
     "dev": "electron-webpack dev",
