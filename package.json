@@ -5,9 +5,11 @@
   "version": "4.0.0-alpha.0",
   "license": "MIT",
   "scripts": {
+    "clean": "rimraf dist coverage",
     "dev": "electron-webpack dev",
     "compile": "electron-webpack",
     "dist": "yarn compile && electron-builder",
+    "release": "release-it",
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "dependencies": {
@@ -51,6 +53,8 @@
     "electron-webpack-ts": "^2.0.2",
     "node-sass": "^4.9.0",
     "prettier": "^1.13.4",
+    "release-it": "^7.6.1",
+    "rimraf": "^2.6.2",
     "sass-loader": "^7.0.2",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",

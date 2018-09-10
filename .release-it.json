@@ -1,0 +1,10 @@
+{
+  "buildCommand": "yarn clean && yarn dist",
+  "src": {
+    "tagName": "v%s"
+  },
+  "github": {
+    "release": true,
+    "assets": "dist/*.{dmg,zip}"
+  }
+}
