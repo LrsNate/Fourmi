@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Route, Switch } from "react-router";
 
-import Edit from "./components/Edit";
-import Search from "./components/Search";
+import Edit from "./pages/Edit";
+import Search from "./pages/Search";
 
 export interface EditRouteArgs {
   id: string;

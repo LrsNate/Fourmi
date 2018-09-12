@@ -2,11 +2,11 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
 import { saveEpigramAction } from "../actions/epigrams";
+import EpigramEditor from "../components/EpigramEditor";
+import Page from "../components/Page";
 import { Dispatch, Epigram } from "../constants/types";
 import { RootState } from "../reducers";
 import { EditRouteArgs } from "../routes";
-import EpigramEditor from "./EpigramEditor";
-import Page from "./Page";
 
 const mapStateToProps = (state: RootState) => {
   const { epigrams } = state;

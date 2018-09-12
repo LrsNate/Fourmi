@@ -6,14 +6,14 @@ import {
   resetSearchQueryAction,
   setSearchPhraseAction
 } from "../actions/search";
+import EpigramView from "../components/epigramView/EpigramView";
+import Page from "../components/Page";
+import SearchCard from "../components/searchCard/SearchCard";
 import { Dispatch, Epigram } from "../constants/types";
 import { filterEpigrams } from "../lib/epigrams/filter";
 import { sortEpigrams } from "../lib/epigrams/sort";
 import { RootState } from "../reducers";
 import { Filter, SearchQuery } from "../reducers/search";
-import EpigramView from "./epigramView/EpigramView";
-import Page from "./Page";
-import SearchCard from "./searchCard/SearchCard";
 
 function mapStateToProps(state: RootState) {
   const query = state.search;
