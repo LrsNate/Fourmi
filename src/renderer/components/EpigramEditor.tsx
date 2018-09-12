@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, Grid } from "@material-ui/core";
 import * as React from "react";
 import { Form } from "react-final-form";
 import { Epigram } from "../constants/types";
+import TextEditor from "./forms/TextEditor";
 import TextInput from "./forms/TextInput";
 
 interface EpigramEditorProps {
@@ -20,9 +21,30 @@ class EpigramEditor extends React.Component<EpigramEditorProps> {
     return (
       <Form initialValues={epigram} onSubmit={this.handleSave}>
         {({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>{this.renderAttributes()}</form>
+          <form onSubmit={handleSubmit}>
+            <Grid container={true} direction="column" spacing={8}>
+              <Grid item={true}>{this.renderAttributes()}</Grid>
+              <Grid item={true}>
+                {this.renderTextEditor("Texte latin", "latinText")}
+              </Grid>
+              <Grid item={true}>
+                {this.renderTextEditor("Texte français", "frenchText")}
+              </Grid>
+            </Grid>
+          </form>
         )}
       </Form>
+    );
+  }
+
+  public renderTextEditor(label: string, name: string) {
+    return (
+      <Card>
+        <CardHeader title={label} />
+        <CardContent>
+          <TextEditor name={name} />
+        </CardContent>
+      </Card>
     );
   }
 

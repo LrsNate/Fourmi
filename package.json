@@ -15,7 +15,11 @@
   "dependencies": {
     "@material-ui/core": "^3.0.2",
     "@material-ui/icons": "^3.0.1",
+    "draft-js": "^0.10.5",
+    "draft-js-export-html": "^1.2.0",
+    "draftjs-to-html": "^0.8.4",
     "final-form": "^4.8.3",
+    "html-to-draftjs": "^1.4.0",
     "immer": "^1.6.0",
     "jsdom": "^12.0.0",
     "lodash": "^4.17.10",
@@ -23,7 +27,9 @@
     "nedb": "^1.8.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-draft-wysiwyg": "^1.12.13",
     "react-final-form": "^3.6.5",
+    "react-html-parser": "^2.0.2",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -35,6 +41,7 @@
     "typeface-roboto": "^0.0.54"
   },
   "devDependencies": {
+    "@types/draft-js": "^0.10.25",
     "@types/jsdom": "^11.0.6",
     "@types/lodash": "^4.14.109",
     "@types/mkdirp": "^0.5.2",
