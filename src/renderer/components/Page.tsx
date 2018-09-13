@@ -18,7 +18,7 @@ const styles = (theme: Theme) => ({
   pageContent: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    marginTop: 84
+    marginTop: theme.spacing.unit * 2
   },
   title: {
     flex: 1
@@ -40,7 +40,7 @@ class Page extends React.Component<PageProps> {
     const { classes, title, children } = this.props;
     return (
       <div>
-        <AppBar>
+        <AppBar position="static">
           <Toolbar>
             <IconButton
               className={classes.appBarLeftButton}
