@@ -27,20 +27,22 @@ class ActionsMenu extends React.Component<ActionsMenuProps, ActionsMenuState> {
   };
 
   public handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
     this.setState({ anchorElement: event.currentTarget });
   };
 
-  public handleMenuClose = () => {
+  public handleMenuClose = (event: React.MouseEvent) => {
+    event.stopPropagation();
     this.setState({ anchorElement: undefined });
   };
 
-  public handleImitationsClick = () => {
+  public handleImitationsClick = (event: React.MouseEvent) => {
     const {
       epigram: { _id },
       filterByImitations
     } = this.props;
     filterByImitations(_id);
-    this.handleMenuClose();
+    this.handleMenuClose(event);
   };
 
   public handleEditClick = () => {
