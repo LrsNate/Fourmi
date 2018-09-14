@@ -36,3 +36,7 @@
     box-sizing: border-box;
     border-radius: 2px;
 }
+
+.public-DraftStyleDefault-block {
+    margin: 0;
+}
