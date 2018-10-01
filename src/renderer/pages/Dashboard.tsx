@@ -9,7 +9,7 @@ import {
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import Page from "../components/Page";
-import { searchRoutePath } from "../routes";
+import { martialRoutePath, searchRoutePath } from "../routes";
 
 const styles = {
   sectionTitle: { paddingLeft: 22 }
@@ -20,6 +20,10 @@ interface DashboardProps extends RouteComponentProps<{}> {
 }
 
 class Dashboard extends React.Component<DashboardProps> {
+  public goToMartial = () => {
+    this.props.history.push(martialRoutePath());
+  };
+
   public goToSearch = () => {
     this.props.history.push(searchRoutePath());
   };
@@ -27,10 +31,10 @@ class Dashboard extends React.Component<DashboardProps> {
   public renderAutomaticSets() {
     return (
       <Grid container={true} spacing={16}>
-        <Grid item={true} sm={3} onClick={this.goToSearch}>
+        <Grid item={true} sm={3} onClick={this.goToMartial}>
           <Card>
             <CardContent>
-              <Typography variant="headline">Épigrammes</Typography>
+              <Typography variant="headline">Martial</Typography>
               <Typography variant="caption">
                 Rechercher dans des œuvres de Martial
               </Typography>

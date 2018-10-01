@@ -6,9 +6,10 @@ import {
   Typography,
   withStyles
 } from "@material-ui/core";
-import { KeyboardArrowLeft, Settings } from "@material-ui/icons";
+import { Home, Settings } from "@material-ui/icons";
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
+import { dashboardRoutePath } from "../routes";
 
 const styles = (theme: Theme) => ({
   appBarLeftButton: {
@@ -32,23 +33,25 @@ export interface PageProps extends RouteComponentProps<{}> {
     pageContent: string;
   };
   title: string;
-  onGoBack?: () => void;
+  leftButton?: React.ReactNode;
 }
 
 class Page extends React.Component<PageProps> {
   public render() {
-    const { classes, title, children } = this.props;
+    const { classes, leftButton, title, children } = this.props;
     return (
       <div>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              className={classes.appBarLeftButton}
-              color="inherit"
-              onClick={this.goBack}
-            >
-              <KeyboardArrowLeft />
-            </IconButton>
+            {leftButton || (
+              <IconButton
+                className={classes.appBarLeftButton}
+                color="inherit"
+                onClick={this.goHome}
+              >
+                <Home />
+              </IconButton>
+            )}
             <Typography
               variant="title"
               className={classes.title}
@@ -66,8 +69,8 @@ class Page extends React.Component<PageProps> {
     );
   }
 
-  private goBack = () => {
-    this.props.history.goBack();
+  private goHome = () => {
+    this.props.history.push(dashboardRoutePath());
   };
 
   private goToSettings = () => {

@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router";
 import Dashboard from "./pages/Dashboard";
 
 import Edit from "./pages/Edit";
+import Martial from "./pages/Martial";
 import Search from "./pages/Search";
 
 export interface EditRouteArgs {
@@ -10,12 +11,14 @@ export interface EditRouteArgs {
 }
 
 export const editRoutePath = (id: string) => `/edit/${id}`;
+export const martialRoutePath = () =>  "/martial";
 export const searchRoutePath = () => "/search";
 export const dashboardRoutePath = () => "/";
 
 export default (
   <Switch>
     <Route path={editRoutePath(":id")} component={Edit} />
+    <Route path={martialRoutePath()} component={Martial} />
     <Route path={searchRoutePath()} component={Search} />
     <Route path={dashboardRoutePath()} component={Dashboard} />
   </Switch>
