@@ -49,7 +49,7 @@ class Filters extends React.Component<FiltersProps> {
     } = this.props;
 
     return (
-      <ListItem button={true} dense={true} disableGutters={true}>
+      <ListItem button dense disableGutters>
         <ListItemText primary={`Origine : ${author} - ${reference}`} />
         <ListItemSecondaryAction>
           <IconButton onClick={this.handleDeleteFilter("originId")}>
@@ -63,7 +63,7 @@ class Filters extends React.Component<FiltersProps> {
   public renderFilter = (filter: Filter) => {
     const name = getFilterName(filter);
     return (
-      <ListItem key={filter.field} dense={true} disableGutters={true}>
+      <ListItem key={filter.field} dense disableGutters>
         <ListItemText primary={`${name}: ${filter.term}`} />
         <ListItemSecondaryAction>
           <IconButton onClick={this.handleDeleteFilter(filter.field)}>

@@ -36,7 +36,7 @@ class ApplicationLoader extends React.Component<ApplicationLoaderProps> {
     const { classes } = this.props;
 
     return (
-      <Dialog open={true}>
+      <Dialog open>
         <DialogContent className={classes.dialog}>
           <CircularProgress size={50} className={classes.progress} />
           <DialogContentText>{this.renderSubLoader()}</DialogContentText>

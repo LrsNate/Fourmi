@@ -11,7 +11,7 @@ const TextInput = ({ name, ...props }: TextInputProps) => {
   return (
     <Field name={name}>
       {({ input }: FieldRenderProps) => (
-        <TextField {...input} {...props} fullWidth={true} margin="normal" />
+        <TextField {...input} {...props} fullWidth margin="normal" />
       )}
     </Field>
   );

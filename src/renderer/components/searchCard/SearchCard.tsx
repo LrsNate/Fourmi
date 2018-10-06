@@ -44,7 +44,7 @@ export default class SearchCard extends React.Component<SearchCardProps> {
             placeholder="Rechercher..."
             value={query.phrase}
             onChange={this.handleSetSearchPhrase}
-            fullWidth={true}
+            fullWidth
             margin="normal"
           />
           <Filters query={query} />

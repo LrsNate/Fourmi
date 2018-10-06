@@ -46,15 +46,15 @@ class EpigramEditor extends React.Component<EpigramEditorProps> {
       <Form initialValues={epigram} onSubmit={this.handleSave}>
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <Grid container={true} direction="column" spacing={8}>
-              <Grid item={true}>{this.renderAttributes()}</Grid>
-              <Grid item={true}>
+            <Grid container direction="column" spacing={8}>
+              <Grid item>{this.renderAttributes()}</Grid>
+              <Grid item>
                 {this.renderTextEditor("Texte latin", "latinText")}
               </Grid>
-              <Grid item={true}>
+              <Grid item>
                 {this.renderTextEditor("Texte français", "frenchText")}
               </Grid>
-              <Grid item={true}>{this.renderTextEditor("Notes", "notes")}</Grid>
+              <Grid item>{this.renderTextEditor("Notes", "notes")}</Grid>
             </Grid>
             <Button
               className={classes.saveButton}
@@ -75,29 +75,29 @@ class EpigramEditor extends React.Component<EpigramEditorProps> {
       <Card>
         <CardHeader title="Propriétés" />
         <CardContent>
-          <Grid container={true} spacing={8}>
-            <Grid item={true} sm={3}>
+          <Grid container spacing={8}>
+            <Grid item sm={3}>
               <TextInput label="Auteur" name="author" />
             </Grid>
-            <Grid item={true} sm={3}>
+            <Grid item sm={3}>
               <TextInput label="Référence" name="reference" />
             </Grid>
-            <Grid item={true} sm={6}>
+            <Grid item sm={6}>
               <TextInput label="Titre" name="title" />
             </Grid>
-            <Grid item={true} sm={3}>
+            <Grid item sm={3}>
               <TextInput label="Mètre" name="meter" />
             </Grid>
-            <Grid item={true} sm={3}>
+            <Grid item sm={3}>
               <TextInput label="Strophe" name="stanza" />
             </Grid>
-            <Grid item={true} sm={3}>
+            <Grid item sm={3}>
               <TextInput label="Destinataire" name="addressee" />
             </Grid>
-            <Grid item={true} sm={3}>
+            <Grid item sm={3}>
               <TextInput label="Date" name="date" />
             </Grid>
-            <Grid item={true} sm={12}>
+            <Grid item sm={12}>
               <TextInput label="Thèmes" name="themes" />
             </Grid>
           </Grid>

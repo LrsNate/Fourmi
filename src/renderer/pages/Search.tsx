@@ -64,8 +64,8 @@ class Search extends React.Component<SearchProps> {
 
     return (
       <Page title="Search">
-        <Grid container={true} direction="column" spacing={8}>
-          <Grid item={true}>
+        <Grid container direction="column" spacing={8}>
+          <Grid item>
             <SearchCard
               query={query}
               results={epigrams}
@@ -75,10 +75,10 @@ class Search extends React.Component<SearchProps> {
             />
           </Grid>
           {epigrams.slice(0, 20).map((e: Epigram) => (
-            <Grid item={true} key={e._id}>
+            <Grid item key={e._id}>
               <EpigramView
                 epigram={e}
-                showEditLink={true}
+                showEditLink
                 filterByImitations={this.filterByImitations}
               />
             </Grid>

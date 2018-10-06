@@ -68,14 +68,14 @@ class ActionsMenu extends React.Component<ActionsMenuProps, ActionsMenuState> {
             <ListItemIcon>
               <Reply />
             </ListItemIcon>
-            <ListItemText inset={true} primary="Imitations" />
+            <ListItemText inset primary="Imitations" />
           </MenuItem>
           {showEditLink && (
             <MenuItem onClick={this.handleEditClick}>
               <ListItemIcon>
                 <Edit />
               </ListItemIcon>
-              <ListItemText inset={true} primary="Éditer" />
+              <ListItemText inset primary="Éditer" />
             </MenuItem>
           )}
         </Menu>

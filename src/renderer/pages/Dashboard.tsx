@@ -25,8 +25,8 @@ class Dashboard extends React.Component<DashboardProps> {
 
   public renderAutomaticSets() {
     return (
-      <Grid container={true} spacing={16}>
-        <Grid item={true} sm={3} onClick={this.goToMartial}>
+      <Grid container spacing={16}>
+        <Grid item sm={3} onClick={this.goToMartial}>
           <Card>
             <CardContent>
               <Typography variant="headline">Martial</Typography>
@@ -36,7 +36,7 @@ class Dashboard extends React.Component<DashboardProps> {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item={true} sm={3} onClick={this.goToSearch}>
+        <Grid item sm={3} onClick={this.goToSearch}>
           <Card>
             <CardContent>
               <Typography variant="headline">Imitations</Typography>
@@ -46,7 +46,7 @@ class Dashboard extends React.Component<DashboardProps> {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item={true} sm={3} onClick={this.goToSearch}>
+        <Grid item sm={3} onClick={this.goToSearch}>
           <Card>
             <CardContent>
               <Typography variant="headline">Tout</Typography>
@@ -74,12 +74,12 @@ class Dashboard extends React.Component<DashboardProps> {
   public render() {
     return (
       <Page title="Dashboard">
-        <Grid container={true} direction="column" spacing={24}>
-          <Grid item={true}>{this.renderActions()}</Grid>
-          <Grid item={true}>
+        <Grid container direction="column" spacing={24}>
+          <Grid item>{this.renderActions()}</Grid>
+          <Grid item>
             <SectionTitle>Ensembles automatiquement générés</SectionTitle>
           </Grid>
-          <Grid item={true}>{this.renderAutomaticSets()}</Grid>
+          <Grid item>{this.renderAutomaticSets()}</Grid>
         </Grid>
       </Page>
     );

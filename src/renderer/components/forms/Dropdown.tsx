@@ -28,7 +28,7 @@ const Dropdown = ({
   onChange
 }: DropdownProps) => {
   return (
-    <FormControl fullWidth={true}>
+    <FormControl fullWidth>
       <InputLabel htmlFor={id}>{label}</InputLabel>
       <Select value={value} onChange={onChange} inputProps={{ name, id }}>
         {options.map(({ name: fieldName, key }) => (

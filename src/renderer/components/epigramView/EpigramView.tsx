@@ -51,8 +51,8 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
     return (
       <Collapse in={!collapsed}>
         <CardContent>
-          <Grid container={true}>
-            <Grid item={true} sm={6}>
+          <Grid container>
+            <Grid item sm={6}>
               <Typography>
                 <span
                   dangerouslySetInnerHTML={{
@@ -61,7 +61,7 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
                 />
               </Typography>
             </Grid>
-            <Grid item={true} sm={6}>
+            <Grid item sm={6}>
               <Typography>
                 <span
                   dangerouslySetInnerHTML={{
