@@ -1,23 +1,18 @@
 import {
   Button,
-  Card, CardActions,
+  Card,
+  CardActions,
   CardContent,
   Grid,
-  Typography,
-  withStyles
+  Typography
 } from "@material-ui/core";
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import Page from "../components/Page";
+import SectionTitle from "../components/SectionTitle";
 import { martialRoutePath, searchRoutePath } from "../routes";
 
-const styles = {
-  sectionTitle: { paddingLeft: 22 }
-};
-
-interface DashboardProps extends RouteComponentProps<{}> {
-  classes: { sectionTitle: string };
-}
+interface DashboardProps extends RouteComponentProps<{}> {}
 
 class Dashboard extends React.Component<DashboardProps> {
   public goToMartial = () => {
@@ -77,15 +72,12 @@ class Dashboard extends React.Component<DashboardProps> {
   }
 
   public render() {
-    const { classes } = this.props;
     return (
       <Page title="Dashboard">
         <Grid container={true} direction="column" spacing={24}>
           <Grid item={true}>{this.renderActions()}</Grid>
           <Grid item={true}>
-            <Typography variant="display1" className={classes.sectionTitle}>
-              Ensembles automatiquement générés
-            </Typography>
+            <SectionTitle>Ensembles automatiquement générés</SectionTitle>
           </Grid>
           <Grid item={true}>{this.renderAutomaticSets()}</Grid>
         </Grid>
@@ -94,4 +86,4 @@ class Dashboard extends React.Component<DashboardProps> {
   }
 }
 
-export default withStyles(styles)(withRouter(Dashboard));
+export default withRouter(Dashboard);

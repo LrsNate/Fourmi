@@ -14,7 +14,7 @@ export interface Epigram {
   stanza: string;
   addressee: string;
   date: number | string;
-  vices: string[];
+  themes: string[];
   latinText: string;
   frenchText: string;
   tags: string[];
