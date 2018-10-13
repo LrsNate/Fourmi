@@ -15,6 +15,10 @@ export const getEpigramIncipit = (epigram: Epigram) => {
   } = new JSDOM(line);
 
   const firstLine = document.querySelector("p");
+  const firstLineText = (firstLine && firstLine.textContent) || "";
 
-  return firstLine && firstLine.textContent;
+  if (firstLineText.length < 50) {
+    return firstLineText;
+  }
+  return `${firstLineText.substring(0, 50)}...`;
 };
