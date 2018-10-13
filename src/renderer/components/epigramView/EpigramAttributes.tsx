@@ -48,7 +48,7 @@ interface EpigramAttributesProps {
 
 const EpigramAttributes: React.SFC<EpigramAttributesProps> = ({ epigram }) => {
   return (
-    <Grid container spacing={8}>
+    <Grid container spacing={16}>
       <Grid item sm={3}>
         <TextValue field="Destinataire" value={epigram.addressee} />
       </Grid>

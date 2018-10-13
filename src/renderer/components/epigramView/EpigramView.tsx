@@ -37,7 +37,7 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
   public constructor(props: EpigramViewProps) {
     super(props);
     this.state = {
-      collapsed: !props.startExpanded,
+      collapsed: !props.startExpanded
     };
   }
 
@@ -92,32 +92,19 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
     return (
       <Collapse in={!collapsed}>
         <CardContent>
-          <Grid container direction="column" spacing={16}>
-            <Grid item>
+          <Grid container spacing={24}>
+            <Grid item xs={12}>
               <EpigramAttributes epigram={epigram} />
             </Grid>
-            <Grid item>{this.renderEpigramText()}</Grid>
+            <Grid item sm={6}>
+              <TextView text={epigram.latinText || ""} />
+            </Grid>
+            <Grid item sm={6}>
+              <TextView text={epigram.frenchText || ""} />
+            </Grid>
           </Grid>
         </CardContent>
       </Collapse>
-    );
-  }
-
-  private renderEpigramText() {
-    const { epigram } = this.props;
-
-    const latinText = epigram.latinText || "";
-    const frenchText = epigram.frenchText || "";
-
-    return (
-      <Grid container spacing={24}>
-        <Grid item sm={6}>
-          <TextView text={latinText} />
-        </Grid>
-        <Grid item sm={6}>
-          <TextView text={frenchText} />
-        </Grid>
-      </Grid>
     );
   }
 }

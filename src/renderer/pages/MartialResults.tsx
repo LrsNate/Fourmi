@@ -47,9 +47,13 @@ function mapStateToProps(state: RootState, ownProps: MartialResultsProps) {
 class MartialResults extends React.Component<MartialResultsProps> {
   public render() {
     const { epigrams } = this.props;
+    const { field, value } = this.props.match.params;
+
+    const fieldLabel =
+      field === QueryField[QueryField.Book] ? "Livre" : "Thème";
 
     return (
-      <Page title="?">
+      <Page title={`${fieldLabel} : ${value}`}>
         <Grid container direction="column" spacing={8}>
           {epigrams.slice(0, 20).map((e: Epigram) => (
             <Grid item key={e._id}>
