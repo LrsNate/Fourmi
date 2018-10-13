@@ -1,4 +1,5 @@
 import { Grid } from "@material-ui/core";
+import * as _ from "lodash";
 import * as React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
@@ -6,6 +7,7 @@ import EpigramView from "../components/epigramView/EpigramView";
 import Page from "../components/Page";
 import { Epigram } from "../constants/types";
 import { QueryField } from "../lib/epigrams/query";
+import { getSortKey } from "../lib/epigrams/sort";
 import { RootState } from "../reducers";
 import { MartialResultsRouteArgs } from "../routes";
 
@@ -26,9 +28,11 @@ function getFilteredEpigrams(
 }
 
 function mapStateToProps(state: RootState, ownProps: MartialResultsProps) {
-  const epigrams = Object.values(state.epigrams).filter(
-    e => e.author === "Martial"
-  );
+  const epigrams = _.chain(state.epigrams)
+    .values()
+    .sortBy(e => getSortKey(state.epigrams, e))
+    .filter(e => e.author === "Martial")
+    .value();
 
   const { field, value } = ownProps.match.params;
   return {
@@ -49,11 +53,7 @@ class MartialResults extends React.Component<MartialResultsProps> {
         <Grid container direction="column" spacing={8}>
           {epigrams.slice(0, 20).map((e: Epigram) => (
             <Grid item key={e._id}>
-              <EpigramView
-                epigram={e}
-                showEditLink
-                filterByImitations={() => {}}
-              />
+              <EpigramView epigram={e} startExpanded />
             </Grid>
           ))}
         </Grid>

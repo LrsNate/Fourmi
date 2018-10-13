@@ -17,7 +17,6 @@ export interface Epigram {
   themes: string[];
   latinText: string;
   frenchText: string;
-  tags: string[];
   notes: string;
 }
 

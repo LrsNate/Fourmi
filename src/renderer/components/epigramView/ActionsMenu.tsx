@@ -14,7 +14,7 @@ import { editRoutePath } from "../../routes";
 interface ActionsMenuProps extends RouteComponentProps<{}> {
   epigram: Epigram;
   showEditLink: boolean;
-  filterByImitations: (id: string) => void;
+  filterByImitations?: (id: string) => void;
 }
 
 interface ActionsMenuState {
@@ -41,7 +41,9 @@ class ActionsMenu extends React.Component<ActionsMenuProps, ActionsMenuState> {
       epigram: { _id },
       filterByImitations
     } = this.props;
-    filterByImitations(_id);
+    if (filterByImitations) {
+      filterByImitations(_id);
+    }
     this.handleMenuClose(event);
   };
 
@@ -51,7 +53,7 @@ class ActionsMenu extends React.Component<ActionsMenuProps, ActionsMenuState> {
   };
 
   public render() {
-    const { showEditLink } = this.props;
+    const { filterByImitations, showEditLink } = this.props;
     const { anchorElement } = this.state;
 
     return (
@@ -64,12 +66,14 @@ class ActionsMenu extends React.Component<ActionsMenuProps, ActionsMenuState> {
           anchorEl={anchorElement}
           onClose={this.handleMenuClose}
         >
-          <MenuItem onClick={this.handleImitationsClick}>
-            <ListItemIcon>
-              <Reply />
-            </ListItemIcon>
-            <ListItemText inset primary="Imitations" />
-          </MenuItem>
+          {filterByImitations && (
+            <MenuItem onClick={this.handleImitationsClick}>
+              <ListItemIcon>
+                <Reply />
+              </ListItemIcon>
+              <ListItemText inset primary="Imitations" />
+            </MenuItem>
+          )}
           {showEditLink && (
             <MenuItem onClick={this.handleEditClick}>
               <ListItemIcon>
