@@ -10,13 +10,13 @@ import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
-import { martialRoutePath, searchRoutePath } from "../routes";
+import { martialQueryRoutePath, searchRoutePath } from "../routes";
 
 interface DashboardProps extends RouteComponentProps<{}> {}
 
 class Dashboard extends React.Component<DashboardProps> {
   public goToMartial = () => {
-    this.props.history.push(martialRoutePath());
+    this.props.history.push(martialQueryRoutePath());
   };
 
   public goToSearch = () => {

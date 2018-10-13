@@ -11,6 +11,7 @@
     "member-ordering": [true, { "order": "fields-first" }],
     "no-submodule-imports": false,
     "jsx-boolean-value": false,
+    "jsx-no-lambda": false,
     "prettier": true
   }
 }
