@@ -2,7 +2,6 @@
 import { app, BrowserWindow } from "electron";
 import * as path from "path";
 import { format as formatUrl } from "url";
-import { installExtensions } from "./devExtensions";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -57,8 +56,8 @@ app.on("activate", () => {
 
 // create main BrowserWindow when electron is ready
 app.on("ready", async () => {
-  if (isDevelopment) {
-    await installExtensions();
-  }
+  // if (isDevelopment) {
+  //   await installExtensions();
+  // }
   mainWindow = createMainWindow();
 });
