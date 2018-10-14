@@ -2,6 +2,7 @@
 import { app, BrowserWindow } from "electron";
 import * as path from "path";
 import { format as formatUrl } from "url";
+import { setUpAutoUpdater } from "./autoUpdater";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -11,9 +12,13 @@ let mainWindow: BrowserWindow | null;
 function createMainWindow() {
   const window = new BrowserWindow({ width: 1000, height: 720 });
 
-  // if (isDevelopment) {
-  window.webContents.openDevTools();
-  // }
+  if (!isDevelopment) {
+    setUpAutoUpdater();
+  }
+
+  if (isDevelopment) {
+    window.webContents.openDevTools();
+  }
 
   if (isDevelopment) {
     window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`);
