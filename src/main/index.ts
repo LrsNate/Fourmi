@@ -2,6 +2,7 @@
 import { app, BrowserWindow } from "electron";
 import * as path from "path";
 import { format as formatUrl } from "url";
+import packageConfig from "../../package.json";
 import { setUpAutoUpdater } from "./autoUpdater";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -10,7 +11,11 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 let mainWindow: BrowserWindow | null;
 
 function createMainWindow() {
-  const window = new BrowserWindow({ width: 1000, height: 720 });
+  const window = new BrowserWindow({
+    width: 1000,
+    height: 720,
+    title: `Fourmi [v${packageConfig.version}]`
+  });
 
   if (!isDevelopment) {
     setUpAutoUpdater();

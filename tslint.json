@@ -10,6 +10,7 @@
     "interface-over-type-literal": false,
     "member-ordering": [true, { "order": "fields-first" }],
     "no-submodule-imports": false,
+    "object-literal-sort-keys": false,
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,
     "prettier": true
