@@ -2,7 +2,7 @@
   "name": "Fourmi",
   "author": "Antoine Lafouasse <antoine.lafouasse@icloud.com>",
   "description": "Browse Martial epigrams",
-  "version": "4.0.0-alpha.0",
+  "version": "4.0.0",
   "license": "MIT",
   "scripts": {
     "clean": "rimraf dist coverage",
