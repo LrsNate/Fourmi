@@ -29,7 +29,7 @@ const styles: StyleRulesCallback<string> = (theme: Theme) => ({
 interface EpigramEditorProps extends RouteComponentProps<{}> {
   epigram: Epigram;
   onSave: (values: Epigram) => void;
-  classes: { saveButton: string };
+  classes: Record<string, string>;
 }
 
 class EpigramEditor extends React.Component<EpigramEditorProps> {

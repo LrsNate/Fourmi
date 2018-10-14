@@ -25,10 +25,7 @@ const styles: StyleRulesCallback<string> = (theme: Theme) => ({
 
 interface ApplicationLoaderProps {
   application: ApplicationState;
-  classes: {
-    dialog: string;
-    progress: string;
-  };
+  classes: Record<string, string>;
 }
 
 class ApplicationLoader extends React.Component<ApplicationLoaderProps> {
