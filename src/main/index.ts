@@ -4,10 +4,12 @@ import * as path from "path";
 import { format as formatUrl } from "url";
 import packageConfig from "../../package.json";
 import { setUpAutoUpdater } from "./autoUpdater";
+import { initializeContextualMenu } from "./menu";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
+// @ts-ignore
 let mainWindow: BrowserWindow | null;
 
 function createMainWindow() {
@@ -57,17 +59,12 @@ app.on("window-all-closed", () => {
   app.quit();
 });
 
-app.on("activate", () => {
-  // on macOS it is common to re-create a window even after all windows have been closed
-  if (mainWindow === null) {
-    mainWindow = createMainWindow();
-  }
-});
-
 // create main BrowserWindow when electron is ready
 app.on("ready", async () => {
   // if (isDevelopment) {
   //   await installExtensions();
   // }
+  initializeContextualMenu();
+
   mainWindow = createMainWindow();
 });
