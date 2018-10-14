@@ -4,7 +4,7 @@ import {
   CardActions,
   CardContent,
   Grid,
-  Typography
+  Typography, withStyles
 } from "@material-ui/core";
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
@@ -12,7 +12,18 @@ import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import { martialQueryRoutePath, searchRoutePath } from "../routes";
 
-interface DashboardProps extends RouteComponentProps<{}> {}
+const styles = {
+  disabledCard: {
+    cursor: "not-allowed"
+  },
+  setCard: {
+    cursor: "pointer"
+  }
+};
+
+interface DashboardProps extends RouteComponentProps<{}> {
+  classes: Record<string, string>;
+}
 
 class Dashboard extends React.Component<DashboardProps> {
   public goToMartial = () => {
@@ -24,10 +35,12 @@ class Dashboard extends React.Component<DashboardProps> {
   };
 
   public renderAutomaticSets() {
+    const { classes } = this.props;
+
     return (
       <Grid container spacing={16}>
-        <Grid item sm={3} onClick={this.goToMartial}>
-          <Card>
+        <Grid item sm={3}>
+          <Card className={classes.setCard} onClick={this.goToMartial}>
             <CardContent>
               <Typography variant="headline">Martial</Typography>
               <Typography variant="caption">
@@ -36,8 +49,8 @@ class Dashboard extends React.Component<DashboardProps> {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item sm={3} onClick={this.goToSearch}>
-          <Card>
+        <Grid item sm={3}>
+          <Card className={classes.disabledCard}>
             <CardContent>
               <Typography variant="headline">Imitations</Typography>
               <Typography variant="caption">
@@ -46,8 +59,8 @@ class Dashboard extends React.Component<DashboardProps> {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item sm={3} onClick={this.goToSearch}>
-          <Card>
+        <Grid item sm={3}>
+          <Card className={classes.setCard} onClick={this.goToSearch}>
             <CardContent>
               <Typography variant="headline">Tout</Typography>
               <Typography variant="caption">
@@ -73,7 +86,7 @@ class Dashboard extends React.Component<DashboardProps> {
 
   public render() {
     return (
-      <Page title="Dashboard">
+      <Page title="Fourmi">
         <Grid container direction="column" spacing={24}>
           <Grid item>{this.renderActions()}</Grid>
           <Grid item>
@@ -86,4 +99,4 @@ class Dashboard extends React.Component<DashboardProps> {
   }
 }
 
-export default withRouter(Dashboard);
+export default withRouter(withStyles(styles)(Dashboard));
