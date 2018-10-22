@@ -52,11 +52,7 @@ class Page extends React.Component<PageProps> {
                 <Home />
               </IconButton>
             )}
-            <Typography
-              variant="title"
-              className={classes.title}
-              color="inherit"
-            >
+            <Typography variant="h6" className={classes.title} color="inherit">
               {title}
             </Typography>
             <IconButton color="inherit" onClick={this.goToSettings}>

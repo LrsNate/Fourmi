@@ -11,7 +11,11 @@ interface SectionTitleProps {
 }
 
 const SectionTitle: React.SFC<SectionTitleProps> = ({ children, classes }) => (
-  <Typography variant="display1" className={classes.sectionTitle}>
+  <Typography
+    variant="h4"
+    color="textSecondary"
+    className={classes.sectionTitle}
+  >
     {children}
   </Typography>
 );

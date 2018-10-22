@@ -42,8 +42,8 @@ class Dashboard extends React.Component<DashboardProps> {
         <Grid item sm={3}>
           <Card className={classes.setCard} onClick={this.goToMartial}>
             <CardContent>
-              <Typography variant="headline">Martial</Typography>
-              <Typography variant="caption">
+              <Typography variant="h5">Martial</Typography>
+              <Typography variant="caption" color="textSecondary">
                 Rechercher dans des œuvres de Martial
               </Typography>
             </CardContent>
@@ -52,8 +52,8 @@ class Dashboard extends React.Component<DashboardProps> {
         <Grid item sm={3}>
           <Card className={classes.disabledCard}>
             <CardContent>
-              <Typography variant="headline">Imitations</Typography>
-              <Typography variant="caption">
+              <Typography variant="h5">Imitations</Typography>
+              <Typography variant="caption" color="textSecondary">
                 Rechercher dans les imitations d'auteurs
               </Typography>
             </CardContent>
@@ -62,8 +62,8 @@ class Dashboard extends React.Component<DashboardProps> {
         <Grid item sm={3}>
           <Card className={classes.setCard} onClick={this.goToSearch}>
             <CardContent>
-              <Typography variant="headline">Tout</Typography>
-              <Typography variant="caption">
+              <Typography variant="h5">Tout</Typography>
+              <Typography variant="caption" color="textSecondary">
                 Rechercher dans toutes les œuvres
               </Typography>
             </CardContent>

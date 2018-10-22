@@ -56,7 +56,7 @@ const FieldList: React.SFC<FieldListProps> = ({
 }) => (
   <Card>
     <CardContent>
-      <Typography variant="headline">{title}</Typography>
+      <Typography variant="h5">{title}</Typography>
       <List>
         {items.map(item => (
           <ListItem
