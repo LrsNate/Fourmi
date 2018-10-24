@@ -78,8 +78,9 @@ class AddFilter extends React.Component<AddFilterProps, AddFilterState> {
             options={this.availableFilters}
             name="field"
             id="field"
+            required
           />
-          <TextInput label="Terme" name="term" />
+          <TextInput label="Terme" name="term" required />
           <Checkbox label="Insensible à la casse" name="caseInsensitive" />
         </DialogContent>
         <DialogActions>
