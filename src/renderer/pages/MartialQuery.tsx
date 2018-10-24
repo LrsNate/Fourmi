@@ -34,6 +34,7 @@ function mapStateToProps(state: RootState) {
 
   const themes = _.chain(epigrams)
     .flatMap(e => e.themes)
+    .filter(t => t)
     .sort()
     .uniq()
     .value();
@@ -131,4 +132,5 @@ class MartialQuery extends React.Component<MartialQueryProps> {
   }
 }
 
+// @ts-ignore
 export default connect(mapStateToProps)(withRouter(MartialQuery));
