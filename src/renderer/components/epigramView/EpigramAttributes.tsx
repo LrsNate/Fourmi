@@ -28,7 +28,12 @@ interface TextValueProps extends FieldValueProps {
 
 const TextValue: React.SFC<TextValueProps> = ({ field, value }) => (
   <Typography>
-    <strong>{field} :</strong> {value || <EmptyValue />}
+    <strong>{field} :</strong>{" "}
+    {value ? (
+      <span dangerouslySetInnerHTML={{ __html: value }} />
+    ) : (
+      <EmptyValue />
+    )}
   </Typography>
 );
 
