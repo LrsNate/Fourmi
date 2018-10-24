@@ -10,12 +10,13 @@ import {
 } from "@material-ui/core";
 import { Save } from "@material-ui/icons";
 import * as React from "react";
-import { Form } from "react-final-form";
+import { Field, Form } from "react-final-form";
 import { RouteComponentProps, withRouter } from "react-router";
-import { Epigram } from "../constants/types";
-import { searchRoutePath } from "../routes";
-import TextEditor from "./forms/TextEditor";
-import TextInput from "./forms/TextInput";
+import { Epigram } from "../../constants/types";
+import { searchRoutePath } from "../../routes";
+import TextEditor from "../forms/TextEditor";
+import TextInput from "../forms/TextInput";
+import ChipEditorCard from "./ChipEditorCard";
 
 const styles: StyleRulesCallback<string> = (theme: Theme) => ({
   saveButton: {
@@ -48,6 +49,7 @@ class EpigramEditor extends React.Component<EpigramEditorProps> {
           <form onSubmit={handleSubmit}>
             <Grid container direction="column" spacing={8}>
               <Grid item>{this.renderAttributes()}</Grid>
+              <Grid item>{this.renderThemes()}</Grid>
               <Grid item>
                 {this.renderTextEditor("Texte latin", "latinText")}
               </Grid>
@@ -97,12 +99,19 @@ class EpigramEditor extends React.Component<EpigramEditorProps> {
             <Grid item sm={3}>
               <TextInput label="Date" name="date" />
             </Grid>
-            <Grid item sm={12}>
-              <TextInput label="Thèmes" name="themes" />
-            </Grid>
           </Grid>
         </CardContent>
       </Card>
+    );
+  }
+
+  public renderThemes() {
+    return (
+      <Field name="themes">
+        {({ input: { onChange, value } }) => (
+          <ChipEditorCard values={value} onChange={onChange} />
+        )}
+      </Field>
     );
   }
 

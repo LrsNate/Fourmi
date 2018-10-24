@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
 import { saveEpigramAction } from "../actions/epigrams";
-import EpigramEditor from "../components/EpigramEditor";
+import EpigramEditor from "../components/epigramEditor/EpigramEditor";
 import Page from "../components/Page";
 import { Dispatch, Epigram } from "../constants/types";
 import { RootState } from "../reducers";

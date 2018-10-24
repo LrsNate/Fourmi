@@ -11,6 +11,7 @@ interface DropdownProps {
   name: string;
   id: string;
   label: string;
+  required?: boolean;
   options: DropdownOption[];
   value: string;
   onChange: (
@@ -23,6 +24,7 @@ const Dropdown = ({
   name,
   id,
   label,
+  required,
   options,
   value,
   onChange
@@ -30,7 +32,12 @@ const Dropdown = ({
   return (
     <FormControl fullWidth>
       <InputLabel htmlFor={id}>{label}</InputLabel>
-      <Select value={value} onChange={onChange} inputProps={{ name, id }}>
+      <Select
+        value={value}
+        onChange={onChange}
+        required={required}
+        inputProps={{ name, id }}
+      >
         {options.map(({ name: fieldName, key }) => (
           <MenuItem value={key} key={key}>
             {fieldName}
@@ -45,6 +52,7 @@ interface DropdownWrapperProps {
   name: string;
   id: string;
   label: string;
+  required?: boolean;
   options: DropdownOption[];
 }
 

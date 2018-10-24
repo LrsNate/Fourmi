@@ -5,6 +5,7 @@ import { Field, FieldRenderProps } from "react-final-form";
 interface TextInputProps {
   name: string;
   label: string;
+  required?: boolean;
 }
 
 const TextInput = ({ name, ...props }: TextInputProps) => {
