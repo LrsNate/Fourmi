@@ -4,13 +4,18 @@ import {
   CardActions,
   CardContent,
   Grid,
-  Typography, withStyles
+  Typography,
+  withStyles
 } from "@material-ui/core";
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
-import { martialQueryRoutePath, searchRoutePath } from "../routes";
+import {
+  addRoutePath,
+  martialQueryRoutePath,
+  searchRoutePath
+} from "../routes";
 
 const styles = {
   disabledCard: {
@@ -26,6 +31,10 @@ interface DashboardProps extends RouteComponentProps<{}> {
 }
 
 class Dashboard extends React.Component<DashboardProps> {
+  public goToAdd = () => {
+    this.props.history.push(addRoutePath());
+  };
+
   public goToMartial = () => {
     this.props.history.push(martialQueryRoutePath());
   };
@@ -77,7 +86,9 @@ class Dashboard extends React.Component<DashboardProps> {
     return (
       <Card>
         <CardActions>
-          <Button color="primary">Nouvelle œuvre</Button>
+          <Button color="primary" onClick={this.goToAdd}>
+            Nouvelle œuvre
+          </Button>
           <Button>Recherche spécifique</Button>
         </CardActions>
       </Card>

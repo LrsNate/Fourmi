@@ -20,4 +20,19 @@ export interface Epigram {
   notes: string;
 }
 
+// @ts-ignore
+export const emptyEpigram: Epigram = {
+  author: "",
+  reference: "",
+  title: "",
+  meter: "",
+  stanza: "",
+  addressee: "",
+  date: "",
+  themes: [],
+  latinText: "",
+  frenchText: "",
+  notes: ""
+};
+
 export type Dispatch = ThunkDispatch<void, RootState, Action>;

@@ -35,10 +35,16 @@ export const loadEpigramsAction = () => (dispatch: Dispatch) => {
 
 export const saveEpigramType = "epigrams:save";
 
+export interface SaveEpigramAction extends Action<string> {
+  epigram: Epigram;
+}
+
 export const saveEpigramAction = (epigram: Epigram) => (dispatch: Dispatch) => {
   return new Promise(resolve => {
-    db!.update({ _id: epigram._id }, epigram, { upsert: true }, () =>
-      resolve(epigram)
-    );
+    if (epigram._id) {
+      db!.update({ _id: epigram._id }, epigram, {}, () => resolve(epigram));
+    } else {
+      db!.insert(epigram, (err, doc) => resolve(doc));
+    }
   }).then(e => dispatch({ type: saveEpigramType, epigram: e }));
 };

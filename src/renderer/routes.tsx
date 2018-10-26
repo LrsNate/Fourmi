@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Route, Switch } from "react-router";
+import Add from "./pages/Add";
 import Dashboard from "./pages/Dashboard";
 
 import Edit from "./pages/Edit";
@@ -16,6 +17,7 @@ export interface MartialResultsRouteArgs {
   value: string;
 }
 
+export const addRoutePath = () => "/add";
 export const editRoutePath = (id: string) => `/edit/${id}`;
 export const martialQueryRoutePath = () => "/martial";
 export const martialResultsRoutePath = (field: string, value: string) =>
@@ -25,6 +27,7 @@ export const dashboardRoutePath = () => "/";
 
 export default (
   <Switch>
+    <Route path={addRoutePath()} component={Add}/>
     <Route path={editRoutePath(":id")} component={Edit} />
     <Route
       path={martialResultsRoutePath(":field", ":value")}
