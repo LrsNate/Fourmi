@@ -64,7 +64,9 @@ app.on("ready", async () => {
   // if (isDevelopment) {
   //   await installExtensions();
   // }
-  initializeContextualMenu();
+  if (!isDevelopment) {
+    initializeContextualMenu();
+  }
 
   mainWindow = createMainWindow();
 });
