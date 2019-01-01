@@ -3,6 +3,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Checkbox,
   Collapse,
   Grid,
   IconButton,
@@ -26,6 +27,9 @@ interface EpigramViewProps {
   epigram: Epigram;
   showEditLink?: boolean;
   startExpanded?: boolean;
+  selectable?: boolean;
+  selected?: boolean;
+  onToggleSelected?: (selected: boolean) => void;
   filterByImitations?: (id: string) => void;
 }
 
@@ -42,8 +46,15 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
   }
 
   public toggleCollapse = () => {
-    const { collapsed } = this.state;
-    this.setState({ collapsed: !collapsed });
+    this.setState(({ collapsed }) => ({ collapsed: !collapsed }));
+  };
+
+  public toggleSelected = (e: React.MouseEvent) => {
+    const { selected, onToggleSelected } = this.props;
+    e.stopPropagation();
+    if (onToggleSelected) {
+      onToggleSelected(!selected);
+    }
   };
 
   public render() {
@@ -61,11 +72,7 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
         <CardHeader
           className={classes.header}
           onClick={this.toggleCollapse}
-          avatar={
-            <IconButton>
-              {collapsed ? <KeyboardArrowDown /> : <KeyboardArrowUp />}
-            </IconButton>
-          }
+          avatar={this.renderAvatar()}
           title={getEpigramTitle(epigram)}
           subheader={collapsed && getEpigramIncipit(epigram)}
           action={
@@ -83,6 +90,28 @@ class EpigramView extends React.Component<EpigramViewProps, EpigramViewState> {
         {actions && <CardActions>{actions(epigram)}</CardActions>}
       </Card>
     );
+  }
+
+  private renderAvatar() {
+    const { selectable, selected } = this.props;
+    const { collapsed } = this.state;
+
+    if (selectable) {
+      return (
+        <IconButton onClick={this.toggleSelected}>
+          <Checkbox
+            color="secondary"
+            checked={selected}
+          />
+        </IconButton>
+      );
+    } else {
+      return (
+        <IconButton>
+          {collapsed ? <KeyboardArrowDown /> : <KeyboardArrowUp />}
+        </IconButton>
+      );
+    }
   }
 
   private renderEpigramContent() {

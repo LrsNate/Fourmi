@@ -1,4 +1,5 @@
 import { Grid } from "@material-ui/core";
+import produce from "immer";
 import * as _ from "lodash";
 import * as React from "react";
 import { connect } from "react-redux";
@@ -44,10 +45,28 @@ function mapStateToProps(state: RootState, ownProps: MartialResultsProps) {
   };
 }
 
-class MartialResults extends React.Component<MartialResultsProps> {
+interface MartialResultsState {
+  selectedEpigrams: { [id: string]: boolean };
+}
+
+class MartialResults extends React.Component<
+  MartialResultsProps,
+  MartialResultsState
+> {
+  public state: MartialResultsState = { selectedEpigrams: {} };
+
+  public handleToggleSelected = (id: string) => (selected: boolean) => {
+    this.setState(state =>
+      produce(state, draft => {
+        draft.selectedEpigrams[id] = selected;
+      })
+    );
+  };
+
   public render() {
     const { epigrams } = this.props;
     const { field, value } = this.props.match.params;
+    const { selectedEpigrams } = this.state;
 
     const fieldLabel =
       field === QueryField[QueryField.Book] ? "Livre" : "Thème";
@@ -57,7 +76,13 @@ class MartialResults extends React.Component<MartialResultsProps> {
         <Grid container direction="column" spacing={8}>
           {epigrams.slice(0, 20).map((e: Epigram) => (
             <Grid item key={e._id}>
-              <EpigramView epigram={e} startExpanded />
+              <EpigramView
+                epigram={e}
+                startExpanded
+                selectable
+                onToggleSelected={this.handleToggleSelected(e._id)}
+                selected={!!selectedEpigrams[e._id]}
+              />
             </Grid>
           ))}
         </Grid>
