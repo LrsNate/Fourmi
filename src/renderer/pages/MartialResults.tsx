@@ -1,9 +1,10 @@
-import { Grid } from "@material-ui/core";
+import { Button, Card, CardActions, CardHeader, Grid } from "@material-ui/core";
 import produce from "immer";
 import * as _ from "lodash";
 import * as React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
+import ConfirmGenerateCorpus from "../components/ConfirmGenerateCorpus";
 import EpigramView from "../components/epigramView/EpigramView";
 import Page from "../components/Page";
 import { Epigram } from "../constants/types";
@@ -46,6 +47,7 @@ function mapStateToProps(state: RootState, ownProps: MartialResultsProps) {
 }
 
 interface MartialResultsState {
+  generatingCorpus: boolean;
   selectedEpigrams: { [id: string]: boolean };
 }
 
@@ -53,7 +55,22 @@ class MartialResults extends React.Component<
   MartialResultsProps,
   MartialResultsState
 > {
-  public state: MartialResultsState = { selectedEpigrams: {} };
+  public state: MartialResultsState = {
+    generatingCorpus: false,
+    selectedEpigrams: {}
+  };
+
+  public get corpusSize() {
+    return Object.values(this.state.selectedEpigrams).filter(v => !!v).length;
+  }
+
+  public handleStartGeneratingCorpus = () => {
+    this.setState({ generatingCorpus: true });
+  };
+
+  public handleCancelGeneratingCorpus = () => {
+    this.setState({ generatingCorpus: false, selectedEpigrams: {} });
+  };
 
   public handleToggleSelected = (id: string) => (selected: boolean) => {
     this.setState(state =>
@@ -63,10 +80,38 @@ class MartialResults extends React.Component<
     );
   };
 
+  public renderActions() {
+    const { generatingCorpus } = this.state;
+    if (!generatingCorpus) {
+      return (
+        <Card>
+          <CardActions>
+            <Button color="primary" onClick={this.handleStartGeneratingCorpus}>
+              Générer un corpus
+            </Button>
+          </CardActions>
+        </Card>
+      );
+    }
+
+    return (
+      <Card>
+        <CardHeader title="Création de corpus" />
+        <CardActions>
+          <ConfirmGenerateCorpus
+            corpusSize={this.corpusSize}
+            onConfirm={() => {}}
+          />
+          <Button onClick={this.handleCancelGeneratingCorpus}>Annuler</Button>
+        </CardActions>
+      </Card>
+    );
+  }
+
   public render() {
     const { epigrams } = this.props;
     const { field, value } = this.props.match.params;
-    const { selectedEpigrams } = this.state;
+    const { generatingCorpus, selectedEpigrams } = this.state;
 
     const fieldLabel =
       field === QueryField[QueryField.Book] ? "Livre" : "Thème";
@@ -74,12 +119,13 @@ class MartialResults extends React.Component<
     return (
       <Page title={`${fieldLabel} : ${value}`}>
         <Grid container direction="column" spacing={8}>
+          <Grid item>{this.renderActions()}</Grid>
           {epigrams.slice(0, 20).map((e: Epigram) => (
             <Grid item key={e._id}>
               <EpigramView
                 epigram={e}
                 startExpanded
-                selectable
+                selectable={generatingCorpus}
                 onToggleSelected={this.handleToggleSelected(e._id)}
                 selected={!!selectedEpigrams[e._id]}
               />
