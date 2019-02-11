@@ -1,38 +1,36 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
+import { loadCorporaAction } from "../../actions/corpora";
 
-import {
-  DatabaseReadyAction,
-  ensureDatabaseExistsAction
-} from "../../actions/database";
+import { DatabaseReadyAction } from "../../actions/database";
 import { RootState } from "../../reducers";
 
 function mapDispatchToProps(
   dispatch: ThunkDispatch<RootState, void, DatabaseReadyAction>
 ) {
   return {
-    loadDatabase() {
-      dispatch(ensureDatabaseExistsAction());
+    loadCorpora() {
+      dispatch(loadCorporaAction());
     }
   };
 }
 
-interface DatabaseLoaderProps {
-  loadDatabase: () => void;
+interface CorporaLoaderProps {
+  loadCorpora: () => void;
 }
 
-class DatabaseLoader extends React.Component<DatabaseLoaderProps> {
+class CorporaLoader extends React.Component<CorporaLoaderProps> {
   public componentDidMount() {
-    this.props.loadDatabase();
+    this.props.loadCorpora();
   }
 
   public render() {
-    return "Chargement de la base de données...";
+    return "Chargement des corpora...";
   }
 }
 
 export default connect(
   null,
   mapDispatchToProps
-)(DatabaseLoader);
+)(CorporaLoader);

@@ -20,12 +20,12 @@ interface EpigramsLoaderProps {
 }
 
 class EpigramsLoader extends React.Component<EpigramsLoaderProps> {
-  componentDidMount() {
+  public componentDidMount() {
     this.props.loadEpigrams();
   }
 
   public render() {
-    return "Chargement des épigrammes en cours...";
+    return "Chargement des épigrammes...";
   }
 }
 

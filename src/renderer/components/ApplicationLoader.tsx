@@ -10,6 +10,7 @@ import {
 import * as React from "react";
 
 import { ApplicationState, LoadingStatus } from "../reducers/application";
+import CorporaLoader from "./loaders/CorporaLoader";
 import DatabaseLoader from "./loaders/DatabaseLoader";
 import EpigramsLoader from "./loaders/EpigramsLoader";
 
@@ -44,13 +45,15 @@ class ApplicationLoader extends React.Component<ApplicationLoaderProps> {
 
   private renderSubLoader() {
     const {
-      application: { databaseStatus, epigramsStatus }
+      application: { databaseStatus, epigramsStatus, corporaStatus }
     } = this.props;
 
     if (databaseStatus === LoadingStatus.Loading) {
       return <DatabaseLoader />;
     } else if (epigramsStatus === LoadingStatus.Loading) {
       return <EpigramsLoader />;
+    } else if (corporaStatus === LoadingStatus.Loading) {
+      return <CorporaLoader />;
     } else {
       return null;
     }

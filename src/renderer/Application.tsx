@@ -17,11 +17,12 @@ interface ApplicationProps {
 }
 
 const Application: React.SFC<ApplicationProps> = ({ application }) => {
-  const { databaseStatus, epigramsStatus } = application;
+  const { databaseStatus, epigramsStatus, corporaStatus } = application;
 
   const isLoaded =
     databaseStatus === LoadingStatus.Ready &&
-    epigramsStatus === LoadingStatus.Ready;
+    epigramsStatus === LoadingStatus.Ready &&
+    corporaStatus === LoadingStatus.Ready;
 
   if (isLoaded) {
     return <HashRouter>{routes}</HashRouter>;

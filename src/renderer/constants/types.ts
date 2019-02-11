@@ -2,10 +2,20 @@ import { Action } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { RootState } from "../reducers";
 
+export interface DBObject {
+  _id: string;
+}
+
+export type Corpora = { [key: string]: Corpus };
+
+export interface Corpus extends DBObject {
+  title: string;
+  epigramIds: string[];
+}
+
 export type Epigrams = { [key: string]: Epigram };
 
-export interface Epigram {
-  _id: string;
+export interface Epigram extends DBObject {
   originId?: string;
   author: string;
   reference: string;

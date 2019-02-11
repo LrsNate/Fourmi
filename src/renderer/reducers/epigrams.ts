@@ -2,11 +2,12 @@ import produce from "immer";
 import {
   LoadEpigramsAction,
   loadEpigramsType,
-  SaveEpigramAction, saveEpigramType
+  SaveEpigramAction,
+  saveEpigramType
 } from "../actions/epigrams";
-import { Epigram } from "../constants/types";
+import { Epigrams } from "../constants/types";
 
-export type EpigramsState = { [key: string]: Epigram };
+export type EpigramsState = Epigrams;
 
 type EpigramsAction = LoadEpigramsAction | SaveEpigramAction;
 
