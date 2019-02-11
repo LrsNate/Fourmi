@@ -1,11 +1,11 @@
-import { Button, Card, CardActions, CardHeader, Grid } from "@material-ui/core";
+import { Button, Card, CardActions, Grid } from "@material-ui/core";
 import produce from "immer";
 import * as _ from "lodash";
 import * as React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
-import ConfirmGenerateCorpus from "../components/ConfirmGenerateCorpus";
 import EpigramView from "../components/epigramView/EpigramView";
+import GenerateCorpus from "../components/GenerateCorpus";
 import Page from "../components/Page";
 import { Epigram } from "../constants/types";
 import { QueryField } from "../lib/epigrams/query";
@@ -95,16 +95,10 @@ class MartialResults extends React.Component<
     }
 
     return (
-      <Card>
-        <CardHeader title="Création de corpus" />
-        <CardActions>
-          <ConfirmGenerateCorpus
-            corpusSize={this.corpusSize}
-            onConfirm={() => {}}
-          />
-          <Button onClick={this.handleCancelGeneratingCorpus}>Annuler</Button>
-        </CardActions>
-      </Card>
+      <GenerateCorpus
+        corpusSize={this.corpusSize}
+        onCancel={this.handleCancelGeneratingCorpus}
+      />
     );
   }
 
