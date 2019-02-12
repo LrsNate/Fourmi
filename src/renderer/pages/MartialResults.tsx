@@ -11,7 +11,7 @@ import { Epigram } from "../constants/types";
 import { QueryField } from "../lib/epigrams/query";
 import { getSortKey } from "../lib/epigrams/sort";
 import { RootState } from "../reducers";
-import { MartialResultsRouteArgs } from "../routes";
+import { dashboardRoutePath, MartialResultsRouteArgs } from "../routes";
 
 interface MartialResultsProps
   extends RouteComponentProps<MartialResultsRouteArgs> {
@@ -60,8 +60,10 @@ class MartialResults extends React.Component<
     selectedEpigrams: {}
   };
 
-  public get corpusSize() {
-    return Object.values(this.state.selectedEpigrams).filter(v => !!v).length;
+  public get epigramIds() {
+    return Object.entries(this.state.selectedEpigrams)
+      .filter(([id, selected]) => !!selected)
+      .map(([id]) => id);
   }
 
   public handleStartGeneratingCorpus = () => {
@@ -70,6 +72,11 @@ class MartialResults extends React.Component<
 
   public handleCancelGeneratingCorpus = () => {
     this.setState({ generatingCorpus: false, selectedEpigrams: {} });
+  };
+
+  public handleSave = () => {
+    const { history } = this.props;
+    history.push(dashboardRoutePath());
   };
 
   public handleToggleSelected = (id: string) => (selected: boolean) => {
@@ -96,7 +103,8 @@ class MartialResults extends React.Component<
 
     return (
       <GenerateCorpus
-        corpusSize={this.corpusSize}
+        epigramIds={this.epigramIds}
+        onSave={this.handleSave}
         onCancel={this.handleCancelGeneratingCorpus}
       />
     );

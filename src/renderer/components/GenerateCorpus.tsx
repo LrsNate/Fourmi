@@ -9,17 +9,31 @@ import {
   Typography
 } from "@material-ui/core";
 import * as React from "react";
+import { connect } from "react-redux";
+import { saveCorpusAction } from "../actions/corpora";
+import { Corpus, Dispatch } from "../constants/types";
+
+function mapDispatchToProps(dispatch: Dispatch) {
+  return {
+    saveCorpus(title: string, epigramIds: string[]) {
+      const corpus = { title, epigramIds };
+      return dispatch(saveCorpusAction(corpus as Corpus));
+    }
+  };
+}
 
 interface GenerateCorpusProps {
-  corpusSize: number;
+  epigramIds: string[];
   onCancel: () => void;
+  saveCorpus: (title: string, epigramIds: string[]) => void;
+  onSave: () => void;
 }
 
 interface GenerateCorpusState {
   corpusTitle: string;
 }
 
-export default class GenerateCorpus extends React.Component<
+class GenerateCorpus extends React.Component<
   GenerateCorpusProps,
   GenerateCorpusState
 > {
@@ -29,9 +43,19 @@ export default class GenerateCorpus extends React.Component<
     this.setState({ corpusTitle: event.target.value });
   };
 
-  public render() {
-    const { corpusSize, onCancel } = this.props;
+  public save = () => {
+    const { saveCorpus, epigramIds, onSave } = this.props;
     const { corpusTitle } = this.state;
+
+    saveCorpus(corpusTitle, epigramIds);
+    onSave();
+  };
+
+  public render() {
+    const { epigramIds, onCancel } = this.props;
+    const { corpusTitle } = this.state;
+
+    const corpusSize = epigramIds.length;
 
     return (
       <Card>
@@ -55,10 +79,21 @@ export default class GenerateCorpus extends React.Component<
           </Grid>
         </CardContent>
         <CardActions>
-          <Button color="primary">Sauvegarder</Button>
+          <Button
+            color="primary"
+            disabled={corpusSize === 0}
+            onClick={this.save}
+          >
+            Sauvegarder
+          </Button>
           <Button onClick={onCancel}>Annuler</Button>
         </CardActions>
       </Card>
     );
   }
 }
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(GenerateCorpus);

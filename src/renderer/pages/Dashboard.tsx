@@ -4,13 +4,20 @@ import {
   CardActions,
   CardContent,
   Grid,
+  List,
+  ListItem,
+  ListItemText,
   Typography,
   withStyles
 } from "@material-ui/core";
 import * as React from "react";
+import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
+import { Corpus } from "../constants/types";
+import { sortCorpora } from "../lib/corpora";
+import { RootState } from "../reducers";
 import {
   addRoutePath,
   martialQueryRoutePath,
@@ -26,8 +33,15 @@ const styles = {
   }
 };
 
+function mapStateToProps(state: RootState) {
+  return {
+    corpora: sortCorpora(state.corpora)
+  };
+}
+
 interface DashboardProps extends RouteComponentProps<{}> {
   classes: Record<string, string>;
+  corpora: Corpus[];
 }
 
 class Dashboard extends React.Component<DashboardProps> {
@@ -47,38 +61,74 @@ class Dashboard extends React.Component<DashboardProps> {
     const { classes } = this.props;
 
     return (
-      <Grid container spacing={16}>
-        <Grid item sm={3}>
-          <Card className={classes.setCard} onClick={this.goToMartial}>
+      <React.Fragment>
+        <Grid item>
+          <SectionTitle>Ensembles automatiquement générés</SectionTitle>
+        </Grid>
+        <Grid item>
+          <Grid container spacing={16}>
+            <Grid item sm={3}>
+              <Card className={classes.setCard} onClick={this.goToMartial}>
+                <CardContent>
+                  <Typography variant="h5">Martial</Typography>
+                  <Typography variant="caption" color="textSecondary">
+                    Rechercher dans des œuvres de Martial
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item sm={3}>
+              <Card className={classes.disabledCard}>
+                <CardContent>
+                  <Typography variant="h5">Imitations</Typography>
+                  <Typography variant="caption" color="textSecondary">
+                    Rechercher dans les imitations d'auteurs
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item sm={3}>
+              <Card className={classes.setCard} onClick={this.goToSearch}>
+                <CardContent>
+                  <Typography variant="h5">Tout</Typography>
+                  <Typography variant="caption" color="textSecondary">
+                    Rechercher dans toutes les œuvres
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </Grid>
+      </React.Fragment>
+    );
+  }
+
+  public renderUserSets() {
+    const { corpora } = this.props;
+
+    if (corpora.length === 0) {
+      return null;
+    }
+
+    return (
+      <React.Fragment>
+        <Grid item>
+          <SectionTitle>Ensembles créés manuellement</SectionTitle>
+        </Grid>
+        <Grid item>
+          <Card>
             <CardContent>
-              <Typography variant="h5">Martial</Typography>
-              <Typography variant="caption" color="textSecondary">
-                Rechercher dans des œuvres de Martial
-              </Typography>
+              <List>
+                {corpora.map(c => (
+                  <ListItem key={c.title} button>
+                    <ListItemText>{c.title}</ListItemText>
+                  </ListItem>
+                ))}
+              </List>
             </CardContent>
           </Card>
         </Grid>
-        <Grid item sm={3}>
-          <Card className={classes.disabledCard}>
-            <CardContent>
-              <Typography variant="h5">Imitations</Typography>
-              <Typography variant="caption" color="textSecondary">
-                Rechercher dans les imitations d'auteurs
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item sm={3}>
-          <Card className={classes.setCard} onClick={this.goToSearch}>
-            <CardContent>
-              <Typography variant="h5">Tout</Typography>
-              <Typography variant="caption" color="textSecondary">
-                Rechercher dans toutes les œuvres
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+      </React.Fragment>
     );
   }
 
@@ -100,14 +150,14 @@ class Dashboard extends React.Component<DashboardProps> {
       <Page title="Fourmi">
         <Grid container direction="column" spacing={24}>
           <Grid item>{this.renderActions()}</Grid>
-          <Grid item>
-            <SectionTitle>Ensembles automatiquement générés</SectionTitle>
-          </Grid>
-          <Grid item>{this.renderAutomaticSets()}</Grid>
+          {this.renderAutomaticSets()}
+          {this.renderUserSets()}
         </Grid>
       </Page>
     );
   }
 }
 
-export default withRouter(withStyles(styles)(Dashboard));
+export default connect(mapStateToProps)(
+  withRouter(withStyles(styles)(Dashboard))
+);

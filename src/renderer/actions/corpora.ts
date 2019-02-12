@@ -32,3 +32,19 @@ export const loadCorporaAction = () => (dispatch: Dispatch) => {
     })
   );
 };
+
+export const saveCorpusType = "corpora:save";
+
+export interface SaveCorpusAction extends Action<string> {
+  corpus: Corpus;
+}
+
+export const saveCorpusAction = (corpus: Corpus) => (dispatch: Dispatch) => {
+  return new Promise(resolve => {
+    if (corpus._id) {
+      db!.update({ _id: corpus._id }, corpus, {}, () => resolve(corpus));
+    } else {
+      db!.insert(corpus, (err, doc) => resolve(doc));
+    }
+  }).then(e => dispatch({ type: saveCorpusType, corpus: e }));
+};
