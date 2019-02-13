@@ -7,6 +7,7 @@ import Edit from "./pages/Edit";
 import MartialQuery from "./pages/MartialQuery";
 import MartialResults from "./pages/MartialResults";
 import Search from "./pages/Search";
+import UserCorpus from "./pages/UserCorpus";
 
 export interface EditRouteArgs {
   id: string;
@@ -22,18 +23,20 @@ export const editRoutePath = (id: string) => `/edit/${id}`;
 export const martialQueryRoutePath = () => "/martial";
 export const martialResultsRoutePath = (field: string, value: string) =>
   `/martial/results/${field}/${value}`;
+export const userCorpusRoutePath = (id: string) => `/corpus/${id}`;
 export const searchRoutePath = () => "/search";
 export const dashboardRoutePath = () => "/";
 
 export default (
   <Switch>
-    <Route path={addRoutePath()} component={Add}/>
+    <Route path={addRoutePath()} component={Add} />
     <Route path={editRoutePath(":id")} component={Edit} />
     <Route
       path={martialResultsRoutePath(":field", ":value")}
       component={MartialResults}
     />
     <Route path={martialQueryRoutePath()} component={MartialQuery} />
+    <Route path={userCorpusRoutePath(":id")} component={UserCorpus} />
     <Route path={searchRoutePath()} component={Search} />
     <Route path={dashboardRoutePath()} component={Dashboard} />
   </Switch>

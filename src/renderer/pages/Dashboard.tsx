@@ -21,7 +21,8 @@ import { RootState } from "../reducers";
 import {
   addRoutePath,
   martialQueryRoutePath,
-  searchRoutePath
+  searchRoutePath,
+  userCorpusRoutePath
 } from "../routes";
 
 const styles = {
@@ -55,6 +56,10 @@ class Dashboard extends React.Component<DashboardProps> {
 
   public goToSearch = () => {
     this.props.history.push(searchRoutePath());
+  };
+
+  public goToCorpus = (id: string) => () => {
+    this.props.history.push(userCorpusRoutePath(id));
   };
 
   public renderAutomaticSets() {
@@ -117,15 +122,13 @@ class Dashboard extends React.Component<DashboardProps> {
         </Grid>
         <Grid item>
           <Card>
-            <CardContent>
-              <List>
-                {corpora.map(c => (
-                  <ListItem key={c.title} button>
-                    <ListItemText>{c.title}</ListItemText>
-                  </ListItem>
-                ))}
-              </List>
-            </CardContent>
+            <List>
+              {corpora.map(c => (
+                <ListItem key={c._id} button onClick={this.goToCorpus(c._id)}>
+                  <ListItemText>{c.title}</ListItemText>
+                </ListItem>
+              ))}
+            </List>
           </Card>
         </Grid>
       </React.Fragment>
