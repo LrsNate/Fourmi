@@ -6,6 +6,7 @@ import {
   Grid,
   List,
   ListItem,
+  ListItemSecondaryAction,
   ListItemText,
   Typography,
   withStyles
@@ -13,9 +14,11 @@ import {
 import * as React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
+import { deleteCorpusAction } from "../actions/corpora";
+import DeleteCorpus from "../components/DeleteCorpus";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
-import { Corpus } from "../constants/types";
+import { Corpus, Dispatch } from "../constants/types";
 import { sortCorpora } from "../lib/corpora";
 import { RootState } from "../reducers";
 import {
@@ -40,9 +43,18 @@ function mapStateToProps(state: RootState) {
   };
 }
 
+function mapDispatchToProps(dispatch: Dispatch) {
+  return {
+    deleteCorpus(id: string) {
+      dispatch(deleteCorpusAction(id));
+    }
+  };
+}
+
 interface DashboardProps extends RouteComponentProps<{}> {
   classes: Record<string, string>;
   corpora: Corpus[];
+  deleteCorpus: (id: string) => void;
 }
 
 class Dashboard extends React.Component<DashboardProps> {
@@ -60,6 +72,10 @@ class Dashboard extends React.Component<DashboardProps> {
 
   public goToCorpus = (id: string) => () => {
     this.props.history.push(userCorpusRoutePath(id));
+  };
+
+  public handleDeleteCorpus = (id: string) => () => {
+    this.props.deleteCorpus(id);
   };
 
   public renderAutomaticSets() {
@@ -126,6 +142,12 @@ class Dashboard extends React.Component<DashboardProps> {
               {corpora.map(c => (
                 <ListItem key={c._id} button onClick={this.goToCorpus(c._id)}>
                   <ListItemText>{c.title}</ListItemText>
+                  <ListItemSecondaryAction>
+                    <DeleteCorpus
+                      corpus={c}
+                      onConfirm={this.handleDeleteCorpus(c._id)}
+                    />
+                  </ListItemSecondaryAction>
                 </ListItem>
               ))}
             </List>
@@ -161,6 +183,7 @@ class Dashboard extends React.Component<DashboardProps> {
   }
 }
 
-export default connect(mapStateToProps)(
-  withRouter(withStyles(styles)(Dashboard))
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(withStyles(styles)(Dashboard)));

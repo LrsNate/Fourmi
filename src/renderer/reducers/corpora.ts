@@ -1,5 +1,7 @@
 import produce from "immer";
 import {
+  DeleteCorpusAction,
+  deleteCorpusType,
   LoadCorporaAction,
   loadCorporaType,
   SaveCorpusAction,
@@ -8,7 +10,11 @@ import {
 import { Corpora } from "../constants/types";
 
 export type CorporaState = Corpora;
-export type CorporaAction = LoadCorporaAction | SaveCorpusAction;
+
+export type CorporaAction =
+  | LoadCorporaAction
+  | SaveCorpusAction
+  | DeleteCorpusAction;
 
 export default function corpora(
   state: CorporaState = {},
@@ -21,6 +27,11 @@ export default function corpora(
       return produce<CorporaState>(state, draft => {
         const { corpus } = action as SaveCorpusAction;
         draft[corpus._id] = corpus;
+      });
+    case deleteCorpusType:
+      return produce<CorporaState>(state, draft => {
+        const { id } = action as DeleteCorpusAction;
+        delete draft[id];
       });
     default:
       return state;

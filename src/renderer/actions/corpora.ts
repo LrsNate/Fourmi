@@ -48,3 +48,15 @@ export const saveCorpusAction = (corpus: Corpus) => (dispatch: Dispatch) => {
     }
   }).then(e => dispatch({ type: saveCorpusType, corpus: e }));
 };
+
+export const deleteCorpusType = "corpus:delete";
+
+export interface DeleteCorpusAction extends Action<string> {
+  id: string;
+}
+
+export const deleteCorpusAction = (id: string) => (dispatch: Dispatch) => {
+  return new Promise(resolve => {
+    db!.remove({ _id: id }, () => resolve());
+  }).then(() => dispatch({ type: deleteCorpusType, id }));
+};
