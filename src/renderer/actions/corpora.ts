@@ -49,7 +49,7 @@ export const saveCorpusAction = (corpus: Corpus) => (dispatch: Dispatch) => {
   }).then(e => dispatch({ type: saveCorpusType, corpus: e }));
 };
 
-export const deleteCorpusType = "corpus:delete";
+export const deleteCorpusType = "corpora:delete";
 
 export interface DeleteCorpusAction extends Action<string> {
   id: string;

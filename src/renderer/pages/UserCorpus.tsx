@@ -1,10 +1,12 @@
-import { Grid } from "@material-ui/core";
+import { Card, CardActions, Grid } from "@material-ui/core";
 import * as React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
+import { saveCorpusAction } from "../actions/corpora";
 import EpigramView from "../components/epigramView/EpigramView";
 import Page from "../components/Page";
-import { Corpus, Epigram } from "../constants/types";
+import RenameCorpus from "../components/userCorpus/RenameCorpus";
+import { Corpus, Dispatch, Epigram } from "../constants/types";
 import { RootState } from "../reducers";
 
 function mapStateToProps(state: RootState, ownProps: UserCorpusProps) {
@@ -17,6 +19,14 @@ function mapStateToProps(state: RootState, ownProps: UserCorpusProps) {
   return { corpus, epigrams };
 }
 
+function mapDispatchToProps(dispatch: Dispatch, ownProps: UserCorpusProps) {
+  return {
+    saveCorpus(corpus: Corpus) {
+      dispatch(saveCorpusAction(corpus));
+    }
+  };
+}
+
 interface UserCorpusRouteParams {
   id: string;
 }
@@ -24,9 +34,15 @@ interface UserCorpusRouteParams {
 interface UserCorpusProps extends RouteComponentProps<UserCorpusRouteParams> {
   corpus: Corpus;
   epigrams: Epigram[];
+  saveCorpus: (corpus: Corpus) => void;
 }
 
 class UserCorpus extends React.Component<UserCorpusProps> {
+  public handleSaveTitle = (title: string) => {
+    const { corpus, saveCorpus } = this.props;
+    saveCorpus({ ...corpus, title });
+  };
+
   public render() {
     const {
       corpus: { title },
@@ -36,6 +52,13 @@ class UserCorpus extends React.Component<UserCorpusProps> {
     return (
       <Page title={title}>
         <Grid container direction="column" spacing={8}>
+          <Grid item>
+            <Card>
+              <CardActions>
+                <RenameCorpus title={title} onSave={this.handleSaveTitle} />
+              </CardActions>
+            </Card>
+          </Grid>
           {epigrams.map(e => (
             <Grid item key={e._id}>
               <EpigramView epigram={e} startExpanded />
@@ -47,4 +70,7 @@ class UserCorpus extends React.Component<UserCorpusProps> {
   }
 }
 
-export default connect(mapStateToProps)(withRouter(UserCorpus));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(UserCorpus));
