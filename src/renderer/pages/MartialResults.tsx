@@ -99,7 +99,7 @@ class MartialResults extends React.Component<
               onToggleSelectingEpigrams={this.handleToggleSelectingEpigrams}
             />
           </Grid>
-          {epigrams.slice(0, 20).map((e: Epigram) => (
+          {epigrams.map((e: Epigram) => (
             <Grid item key={e._id}>
               <EpigramView
                 epigram={e}

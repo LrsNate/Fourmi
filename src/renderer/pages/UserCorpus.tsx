@@ -1,12 +1,12 @@
-import { Card, CardActions, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
+import produce from "immer";
 import * as React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
-import { saveCorpusAction } from "../actions/corpora";
 import EpigramView from "../components/epigramView/EpigramView";
 import Page from "../components/Page";
-import RenameCorpus from "../components/userCorpus/RenameCorpus";
-import { Corpus, Dispatch, Epigram } from "../constants/types";
+import UserCorpusActions from "../components/userCorpusActions/UserCorpusActions";
+import { Corpus, Epigram } from "../constants/types";
 import { RootState } from "../reducers";
 
 function mapStateToProps(state: RootState, ownProps: UserCorpusProps) {
@@ -19,14 +19,6 @@ function mapStateToProps(state: RootState, ownProps: UserCorpusProps) {
   return { corpus, epigrams };
 }
 
-function mapDispatchToProps(dispatch: Dispatch, ownProps: UserCorpusProps) {
-  return {
-    saveCorpus(corpus: Corpus) {
-      dispatch(saveCorpusAction(corpus));
-    }
-  };
-}
-
 interface UserCorpusRouteParams {
   id: string;
 }
@@ -34,34 +26,64 @@ interface UserCorpusRouteParams {
 interface UserCorpusProps extends RouteComponentProps<UserCorpusRouteParams> {
   corpus: Corpus;
   epigrams: Epigram[];
-  saveCorpus: (corpus: Corpus) => void;
 }
 
-class UserCorpus extends React.Component<UserCorpusProps> {
-  public handleSaveTitle = (title: string) => {
-    const { corpus, saveCorpus } = this.props;
-    saveCorpus({ ...corpus, title });
+interface UserCorpusState {
+  selectingEpigrams: boolean;
+  selectedEpigrams: { [id: string]: boolean };
+}
+
+class UserCorpus extends React.Component<UserCorpusProps, UserCorpusState> {
+  public state: UserCorpusState = {
+    selectingEpigrams: false,
+    selectedEpigrams: {}
+  };
+
+  public get epigramIds() {
+    return Object.entries(this.state.selectedEpigrams)
+      .filter(([id, selected]) => !!selected)
+      .map(([id]) => id);
+  }
+
+  public handleToggleSelectingEpigrams = (selectingEpigrams: boolean) => {
+    if (selectingEpigrams) {
+      this.setState({ selectingEpigrams: true });
+    } else {
+      this.setState({ selectingEpigrams: false, selectedEpigrams: {} });
+    }
+  };
+
+  public handleToggleSelected = (id: string) => (selected: boolean) => {
+    this.setState(state =>
+      produce(state, draft => {
+        draft.selectedEpigrams[id] = selected;
+      })
+    );
   };
 
   public render() {
-    const {
-      corpus: { title },
-      epigrams
-    } = this.props;
+    const { corpus, epigrams } = this.props;
+    const { selectingEpigrams, selectedEpigrams } = this.state;
 
     return (
-      <Page title={title}>
+      <Page title={corpus.title}>
         <Grid container direction="column" spacing={8}>
           <Grid item>
-            <Card>
-              <CardActions>
-                <RenameCorpus title={title} onSave={this.handleSaveTitle} />
-              </CardActions>
-            </Card>
+            <UserCorpusActions
+              corpus={corpus}
+              epigramIds={this.epigramIds}
+              onToggleSelectingEpigrams={this.handleToggleSelectingEpigrams}
+            />
           </Grid>
           {epigrams.map(e => (
             <Grid item key={e._id}>
-              <EpigramView epigram={e} startExpanded />
+              <EpigramView
+                epigram={e}
+                startExpanded
+                selectable={selectingEpigrams}
+                onToggleSelected={this.handleToggleSelected(e._id)}
+                selected={!!selectedEpigrams[e._id]}
+              />
             </Grid>
           ))}
         </Grid>
@@ -70,7 +92,4 @@ class UserCorpus extends React.Component<UserCorpusProps> {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(UserCorpus));
+export default connect(mapStateToProps)(withRouter(UserCorpus));
