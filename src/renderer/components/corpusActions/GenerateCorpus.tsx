@@ -10,8 +10,8 @@ import {
 } from "@material-ui/core";
 import * as React from "react";
 import { connect } from "react-redux";
-import { saveCorpusAction } from "../actions/corpora";
-import { Corpus, Dispatch } from "../constants/types";
+import { saveCorpusAction } from "../../actions/corpora";
+import { Corpus, Dispatch } from "../../constants/types";
 
 function mapDispatchToProps(dispatch: Dispatch) {
   return {
