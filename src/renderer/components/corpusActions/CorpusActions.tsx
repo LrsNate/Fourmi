@@ -1,8 +1,6 @@
 import { Button, Card, CardActions } from "@material-ui/core";
 import * as React from "react";
-import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
-import { RootState } from "../../reducers";
 import { dashboardRoutePath } from "../../routes";
 import AddToCorpus from "./AddToCorpus";
 import GenerateCorpus from "./GenerateCorpus";
@@ -13,15 +11,8 @@ enum CorpusActionType {
   None
 }
 
-function mapStateToProps(state: RootState) {
-  return {
-    hasUserCorpora: Object.entries(state.corpora).length > 0
-  };
-}
-
 interface CorpusActionsProps extends RouteComponentProps<{}> {
   epigramIds: string[];
-  hasUserCorpora: boolean;
   onToggleSelectingEpigrams: (selectingEpigrams: boolean) => void;
 }
 
@@ -45,7 +36,7 @@ class CorpusActions extends React.Component<
   };
 
   public render() {
-    const { epigramIds, hasUserCorpora } = this.props;
+    const { epigramIds } = this.props;
     const { currentAction } = this.state;
 
     switch (currentAction) {
@@ -77,7 +68,6 @@ class CorpusActions extends React.Component<
               </Button>
               <Button
                 onClick={this.setActionType(CorpusActionType.AddToCorpus)}
-                disabled={!hasUserCorpora}
               >
                 Ajouter à un corpus existant
               </Button>
@@ -88,4 +78,4 @@ class CorpusActions extends React.Component<
   }
 }
 
-export default connect(mapStateToProps)(withRouter(CorpusActions));
+export default withRouter(CorpusActions);
